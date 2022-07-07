@@ -12,7 +12,14 @@ module.exports = {
 	},
 	theme: {
 		extend: {
-			colors: {},
+			colors: {
+				primary: "#FF4D67",
+				secondary: "#09101D",
+				tertiary: "#FD788C",
+				white: "#fff",
+				lightGray: "#E5E5E5",
+				darkBlue: "#1A1B22",
+			},
 		},
 		fontFamily: {},
 	},
