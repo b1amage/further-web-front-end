@@ -8,22 +8,22 @@
 	}
 
 	body {
-		@apply m-0 scroll-smooth antialiased transition-all duration-500;
+		@apply m-0 scroll-smooth antialiased transition-all duration-500 font-sourceSansPro;
 	}
 
 	::selection {
-		// @apply bg- text-;
+		@apply bg-tertiary text-white;
 	}
 
 	body::-webkit-scrollbar {
-		// @apply w-2 h-10 transition-all;
+		@apply w-2 h-10 transition-all;
 	}
 
 	body::-webkit-scrollbar-track {
-		// @apply shadow-sm bg-;
+		@apply shadow-sm bg-tertiary;
 	}
 
 	body::-webkit-scrollbar-thumb {
-		// @apply bg-  outline-none;
+		@apply bg-primary  outline-none;
 	}
 }

@@ -21,7 +21,9 @@ module.exports = {
 				darkBlue: "#1A1B22",
 			},
 		},
-		fontFamily: {},
+		fontFamily: {
+			sourceSansPro: ["Source Sans Pro", "sans-serif"],
+		},
 	},
 	plugins: [require("daisyui")],
 };
