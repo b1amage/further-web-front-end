@@ -12,7 +12,7 @@
 	}
 
 	::selection {
-		@apply bg-tertiary text-white;
+		@apply bg-primary-90 text-white;
 	}
 
 	body::-webkit-scrollbar {
@@ -20,10 +20,10 @@
 	}
 
 	body::-webkit-scrollbar-track {
-		@apply shadow-sm bg-tertiary;
+		@apply shadow-sm bg-primary-90;
 	}
 
 	body::-webkit-scrollbar-thumb {
-		@apply bg-primary  outline-none;
+		@apply bg-primary-100 outline-none;
 	}
 }

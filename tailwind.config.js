@@ -13,17 +13,26 @@ module.exports = {
 	theme: {
 		extend: {
 			colors: {
-				primary: "#FF4D67",
-				secondary: "#09101D",
-				tertiary: "#FD788C",
+				primary: {
+					100: "#FF4D67",
+					90: "#FD788C",
+				},
+				secondary: "#FFB800",
+				tertiary1: "#6D5FFD",
+				tertiary2: "#FF1843",
+				black: "#000",
 				white: "#fff",
-				lightGray: "#E5E5E5",
-				darkBlue: "#1A1B22",
+				dark: {
+					1: "#23252F",
+					2: "#1A1B22",
+					3: "#2A2B39",
+					4: "#282C49",
+				},
 			},
 		},
 		fontFamily: {
 			sourceSansPro: ["Source Sans Pro", "sans-serif"],
 		},
 	},
-	plugins: [require("daisyui")],
+	plugins: [],
 };
