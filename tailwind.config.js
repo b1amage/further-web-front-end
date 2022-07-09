@@ -22,6 +22,7 @@ module.exports = {
 				tertiary2: "#FF1843",
 				black: "#000",
 				white: "#fff",
+				gray: "#EBEEF2",
 				dark: {
 					1: "#23252F",
 					2: "#1A1B22",

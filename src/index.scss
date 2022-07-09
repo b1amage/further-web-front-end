@@ -8,7 +8,7 @@
 	}
 
 	body {
-		@apply m-0 scroll-smooth antialiased transition-all duration-500 font-sourceSansPro;
+		@apply relative m-0 scroll-smooth antialiased transition-all duration-500 font-sourceSansPro;
 	}
 
 	::selection {
