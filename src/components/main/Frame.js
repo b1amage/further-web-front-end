@@ -24,11 +24,11 @@ const Frame = () => {
 
 			{/* button div */}
 			<div className="absolute bottom-0 z-30 flex items-center justify-center space-x-8 -translate-x-1/2 translate-y-1/2 cursor-pointer left-1/2">
-				<HeroButton width={88} height={88}>
+				<HeroButton className="w-[76px] h-[76px]">
 					<img src={emptyHeart} alt="svg icon" />
 				</HeroButton>
 
-				<HeroButton width={88} height={88}>
+				<HeroButton className="w-[76px] h-[76px]">
 					<img src={x} alt="svg icon" />
 				</HeroButton>
 			</div>

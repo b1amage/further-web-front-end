@@ -1,9 +1,9 @@
 import React from "react";
 
-const HeroButton = ({ width, height, children }) => {
+const HeroButton = ({ className, children }) => {
 	return (
 		<button
-			className={`bg-white w-[${width}px] h-[${height}px] rounded-full shadow-2xl flex items-center justify-center shadow-primary-100`}
+			className={`bg-white w-[88px] h-[88px] rounded-full shadow-2xl flex items-center justify-center shadow-primary-100 ${className}`}
 		>
 			{children}
 		</button>

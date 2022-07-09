@@ -5,7 +5,7 @@ import NavButton from "../navbar/NavButton";
 
 const Header = () => {
 	return (
-		<div className="flex flex-grow-0 py-4">
+		<div className="flex py-4 jusitfy-self-start x-grow-0 jus">
 			<div className="flex items-center flex-1 space-x-5">
 				<Logo />
 

@@ -5,7 +5,7 @@ import Frame from "../components/main/Frame";
 
 const HomePage = () => {
 	return (
-		<div className="container p-6 mx-auto">
+		<div className="container p-6 mx-auto min-h-[100vh]">
 			<Header />
 			<NavBar />
 			<Frame />
