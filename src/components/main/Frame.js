@@ -13,7 +13,7 @@ SwiperCore.use([Pagination]);
 
 const Frame = () => {
 	return (
-		<div className="grid h-[620px] w-[380px] grid-cols-1 rounded-[36px] mb-20 relative">
+		<div className="grid h-[620px] w-[380px] max-w-[95%] mx-auto grid-cols-1 rounded-[36px] mb-20 relative">
 			<Swiper
 				pagination={{ clickable: true }}
 				grabCursor="true"
