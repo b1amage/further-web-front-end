@@ -1,4 +1,5 @@
 import { Routes, Route } from "react-router-dom";
+import Toggle from "./utilities/Toggle";
 import HomePage from "./views/HomePage";
 function App() {
 	return (
@@ -6,6 +7,7 @@ function App() {
 			<Routes>
 				<Route path="/" element={<HomePage />} />
 			</Routes>
+			<Toggle />
 		</>
 	);
 }

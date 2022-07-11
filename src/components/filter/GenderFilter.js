@@ -38,7 +38,7 @@ const GenderFilter = () => {
 		<div>
 			<label
 				htmlFor="gender"
-				className="block mb-2 text-lg font-semibold text-black"
+				className="block mb-2 text-lg font-semibold "
 			>
 				Gender
 			</label>

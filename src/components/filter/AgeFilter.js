@@ -3,10 +3,7 @@ import React from "react";
 const AgeFilter = () => {
 	return (
 		<div>
-			<label
-				htmlFor="age"
-				className="block mb-2 text-lg font-semibold text-black"
-			>
+			<label htmlFor="age" className="block mb-2 text-lg font-semibold ">
 				Age
 			</label>
 

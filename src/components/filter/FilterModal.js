@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-import AgeFilter from "./AgeFilter";
+// import AgeFilter from "./AgeFilter";
 import GenderFilter from "./GenderFilter";
 import MajorFilter from "./MajorFilter";
 
@@ -9,9 +9,9 @@ const FilterModal = ({ onClick }) => {
 	return ReactDOM.createPortal(
 		<div
 			// onClick={onClick}
-			className="absolute inset-0 z-[100] bg-black bg-opacity-30"
+			className="absolute dark:text-white inset-0 z-[300] bg-black bg-opacity-30"
 		>
-			<div className="bg-white flex flex-col pt-2 px-6 pb-8 h-[500px] rounded-t-[40px] absolute w-full bottom-0">
+			<div className="bg-white dark:bg-dark-2  flex flex-col pt-2 px-6 pb-8 h-[500px] rounded-t-[40px] absolute w-full bottom-0">
 				<h3 className="my-6 text-xl font-semibold text-center">
 					Filter
 				</h3>
@@ -21,7 +21,7 @@ const FilterModal = ({ onClick }) => {
 
 					<GenderFilter />
 
-					<AgeFilter />
+					{/* <AgeFilter /> */}
 				</div>
 
 				<div className="flex items-center pt-6 space-x-3 border-t border-gray">

@@ -34,11 +34,11 @@ const Frame = ({ name, age, school }) => {
 						<SwiperSlide key={index}>
 							<img
 								src={item}
-								alt=""
+								alt="girl"
 								className="block object-cover w-full h-full rounded-[36px] relative before:bg-gradient-to-b from-transparent to-primary-100 before:overflow-hidden before:bottom-0 before:rounded-[36px] before:w-full before:h-3/5 before:absolute"
 							/>
 							{/* Info div */}
-							<div className="absolute bottom-0 left-0 z-20 flex items-end justify-between w-full p-8 bg-gradient-to-b from-transparent to-primary-100 h-1/3 rounded-[36px]">
+							<div className="absolute bottom-0 left-0 z-20 flex items-end justify-between w-full p-8 bg-gradient-to-b from-transparent to-primary-100 dark:to-primary-80 transiton-all duration-300 h-1/3 rounded-[36px]">
 								<div className="flex flex-col self-end text-4xl text-white">
 									<h3 className="font-semibold">
 										{name || "Kyle's wife"}, {age || 20}
@@ -49,7 +49,7 @@ const Frame = ({ name, age, school }) => {
 								</div>
 
 								<div className="-translate-y-6 cursor-pointer">
-									<img src={info} alt="" />
+									<img src={info} alt="info button" />
 								</div>
 							</div>
 						</SwiperSlide>
