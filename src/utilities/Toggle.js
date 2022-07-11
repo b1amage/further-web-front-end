@@ -9,10 +9,9 @@ const Toggle = () => {
 
 	return ReactDOM.createPortal(
 		<div
-			className="cursor-pointer fixed z-[200] flex right-[8px] bottom-20 items-center space-x-3 dark:text-white text-darkPurple"
+			className="cursor-pointer fixed z-[200] flex right-[8px] bottom-20 items-center space-x-3 text-white text-darkPurple bg-gradient-to-br from-primary-50 to-primary-100 p-2 rounded-lg"
 			onClick={toggleDarkMode}
 		>
-			<p>{isDarkMode ? "Light" : "Dark"}</p>
 			{isDarkMode ? <BsFillSunFill /> : <BsFillMoonFill />}
 		</div>,
 		document.querySelector("#root")
