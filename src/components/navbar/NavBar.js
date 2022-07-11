@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
-import NavButton from "./NavButton";
-import navItems from "../../content/navItems";
 import ReactDOM from "react-dom";
+
+import NavButton from "./NavButton";
+
+import navItems from "../../content/navItems";
 
 const NavBar = () => {
 	const [show, setShow] = useState(true);
@@ -37,7 +39,7 @@ const NavBar = () => {
 		<div
 			className={`${
 				show ? "block" : "hidden"
-			} py-4 z-50 px-6 bg-white border rounded-t-[24px] border-gray fixed w-full bottom-0 flex justify-between items-center`}
+			} py-4 z-50 px-6 bg-white transition-all duration-300 dark:bg-dark-2 border dark:border-dark-3 rounded-t-[24px] border-gray fixed w-full bottom-0 flex justify-between items-center`}
 		>
 			{navItems.length > 0 &&
 				navItems.map((item, index) => (

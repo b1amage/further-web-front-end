@@ -1,5 +1,7 @@
 import React from "react";
+
 import NavButton from "../navbar/NavButton";
+
 import logo from "../../assets/svg/logo.svg";
 
 const Logo = () => {
