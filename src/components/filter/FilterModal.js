@@ -24,7 +24,7 @@ const FilterModal = ({ onClick }) => {
 					<AgeFilter />
 				</div>
 
-				<div className="flex items-center pt-6 space-x-3 border-t border-gray">
+				<div className="flex items-center pt-6 space-x-3 border-t border-gray dark:border-dark-3">
 					<button className="border border-primary-100 rounded-[40px] text-primary-100 font-semibold px-4 py-2 w-[32%] min-h-[55px] text-center outline-none">
 						Reset
 					</button>
