@@ -1,5 +1,4 @@
 import React from "react";
-import girl from "../../assets/img/girl.png";
 import info from "../../assets/svg/info.svg";
 import HeroButton from "./HeroButton";
 import emptyHeart from "../../assets/svg/empty-heart.svg";
