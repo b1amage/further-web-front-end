@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-// import AgeFilter from "./AgeFilter";
+import AgeFilter from "./AgeFilter";
 import GenderFilter from "./GenderFilter";
 import MajorFilter from "./MajorFilter";
 
@@ -21,7 +21,7 @@ const FilterModal = ({ onClick }) => {
 
 					<GenderFilter />
 
-					{/* <AgeFilter /> */}
+					<AgeFilter />
 				</div>
 
 				<div className="flex items-center pt-6 space-x-3 border-t border-gray">

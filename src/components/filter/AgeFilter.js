@@ -1,4 +1,5 @@
 import React from "react";
+import Slider from "../utilities/Slider";
 
 const AgeFilter = () => {
 	return (
@@ -7,26 +8,7 @@ const AgeFilter = () => {
 				Age
 			</label>
 
-			<div>
-				<input
-					type="range"
-					name="age"
-					id="age"
-					min="0"
-					max="50"
-					step="1"
-					className="w-1/2 rounded-none appearance-none age bg-gray"
-				/>
-				<input
-					type="range"
-					name="age"
-					id="age"
-					min="51"
-					max="100"
-					step="1"
-					className="w-1/2 -translate-x-1 rounded-none appearance-none age bg-gray"
-				/>
-			</div>
+			<Slider />
 		</div>
 	);
 };
