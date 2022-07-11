@@ -32,7 +32,7 @@
 	transform: translateY(-50%) !important;
 	right: 0 !important;
 	@apply top-1/2 justify-center
-		bg-primary-100 bg-opacity-10 w-[50px] z-50 translate-y-1/2 flex flex-col
+		bg-primary-100 bg-opacity-20 w-[50px] z-50 translate-y-1/2 flex flex-col
 		gap-1 items-center p-3 rounded-l-lg;
 }
 
@@ -49,8 +49,4 @@
 	width: 8% !important;
 	height: 100px !important;
 	left: auto !important;
-}
-
-.age::-moz-range-track {
-	@apply bg-primary-100;
 }
