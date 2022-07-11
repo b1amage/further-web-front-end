@@ -50,3 +50,7 @@
 	height: 100px !important;
 	left: auto !important;
 }
+
+.age::-moz-range-track {
+	@apply bg-primary-100;
+}

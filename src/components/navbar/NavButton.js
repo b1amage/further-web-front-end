@@ -1,8 +1,9 @@
 import React from "react";
 
-const NavButton = ({ isActive, className, children }) => {
+const NavButton = ({ isActive, className, children, onClick }) => {
 	return (
 		<button
+			onClick={onClick}
 			className={`${
 				isActive
 					? "bg-gradient-to-br from-primary-50 to-primary-100 text-white"
