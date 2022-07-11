@@ -30,6 +30,8 @@ module.exports = {
 					3: "#2A2B39",
 					4: "#282C49",
 				},
+				gray2: "#6D7580",
+				gray3: "#CED2D9",
 			},
 		},
 		fontFamily: {
