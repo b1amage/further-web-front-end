@@ -1,12 +1,15 @@
 import React from "react";
-import info from "../../assets/svg/info.svg";
-import HeroButton from "./HeroButton";
-import emptyHeart from "../../assets/svg/empty-heart.svg";
-import x from "../../assets/svg/x.svg";
+
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Pagination } from "swiper";
 import "swiper/scss";
 import "swiper/css/pagination";
+
+import info from "../../assets/svg/info.svg";
+import HeroButton from "./HeroButton";
+import emptyHeart from "../../assets/svg/empty-heart.svg";
+import x from "../../assets/svg/x.svg";
+
 import girl1 from "../../assets/img/girl1.jpeg";
 import girl2 from "../../assets/img/girl2.jpeg";
 import girl3 from "../../assets/img/girl3.jpeg";

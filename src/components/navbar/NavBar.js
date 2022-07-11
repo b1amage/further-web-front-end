@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
-import NavButton from "./NavButton";
-import navItems from "../../content/navItems";
 import ReactDOM from "react-dom";
+
+import NavButton from "./NavButton";
+
+import navItems from "../../content/navItems";
 
 const NavBar = () => {
 	const [show, setShow] = useState(true);

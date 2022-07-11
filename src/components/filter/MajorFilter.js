@@ -1,4 +1,5 @@
 import React from "react";
+
 import major from "../../assets/svg/major.svg";
 
 const MajorFilter = () => {

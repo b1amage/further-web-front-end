@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+
 import Logo from "./Logo";
 import filter from "../../assets/svg/filter.svg";
+
 import NavButton from "../navbar/NavButton";
 import FilterModal from "../filter/FilterModal";
 

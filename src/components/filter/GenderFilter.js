@@ -32,8 +32,6 @@ const GenderFilter = () => {
 				"!text-white"
 			);
 		}
-
-		// e.target.ref.current.add("!bg-primary-100", "!text-white");
 	};
 
 	return (

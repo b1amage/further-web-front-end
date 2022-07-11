@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
+
 import AgeFilter from "./AgeFilter";
 import GenderFilter from "./GenderFilter";
 import MajorFilter from "./MajorFilter";
