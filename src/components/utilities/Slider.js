@@ -13,6 +13,7 @@ const Slider = () => {
 			<div className="range-slide">
 				<div className="slide">
 					<div
+						ref={lineRef}
 						className="line"
 						id="line"
 						style={{ left: "0", right: "0" }}
@@ -43,9 +44,11 @@ const Slider = () => {
 						if (newValue > max) return;
 						setMin(newValue);
 
-						minRef.current.style.left = min + "%";
-						lineRef.current.style.left = min + "%";
-						lineRef.current.style.right = max - min + "%";
+						console.log(max - min);
+
+						minRef.current.style.left = `${min}%`;
+						lineRef.current.style.left = `${min}%`;
+						lineRef.current.style.right = `${max - min}%`;
 					}}
 				/>
 				<input
@@ -61,9 +64,11 @@ const Slider = () => {
 						if (newValue < min) return;
 						setMax(newValue);
 
-						maxRef.current.style.left = max + "%";
-						lineRef.current.style.left = min + "%";
-						lineRef.current.style.right = 100 - max + "%";
+						console.log(maxRef.current.style.left);
+
+						maxRef.current.style.left = `${max}%`;
+						lineRef.current.style.left = `${min}%`;
+						lineRef.current.style.right = `${100 - max}%`;
 					}}
 				/>
 			</div>
