@@ -1,11 +1,13 @@
 import { Routes, Route } from "react-router-dom";
-<<<<<<< HEAD
+
 import { ForgotPasswordPage } from "./views/ForgotPasswordPage";
-=======
+
 import Toggle from "./utilities/Toggle";
->>>>>>> ef318c38bc64e5b28223cfbebbc3076e39ec0743
+
 import HomePage from "./views/HomePage";
 import { TypeOtp } from "./views/TypeOtp";
+import  {ResetPassword}  from "./views/ResetPassword";
+import { NotificationPage } from "./views/NotificationPage";
 function App() {
 	return (
 		<>
@@ -13,6 +15,8 @@ function App() {
 				<Route path="/" element={<HomePage />} />
 				<Route path="/forgot_password" element={<ForgotPasswordPage />} />
 				<Route path="/forgot_password/otp" element={<TypeOtp />}/> 
+				<Route path="/forgot_password/otp/reset_password" element={<ResetPassword />}/> 
+				<Route path="/forgot_password/otp/reset_password/notification" element={<NotificationPage />}/> 
 			</Routes>
 			<Toggle />
 		</>

@@ -33,6 +33,8 @@ module.exports = {
 				},
 				gray2: "#6D7580",
 				gray3: "#CED2D9",
+				darkBlue: "#2C3A4B",
+				required: "#DA1414"
 			},
 		},
 		fontFamily: {
