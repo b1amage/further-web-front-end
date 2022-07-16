@@ -8,7 +8,7 @@ import { DisplaySvg } from "../components/forgot_password/DisplaySvg";
 export const ForgotPasswordPage = () => {
   return (
     <div>
-      <div className="mx-6 mt-7">
+      <div className="px-6 mt-7 w-full h-screen md:px-32 lg:px-60">
         <HeaderPassword id={`forgot-password`} name={`Forgot Password`}/>
 
         <DisplaySvg svg={forgotPassword}/>
@@ -19,9 +19,9 @@ export const ForgotPasswordPage = () => {
           </span>
         </div>
 
-        <Type borderColor={`bg-gradient-to-l from-primary-100 to-primary-50`} type={`sms`} value={`+6282******39`} name={`SMS`} icon={chat}/>
+        <Type type={`sms`} value={`+6282******39`} name={`SMS`} icon={chat}/>
 
-        <Type borderColor={`border border-gray`} type={`email`} value={`ex***le@yourdomain.com`} name={`Email`} icon={chat}/>
+        <Type type={`email`} value={`ex***le@yourdomain.com`} name={`Email`} icon={chat}/>
         <Button name={`Continue`}/>
         
       </div>

@@ -5,7 +5,7 @@ import clear from '../../assets/svg/clear.svg'
 
 export const Keyboard = () => {
   return (
-    <div className='flex flex-wrap justify-between bg-gray3 relative bottom-0 backdrop-blur-[70px]'>
+    <div className='flex flex-wrap justify-between bg-gray3 relative bottom-0 backdrop-blur-[70px] md:mx-32 lg:mx-52'>
         <KeyboardButton type="button" value="1" />
         <KeyboardButton type="button" value="2" />
         <KeyboardButton type="button" value="3" />
