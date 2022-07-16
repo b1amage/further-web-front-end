@@ -18,7 +18,7 @@ module.exports = {
 					100: "#FF4D67",
 					80: "#FF4D50",
 					50: "#FD788C",
-				},
+				}, 
 				secondary: "#FFB800",
 				tertiary1: "#6D5FFD",
 				tertiary2: "#FF1843",
