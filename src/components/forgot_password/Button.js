@@ -1,9 +1,19 @@
-import React from 'react'
+import React from "react";
+import { useNavigate } from "react-router-dom";
 
-export const Button = ({name}) => {
+export const Button = ({ name, path }) => {
+  const navigate = useNavigate();
+
+  const changePage = () => {
+    navigate(path);
+  };
+
   return (
-    <button className={`w-full h-[55px] mt-[80px] mb-5 rounded-[32px] bg-gradient-to-l from-primary-100 to-primary-50 text-white font-semibold font-sourceSansPro text-lg`}>
-        {name}
+    <button
+      className={`w-full h-[55px] mt-[80px] mb-5 rounded-[32px] bg-gradient-to-l from-primary-100 to-primary-50 text-white font-semibold font-sourceSansPro text-lg`}
+      onClick={changePage}
+    >
+      {name}
     </button>
-  )
-}
+  );
+};
