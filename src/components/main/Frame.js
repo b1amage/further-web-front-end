@@ -22,7 +22,7 @@ const girlPhotos = [girl1, girl2, girl3, girl4, girl5];
 
 const Frame = ({ name, age, school }) => {
 	return (
-		<div className="grid h-[620px] w-[380px] max-w-[95%] mx-auto grid-cols-1 rounded-[36px] mb-20 relative">
+		<div className="main grid h-[620px] w-[380px] max-w-[95%] mx-auto grid-cols-1 rounded-[36px] mb-20 relative">
 			<Swiper
 				pagination={{ clickable: true }}
 				grabCursor="true"
