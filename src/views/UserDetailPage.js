@@ -18,8 +18,8 @@ const girlPhotos = [girl1, girl2, girl3, girl4, girl5];
 
 const UserDetailPage = () => {
 	return (
-		<div className="relative">
-			<div className="grid w-full h-screen grid-cols-1 mx-auto detail">
+		<div className="container relative mx-auto">
+			<div className="grid w-full h-screen grid-cols-1 mx-auto detail lg:max-w-[600px]">
 				<Swiper
 					pagination={{ clickable: true }}
 					grabCursor="true"

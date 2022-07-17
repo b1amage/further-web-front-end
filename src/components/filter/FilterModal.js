@@ -11,7 +11,7 @@ const FilterModal = ({ onClick }) => {
 			// onClick={onClick}
 			className="absolute dark:text-white inset-0 z-[300] bg-black bg-opacity-30"
 		>
-			<div className="bg-white dark:bg-dark-2 flex flex-col pt-2 px-6 pb-8 h-[550px] rounded-t-[40px] absolute w-full bottom-0">
+			<div className="bg-white dark:bg-dark-2 flex flex-col pt-2 px-6 lg:px-20 pb-8 h-[550px] lg:h-[700px] rounded-t-[40px] absolute w-full bottom-0">
 				<h3 className="my-6 text-xl font-semibold text-center">
 					Filter
 				</h3>
