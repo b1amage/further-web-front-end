@@ -81,18 +81,18 @@
 	@apply bg-primary-100 bg-opacity-20 rounded-b-[36px];
 }
 
-// @layer input {
-// 	::-webkit-outer-spin-button,
-// 	input::-webkit-inner-spin-button {
-// 		-webkit-appearance: none;
-// 		margin: 0;
-// 	}
-// }
+@layer input {
+	::-webkit-outer-spin-button,
+	input::-webkit-inner-spin-button {
+		-webkit-appearance: none;
+		margin: 0;
+	}
+}
 
-// input[type="number"] {
-// 	-moz-appearance: textfield; /* Firefox */
-// }
+input[type="number"] {
+	-moz-appearance: textfield; /* Firefox */
+}
 
-// #remember-pwd:checked ~ .check-box {
-// 	@apply opacity-100;
-// }
+#remember-pwd:checked ~ .check-box {
+	@apply opacity-100;
+}
