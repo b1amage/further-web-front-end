@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import "./Slider.scss";
+import "./Slider.css";
 
 const Slider = () => {
 	const [min, setMin] = useState(0);
