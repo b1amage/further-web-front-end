@@ -16,15 +16,11 @@ import girl3 from "../../assets/img/girl3.jpeg";
 import girl4 from "../../assets/img/girl4.jpeg";
 import girl5 from "../../assets/img/girl5.jpeg";
 
-// import useViewport from "../../hooks/useViewport";
-
 SwiperCore.use([Pagination]);
 
 const girlPhotos = [girl1, girl2, girl3, girl4, girl5];
 
 const Frame = ({ name, age, school }) => {
-	// const width = useViewport();
-
 	return (
 		<div className="main grid h-[620px] w-[380px] lg:w-[600px] lg:h-[1000px] max-w-[95%] mx-auto grid-cols-1 rounded-[36px] mb-20 relative">
 			<Swiper
