@@ -5,16 +5,11 @@ import SwiperCore, { Pagination } from "swiper";
 import "swiper/scss";
 import "swiper/css/pagination";
 
-import girl1 from "../assets/img/girl1.jpeg";
-import girl2 from "../assets/img/girl2.jpeg";
-import girl3 from "../assets/img/girl3.jpeg";
-import girl4 from "../assets/img/girl4.jpeg";
-import girl5 from "../assets/img/girl5.jpeg";
 import DetailModel from "../components/detail/DetailModel";
 
-SwiperCore.use([Pagination]);
+import girlPhotos from "../content/girls";
 
-const girlPhotos = [girl1, girl2, girl3, girl4, girl5];
+SwiperCore.use([Pagination]);
 
 const UserDetailPage = () => {
 	return (
