@@ -1,0 +1,98 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+	html {
+		@apply scroll-smooth;
+	}
+
+	body {
+		@apply relative m-0 scroll-smooth antialiased transition-all duration-500 font-sourceSansPro;
+	}
+
+	body {
+		@apply relative m-0 scroll-smooth antialiased text-black dark:text-white transition-all duration-500 font-sourceSansPro bg-white dark:bg-dark-2;
+	}
+
+	::selection {
+		@apply bg-primary-50 text-white;
+	}
+
+	body::-webkit-scrollbar {
+		@apply w-2 h-10 transition-all;
+	}
+
+	body::-webkit-scrollbar-track {
+		@apply shadow-sm bg-primary-50;
+	}
+
+	body::-webkit-scrollbar-thumb {
+		@apply bg-primary-100 outline-none;
+	}
+}
+
+.main .swiper-pagination {
+	transform: translateY(-50%) !important;
+	right: 0 !important;
+	@apply top-1/2 justify-center
+		bg-primary-100 bg-opacity-20 w-[50px] z-50 translate-y-1/2 flex flex-col
+		gap-1 items-center p-3 rounded-l-lg;
+}
+
+.main .swiper-horizontal > .swiper-pagination-bullets .swiper-pagination-bullet,
+.main
+	.swiper-pagination-horizontal.swiper-pagination-bullets
+	.swiper-pagination-bullet {
+	@apply bg-primary-100;
+}
+
+.main .swiper-horizontal > .swiper-pagination-bullets,
+.main .swiper-pagination-bullets.swiper-pagination-horizontal,
+.main .swiper-pagination-custom,
+.main .swiper-pagination-fraction {
+	width: 8% !important;
+	height: 100px !important;
+	left: auto !important;
+}
+
+.detail
+	.swiper-horizontal
+	> .swiper-pagination-bullets
+	.swiper-pagination-bullet,
+.detail
+	.swiper-pagination-horizontal.swiper-pagination-bullets
+	.swiper-pagination-bullet {
+	@apply bg-primary-100;
+}
+
+.detail .swiper-pagination {
+	top: 0 !important;
+	bottom: auto !important;
+}
+
+.detail .swiper-horizontal > .swiper-pagination-bullets,
+.detail .swiper-pagination-bullets.swiper-pagination-horizontal,
+.detail .swiper-pagination-custom,
+.detail .swiper-pagination-fraction {
+	width: 125px !important;
+	left: 50% !important;
+	transform: translateX(-50%) !important;
+	@apply bg-primary-100 bg-opacity-20 rounded-b-[36px];
+}
+
+@layer input {
+	::-webkit-outer-spin-button,
+	input::-webkit-inner-spin-button {
+		-webkit-appearance: none;
+		margin: 0;
+	}
+}
+
+input[type="number"] {
+	-moz-appearance: textfield; /* Firefox */
+}
+
+#remember-pwd:checked ~ .check-box {
+	@apply opacity-100;
+}
