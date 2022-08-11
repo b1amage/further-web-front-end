@@ -5,8 +5,8 @@ import { ResetPasswordForm } from '../components/reset_password/ResetPasswordFor
 import resetPasswordFrame from '../assets/svg/resetPasswordFrame.svg'
 export const ResetPassword = () => {
   return (
-    <div className='mx-6 mt-7 md:mx-32 lg:mx-60'>
-        <HeaderPassword  name="Reset Password"/>
+    <div className='mx-6 mt-7 sm:mx-[100px] md:mx-[200px] lg:mx-[350px]'>
+        <HeaderPassword  name="Reset Password" path={-1}/>
         <DisplaySvg svg={resetPasswordFrame}/>
         <ResetPasswordForm />
     </div>

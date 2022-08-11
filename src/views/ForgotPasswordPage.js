@@ -14,8 +14,8 @@ export const ForgotPasswordPage = () => {
 
   return (
     <div>
-      <div className="px-6 mt-7 w-full h-screen md:px-32 lg:px-80">
-        <HeaderPassword id={`forgot-password`} name={`Forgot Password`} />
+      <div className="px-6 mt-7 w-full h-screen sm:px-[100px] md:px-[200px] lg:px-[350px]">
+        <HeaderPassword name={`Forgot Password`} />
 
         <DisplaySvg svg={forgotPassword} />
 

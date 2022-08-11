@@ -1,16 +1,14 @@
 import React from 'react'
 import { HeaderPassword } from '../components/forgot_password/HeaderPassword'
-// import { Keyboard } from '../components/keyboard/Keyboard'
 import { Main } from '../components/otp/Main'
 
 export const OtpPage = () => {
   return (
     <div className='w-full h-screen'>
-        <div className="mx-6 mt-7 md:mx-44 lg:mx-64">
-            <HeaderPassword id={`forgot-password`} name={`Forgot Password`}/>
+        <div className="mx-6 mt-7 sm:mx-[100px] md:mx-[200px] lg:mx-[350px]">
+            <HeaderPassword name={`Forgot Password`} path={-1}/>
             <Main/>
         </div>
-        {/* <Keyboard /> */}
     </div>
   )
 }
