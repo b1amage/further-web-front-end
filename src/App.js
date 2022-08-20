@@ -9,11 +9,14 @@ import { TypeOtp } from "./views/TypeOtp";
 import { ResetPassword } from "./views/ResetPassword";
 import { NotificationPage } from "./views/NotificationPage";
 import UserDetailPage from "./views/UserDetailPage";
+import MatchPage from "./views/MatchPage";
 function App() {
 	return (
 		<>
 			<Routes>
 				<Route path="/" element={<HomePage />} />
+				<Route path="/match/:userId" element={<MatchPage />} />
+
 				<Route path="/user" element={<UserDetailPage />} />
 				<Route
 					path="/forgot_password"

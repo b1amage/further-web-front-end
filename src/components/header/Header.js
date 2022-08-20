@@ -6,7 +6,7 @@ import filter from "../../assets/svg/filter.svg";
 import NavButton from "../navbar/NavButton";
 import FilterModal from "../filter/FilterModal";
 
-const Header = () => {
+const Header = ({ title }) => {
 	const [isShowFilter, setIsShowFilter] = useState(false);
 	return (
 		<>
@@ -14,7 +14,9 @@ const Header = () => {
 				<div className="flex items-center flex-1 space-x-5">
 					<Logo />
 
-					<p className="text-2xl font-semibold">RMITinder</p>
+					<p className="text-2xl font-semibold">
+						{title || "RMITinder"}
+					</p>
 				</div>
 
 				<NavButton

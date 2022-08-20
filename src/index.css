@@ -30,6 +30,10 @@
 	body::-webkit-scrollbar-thumb {
 		@apply bg-primary-100 outline-none;
 	}
+
+	.scroll-ctn::-webkit-scrollbar {
+		@apply hidden !important;
+	}
 }
 
 .main .swiper-pagination {
