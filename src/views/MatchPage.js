@@ -2,6 +2,7 @@ import React from "react";
 import Header from "../components/header/Header";
 import MatchCard from "../components/match/MatchCard";
 import NavBar from "../components/navbar/NavBar";
+import SectionTitle from "../utilities/SectionTitle";
 
 const MatchPage = () => {
 	return (
@@ -10,11 +11,13 @@ const MatchPage = () => {
 			<NavBar />
 
 			<div className="flex items-center justify-between my-12 font-semibold">
-				<h3 className="text-xl capitalize">New match</h3>
-				<p className="text-lg text-primary-100">See all</p>
+				<SectionTitle>New match</SectionTitle>
+				<p className="text-lg cursor-pointer text-primary-100">
+					See all
+				</p>
 			</div>
 
-			<div className="flex gap-5 overflow-x-scroll scroll-ctn scroll-smooth snap-x">
+			<div className="flex gap-5 overflow-x-scroll md:gap-8 lg:gap-10 scroll-ctn scroll-smooth snap-x">
 				{Array(3)
 					.fill()
 					.map((_, index) => (
@@ -23,11 +26,13 @@ const MatchPage = () => {
 			</div>
 
 			<div className="flex items-center justify-between my-12 font-semibold">
-				<h3 className="text-xl capitalize">All match</h3>
-				<p className="text-lg text-primary-100">See all</p>
+				<SectionTitle>All match</SectionTitle>
+				<p className="text-lg cursor-pointer text-primary-100">
+					See all
+				</p>
 			</div>
 
-			<div className="flex gap-5 mb-16 overflow-x-scroll scroll-ctn scroll-smooth snap-x">
+			<div className="flex gap-5 mb-16 overflow-x-scroll md:gap-8 lg:gap-10 scroll-ctn scroll-smooth snap-x">
 				{Array(5)
 					.fill()
 					.map((_, index) => (
