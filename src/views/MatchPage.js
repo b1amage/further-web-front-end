@@ -3,8 +3,10 @@ import Header from "../components/header/Header";
 import MatchCard from "../components/match/MatchCard";
 import NavBar from "../components/navbar/NavBar";
 import SectionTitle from "../utilities/SectionTitle";
+import { useNavigate } from "react-router-dom";
 
 const MatchPage = () => {
+	const navigate = useNavigate();
 	return (
 		<div className="container p-6 mx-auto min-h-[100vh]">
 			<Header title="Match" filterable />
@@ -12,7 +14,10 @@ const MatchPage = () => {
 
 			<div className="flex items-center justify-between my-12 font-semibold">
 				<SectionTitle>New match</SectionTitle>
-				<p className="text-lg cursor-pointer text-primary-100">
+				<p
+					className="text-lg cursor-pointer text-primary-100"
+					onClick={() => navigate(`/match/all/1`)}
+				>
 					See all
 				</p>
 			</div>
@@ -27,7 +32,10 @@ const MatchPage = () => {
 
 			<div className="flex items-center justify-between my-12 font-semibold">
 				<SectionTitle>All match</SectionTitle>
-				<p className="text-lg cursor-pointer text-primary-100">
+				<p
+					onClick={() => navigate(`/match/all/1`)}
+					className="text-lg cursor-pointer text-primary-100"
+				>
 					See all
 				</p>
 			</div>
