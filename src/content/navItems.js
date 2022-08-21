@@ -5,11 +5,11 @@ import chat from "../assets/svg/chat.svg";
 import profile from "../assets/svg/profile.svg";
 
 const navItems = [
-	{ logo: home, isActive: true },
-	{ logo: map, isActive: false },
-	{ logo: heart, isActive: false },
-	{ logo: chat, isActive: false },
-	{ logo: profile, isActive: false },
+	{ logo: home, isActive: true, to: "/" },
+	{ logo: map, isActive: false, to: "/" },
+	{ logo: heart, isActive: false, to: "/match" },
+	{ logo: chat, isActive: false, to: "/chat" },
+	{ logo: profile, isActive: false, to: "/profile" },
 ];
 
 export default navItems;
