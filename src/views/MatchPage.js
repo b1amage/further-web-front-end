@@ -18,13 +18,7 @@ const MatchPage = () => {
 				{Array(3)
 					.fill()
 					.map((_, index) => (
-						<MatchCard
-							radius="40"
-							key={index}
-							width="236"
-							height="320"
-							isShowGradient={true}
-						/>
+						<MatchCard primary key={index} />
 					))}
 			</div>
 
@@ -34,16 +28,10 @@ const MatchPage = () => {
 			</div>
 
 			<div className="flex gap-5 mb-16 overflow-x-scroll scroll-ctn scroll-smooth snap-x">
-				{Array(3)
+				{Array(5)
 					.fill()
 					.map((_, index) => (
-						<MatchCard
-							key={index}
-							width="110"
-							height="160"
-							isShowGradient={false}
-							radius="10"
-						/>
+						<MatchCard key={index} />
 					))}
 			</div>
 		</div>
