@@ -10,7 +10,7 @@ const Grid = () => {
 					girlPhotos.map((item, index) => (
 						<div
 							key={index}
-							className="overflow-hidden cursor-pointer h-[320px] lg:h-[500px] rounded-[36px]"
+							className="overflow-hidden shadow-2xl shadow-primary-100 cursor-pointer h-[320px] lg:h-[500px] rounded-[36px]"
 						>
 							<img
 								src={item}
@@ -21,10 +21,10 @@ const Grid = () => {
 					))}
 			</div>
 
-			<div className="flex justify-between my-5">
-				<div className="flex flex-col gap-4 p-5 lg:gap-6">
+			<div className="flex rounded-[36px] shadow-2xl shadow-primary-100 justify-between p-8 my-5 bg-gradient-to-br from-primary-50 to-primary-100 via-primary-80">
+				<div className="flex flex-col gap-4 text-white lg:gap-6">
 					<h3 className="text-4xl font-semibold lg:text-6xl">
-						<span className="text-primary-100">Vo Thuy Hang</span>
+						<span>Vo Thuy Hang</span>
 						<span>, 21</span>
 					</h3>
 					<p className="text-lg lg:text-2xl">
