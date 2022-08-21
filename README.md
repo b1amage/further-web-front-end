@@ -1,5 +1,9 @@
 # RMITINDER - DATING WEB-APPLICATION
 
+### Note
+
+-   Demo: https://rmitinder.netlify.app/
+
 ### Course Information
 
 -   University: Royal Melbourne Institution of Technology (RMIT)
@@ -84,11 +88,11 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 ### Note
 
--   View demo available at: https://rmit-what-to-eat.netlify.app/
+-   View demo available at: https://rmitinder.netlify.app/
 
 ### Supporting tools used
 
--   Canva and Figma: for designing the user interfaces
+-   Figma: for designing the user interfaces
 -   Microsoft Word 2022: for documenting technical report
 
 ### References
