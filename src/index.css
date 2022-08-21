@@ -34,6 +34,10 @@
 	.scroll-ctn::-webkit-scrollbar {
 		@apply hidden !important;
 	}
+
+	.page-container {
+		@apply container p-6 mx-auto min-h-[100vh];
+	}
 }
 
 .main .swiper-pagination {
