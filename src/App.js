@@ -2,8 +2,6 @@ import { Routes, Route } from "react-router-dom";
 
 import { ForgotPasswordPage } from "./views/ForgotPasswordPage";
 
-import Toggle from "./utilities/Toggle";
-
 import HomePage from "./views/HomePage";
 import { TypeOtp } from "./views/TypeOtp";
 import { ResetPassword } from "./views/ResetPassword";
@@ -13,6 +11,7 @@ import MatchPage from "./views/MatchPage";
 import AllMatchPage from "./views/AllMatchPage";
 import SuccessMatchPage from "./views/SuccessMatchPage";
 import ProfilePage from "./views/ProfilePage";
+import NotFoundPage from "./views/NotFoundPage";
 function App() {
 	return (
 		<>
@@ -26,6 +25,7 @@ function App() {
 					element={<SuccessMatchPage />}
 				/>
 				<Route path="/profile" element={<ProfilePage />} />
+				<Route path="*" element={<NotFoundPage />} />
 
 				<Route
 					path="/forgot_password"
@@ -41,7 +41,6 @@ function App() {
 					element={<NotificationPage />}
 				/>
 			</Routes>
-			<Toggle />
 		</>
 	);
 }
