@@ -12,6 +12,7 @@ import UserDetailPage from "./views/UserDetailPage";
 import MatchPage from "./views/MatchPage";
 import AllMatchPage from "./views/AllMatchPage";
 import SuccessMatchPage from "./views/SuccessMatchPage";
+import ProfilePage from "./views/ProfilePage";
 function App() {
 	return (
 		<>
@@ -24,6 +25,7 @@ function App() {
 					path="/success/:userId1/:userId2"
 					element={<SuccessMatchPage />}
 				/>
+				<Route path="/profile" element={<ProfilePage />} />
 
 				<Route
 					path="/forgot_password"

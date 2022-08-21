@@ -7,7 +7,7 @@ import SectionTitle from "../utilities/SectionTitle";
 const MatchPage = () => {
 	return (
 		<div className="container p-6 mx-auto min-h-[100vh]">
-			<Header title="Match" />
+			<Header title="Match" filterable />
 			<NavBar />
 
 			<div className="flex items-center justify-between my-12 font-semibold">

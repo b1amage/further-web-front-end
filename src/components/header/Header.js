@@ -8,7 +8,7 @@ import FilterModal from "../filter/FilterModal";
 import filter from "../../assets/svg/filter.svg";
 import search from "../../assets/svg/search.svg";
 
-const Header = ({ title, searchable }) => {
+const Header = ({ title, filterable, searchable }) => {
 	const [isShowFilter, setIsShowFilter] = useState(false);
 
 	return (
@@ -27,12 +27,14 @@ const Header = ({ title, searchable }) => {
 						</NavButton>
 					)}
 
-					<NavButton
-						onClick={() => setIsShowFilter(true)}
-						className="min-w-0 min-h-0 w-11 h-11"
-					>
-						<img src={filter} alt="filter icon" />
-					</NavButton>
+					{filterable && (
+						<NavButton
+							onClick={() => setIsShowFilter(true)}
+							className="min-w-0 min-h-0 w-11 h-11"
+						>
+							<img src={filter} alt="filter icon" />
+						</NavButton>
+					)}
 				</div>
 			</div>
 

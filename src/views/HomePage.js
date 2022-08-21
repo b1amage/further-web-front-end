@@ -7,7 +7,7 @@ import Grid from "../components/main/Grid";
 const HomePage = () => {
 	return (
 		<div className="page-container">
-			<Header />
+			<Header filterable />
 			<NavBar />
 			<div className="md:hidden">
 				<Frame />
