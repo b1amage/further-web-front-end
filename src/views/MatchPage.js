@@ -36,7 +36,7 @@ const MatchPage = () => {
 				{Array(5)
 					.fill()
 					.map((_, index) => (
-						<MatchCard key={index} />
+						<MatchCard key={index} secondary />
 					))}
 			</div>
 		</div>

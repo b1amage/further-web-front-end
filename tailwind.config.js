@@ -18,7 +18,7 @@ module.exports = {
 					100: "#FF4D67",
 					80: "#FF4D50",
 					50: "#FD788C",
-				}, 
+				},
 				secondary: "#FFB800",
 				tertiary1: "#6D5FFD",
 				tertiary2: "#FF1843",
@@ -34,11 +34,12 @@ module.exports = {
 				gray2: "#6D7580",
 				gray3: "#CED2D9",
 				darkBlue: "#2C3A4B",
-				required: "#DA1414"
+				required: "#DA1414",
 			},
 		},
 		fontFamily: {
 			sourceSansPro: ["Source Sans Pro", "sans-serif"],
+			curve: ["Pacifico", "cursive"],
 		},
 	},
 	plugins: [],

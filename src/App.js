@@ -10,14 +10,21 @@ import { ResetPassword } from "./views/ResetPassword";
 import { NotificationPage } from "./views/NotificationPage";
 import UserDetailPage from "./views/UserDetailPage";
 import MatchPage from "./views/MatchPage";
+import AllMatchPage from "./views/AllMatchPage";
+import SuccessMatchPage from "./views/SuccessMatchPage";
 function App() {
 	return (
 		<>
 			<Routes>
 				<Route path="/" element={<HomePage />} />
 				<Route path="/match/:userId" element={<MatchPage />} />
-
+				<Route path="/match/all/:userId" element={<AllMatchPage />} />
 				<Route path="/user" element={<UserDetailPage />} />
+				<Route
+					path="/success/:userId1/:userId2"
+					element={<SuccessMatchPage />}
+				/>
+
 				<Route
 					path="/forgot_password"
 					element={<ForgotPasswordPage />}

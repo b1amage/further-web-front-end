@@ -6,8 +6,9 @@ import NavButton from "../navbar/NavButton";
 import FilterModal from "../filter/FilterModal";
 
 import filter from "../../assets/svg/filter.svg";
+import search from "../../assets/svg/search.svg";
 
-const Header = ({ title }) => {
+const Header = ({ title, searchable }) => {
 	const [isShowFilter, setIsShowFilter] = useState(false);
 
 	return (
@@ -19,12 +20,20 @@ const Header = ({ title }) => {
 					<p className="text-2xl font-semibold">{title}</p>
 				</div>
 
-				<NavButton
-					onClick={() => setIsShowFilter(true)}
-					className="min-w-0 min-h-0 w-11 h-11"
-				>
-					<img src={filter} alt="filter icon" />
-				</NavButton>
+				<div className="flex items-center space-x-2">
+					{searchable && (
+						<NavButton className="min-w-0 min-h-0 w-11 h-11">
+							<img src={search} alt="search icon" />
+						</NavButton>
+					)}
+
+					<NavButton
+						onClick={() => setIsShowFilter(true)}
+						className="min-w-0 min-h-0 w-11 h-11"
+					>
+						<img src={filter} alt="filter icon" />
+					</NavButton>
+				</div>
 			</div>
 
 			{isShowFilter && (
