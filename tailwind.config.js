@@ -33,6 +33,7 @@ module.exports = {
 				},
 				gray2: "#6D7580",
 				gray3: "#CED2D9",
+				gray4: "#9098A1",
 				darkBlue: "#2C3A4B",
 				required: "#DA1414"
 			},

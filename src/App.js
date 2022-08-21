@@ -11,6 +11,7 @@ import { NotificationPage } from "./views/NotificationPage";
 import UserDetailPage from "./views/UserDetailPage";
 import { OtpPage } from "./views/OtpPage";
 import { AccountSetting } from "./views/AccountSetting";
+import { EditProfilePage } from "./views/EditProfilePage";
 function App() {
 	return (
 		<>
@@ -22,6 +23,8 @@ function App() {
 				<Route path="/forgot_password/otp/:place/reset_password" element={<ResetPassword />}/> 
 				<Route path="/forgot_password/otp/:place/reset_password/notification" element={<NotificationPage />}/> 
 				<Route path="/account" element={<AccountSetting />}/> 
+				<Route path="/account/edit" element={<EditProfilePage />}/> 
+
 			</Routes>
 			<Toggle />
 		</>
