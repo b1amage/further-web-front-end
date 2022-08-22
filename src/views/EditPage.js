@@ -54,7 +54,7 @@ const EditPage = () => {
 					icon={pin}
 				/>
 
-				<Button primary type="submit">
+				<Button primary type="submit" className="mt-8">
 					Save changes
 				</Button>
 			</form>
