@@ -12,6 +12,8 @@ import AllMatchPage from "./views/AllMatchPage";
 import SuccessMatchPage from "./views/SuccessMatchPage";
 import ProfilePage from "./views/ProfilePage";
 import NotFoundPage from "./views/NotFoundPage";
+import EditPage from "./views/EditPage";
+
 function App() {
 	return (
 		<>
@@ -25,6 +27,8 @@ function App() {
 					element={<SuccessMatchPage />}
 				/>
 				<Route path="/profile" element={<ProfilePage />} />
+				<Route path="/profile/edit" element={<EditPage />} />
+
 				<Route path="*" element={<NotFoundPage />} />
 
 				<Route
