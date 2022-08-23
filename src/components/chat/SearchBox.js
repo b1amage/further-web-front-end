@@ -3,7 +3,7 @@ import search from "../../assets/svg/search-gray.svg";
 
 const SearchBox = () => {
 	return (
-		<div className="relative my-4">
+		<div className="relative my-4 md:my-4 lg:my-8">
 			<input
 				type="text"
 				className="w-full px-4 py-2 rounded-full outline-none md:text-lg md:py-4 md:px-6 bg-gray text-dark-1 placeholder:text-dark-1"
