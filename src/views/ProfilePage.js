@@ -11,7 +11,7 @@ const ProfilePage = () => {
 		<div className="page-container">
 			<Header title="Profile" />
 
-			<div className="w-[120px] h-[120px] my-6 rounded-full overflow-hidden mx-auto">
+			<div className="w-[120px] h-[120px] md:w-[180px] md:h-[180px] lg:w-[200px] lg:h-[200px] md:my-10 lg:my-14 my-6 rounded-full overflow-hidden mx-auto">
 				<img
 					src={avatar}
 					alt=""
@@ -19,7 +19,7 @@ const ProfilePage = () => {
 				/>
 			</div>
 
-			<div>
+			<div className="lg:w-4/5 lg:mx-auto">
 				{profileOptions.length > 0 &&
 					profileOptions.map((item, index) => (
 						<ProfileOption

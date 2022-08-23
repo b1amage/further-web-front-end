@@ -7,15 +7,15 @@ import pin from "../assets/svg/pin.svg";
 import Button from "../utilities/Button";
 import TextArea from "../utilities/TextArea";
 import Select from "../utilities/Select";
+import ages from "../content/ages";
+import genders from "../content/genders";
 
-const age = Array.from({ length: 100 }, (_, i) => i + 1);
-const genders = ["Male", "Female", "Others"];
 const EditPage = () => {
 	return (
 		<div className="page-container">
 			<Header title="Edit profile" />
 
-			<form className="flex flex-col gap-5 my-10">
+			<form className="flex flex-col gap-5 my-10 lg:gap-8">
 				<Input
 					placeholder="Kyle Nguyen"
 					required={true}
@@ -38,7 +38,7 @@ const EditPage = () => {
 
 				<div className="flex items-center gap-5">
 					<Select required={true} label="gender" options={genders} />
-					<Select required={true} label="age" options={age} />
+					<Select required={true} label="age" options={ages} />
 				</div>
 
 				<TextArea

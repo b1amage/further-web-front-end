@@ -1,18 +1,14 @@
 import React from "react";
+import Label from "./Label";
 
 const Input = ({ placeholder, label, required, icon }) => {
 	return (
-		<div className="flex flex-col space-y-2">
-			<label
-				className="px-4 font-semibold capitalize text-dark-1 dark:text-white"
-				htmlFor={label}
-			>
-				<span>{label}</span> <span className="text-required">*</span>
-			</label>
+		<div className="flex flex-col space-y-2 lg:space-y-4">
+			<Label label={label} required={required} />
 			<div className="relative">
 				<input
 					autoComplete="off"
-					className="w-full px-4 py-2 text-sm border-2 rounded-full outline-none focus:border-primary-50 placeholder:text-dark-1 text-dark-1 border-primary-100"
+					className="w-full px-4 py-2 text-sm border-2 rounded-full outline-none md:text-base md:px-6 md:py-4 focus:border-primary-50 placeholder:text-dark-1 text-dark-1 border-primary-100"
 					type="text"
 					placeholder={placeholder}
 					id={label}
