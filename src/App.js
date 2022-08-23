@@ -14,6 +14,7 @@ import ProfilePage from "./views/ProfilePage";
 import NotFoundPage from "./views/NotFoundPage";
 import EditPage from "./views/EditPage";
 import ChatPage from "./views/ChatPage";
+import ProfileOption from "./components/profile/ProfileOption";
 
 function App() {
 	return (
@@ -47,6 +48,9 @@ function App() {
 					element={<NotificationPage />}
 				/>
 			</Routes>
+			<div className="hidden">
+				<ProfileOption tooglable />
+			</div>
 		</>
 	);
 }

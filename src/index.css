@@ -8,10 +8,6 @@
 	}
 
 	body {
-		@apply relative m-0 scroll-smooth antialiased transition-all duration-500 font-sourceSansPro;
-	}
-
-	body {
 		@apply relative m-0 scroll-smooth antialiased text-black dark:text-white transition-all duration-500 font-sourceSansPro bg-white dark:bg-dark-2;
 	}
 
