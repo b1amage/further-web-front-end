@@ -11,7 +11,7 @@ const Select = ({ options, label, required, fluid }) => {
 		>
 			<Label label={label} required={required} />
 
-			<div className="relative">
+			<div className="relative !text-dark-2">
 				<select
 					name={label}
 					id={label}
@@ -19,7 +19,11 @@ const Select = ({ options, label, required, fluid }) => {
 				>
 					{options?.length > 0 &&
 						options.map((item) => (
-							<option value={item} key={item}>
+							<option
+								value={item}
+								key={item}
+								className="appearance-none "
+							>
 								{item}
 							</option>
 						))}

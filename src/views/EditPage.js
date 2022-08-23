@@ -10,13 +10,22 @@ import Select from "../utilities/Select";
 import ages from "../content/ages";
 import genders from "../content/genders";
 import majors from "../content/majors";
+import { useNavigate } from "react-router-dom";
 
 const EditPage = () => {
+	const navigate = useNavigate();
+
 	return (
 		<div className="page-container">
 			<Header title="Edit profile" />
 
-			<form className="flex flex-col gap-5 my-10 lg:gap-8">
+			<form
+				onSubmit={(e) => {
+					e.preventDefault();
+					navigate("/profile");
+				}}
+				className="flex flex-col gap-5 my-10 lg:gap-8"
+			>
 				<Input
 					placeholder="Kyle Nguyen"
 					required={true}
