@@ -1,5 +1,5 @@
 import React from "react";
-import Slider from "../utilities/Slider";
+import Input from "../../utilities/Input";
 
 const AgeFilter = () => {
 	return (
@@ -8,7 +8,14 @@ const AgeFilter = () => {
 				Age
 			</label>
 
-			<Slider />
+			<div className="flex items-center gap-5">
+				<Input
+					placeholder="From. Ex:18"
+					required={false}
+					label="from"
+				/>
+				<Input placeholder="To. Ex:21" required={false} label="to" />
+			</div>
 		</div>
 	);
 };
