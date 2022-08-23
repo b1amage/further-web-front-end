@@ -15,7 +15,7 @@ const MatchPage = () => {
 			<div className="flex items-center justify-between my-12 font-semibold">
 				<SectionTitle>New match</SectionTitle>
 				<p
-					className="text-lg cursor-pointer text-primary-100"
+					className="text-lg transition-all cursor-pointer text-primary-100 hover:-translate-y-2 hover:drop-shadow-md"
 					onClick={() => navigate(`/match/all/1`)}
 				>
 					See all
@@ -34,7 +34,7 @@ const MatchPage = () => {
 				<SectionTitle>All match</SectionTitle>
 				<p
 					onClick={() => navigate(`/match/all/1`)}
-					className="text-lg cursor-pointer text-primary-100"
+					className="text-lg transition-all cursor-pointer text-primary-100 hover:-translate-y-2 hover:drop-shadow-md"
 				>
 					See all
 				</p>

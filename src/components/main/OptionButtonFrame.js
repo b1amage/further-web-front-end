@@ -2,10 +2,23 @@ import React from "react";
 import HeroButton from "./HeroButton";
 import emptyHeart from "../../assets/svg/empty-heart.svg";
 import x from "../../assets/svg/x.svg";
+import { useNavigate } from "react-router-dom";
 
-const buttons = [x, emptyHeart];
+const OptionButtonFrame = ({ primary }) => {
+	const navigate = useNavigate();
 
-const OptionButtonFrame = ({ onClick, primary }) => {
+	const handleMatch = () => {
+		navigate(`/success/3/4`);
+	};
+	const handleReject = () => {
+		navigate(`/`);
+	};
+
+	const buttons = [
+		{ icon: x, onClick: handleReject },
+		{ icon: emptyHeart, onClick: handleMatch },
+	];
+
 	return (
 		<div
 			className={` ${
@@ -17,11 +30,11 @@ const OptionButtonFrame = ({ onClick, primary }) => {
 			{buttons.length > 0 &&
 				buttons.map((item, index) => (
 					<HeroButton
-						onClick={onClick}
+						onClick={item.onClick}
 						key={index}
 						className="w-[76px] h-[76px]"
 					>
-						<img src={item} alt="svg icon" />
+						<img src={item.icon} alt="svg icon" />
 					</HeroButton>
 				))}
 		</div>

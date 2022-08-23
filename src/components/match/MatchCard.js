@@ -1,5 +1,5 @@
 import React from "react";
-import girl1 from "../../assets/img/girl1.jpeg";
+import girl2 from "../../assets/img/girl2.jpeg";
 
 const MatchCard = ({ primary, secondary, user }) => {
 	return (
@@ -15,9 +15,9 @@ const MatchCard = ({ primary, secondary, user }) => {
 			>
 				<div>
 					<img
-						src={girl1}
+						src={girl2}
 						alt="girl beautiful img"
-						className="object-cover w-full h-full"
+						className="object-cover w-full h-full transition-all duration-300 hover:scale-125"
 					/>
 				</div>
 			</div>

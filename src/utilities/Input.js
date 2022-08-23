@@ -8,7 +8,7 @@ const Input = ({ placeholder, label, required, icon }) => {
 			<div className="relative">
 				<input
 					autoComplete="off"
-					className="w-full px-4 py-2 text-sm border-2 rounded-full outline-none md:text-base md:px-6 md:py-4 focus:border-primary-50 placeholder:text-dark-1 text-dark-1 border-primary-100"
+					className="w-full px-4 py-2 text-sm transition-all duration-300 border-2 rounded-full outline-none md:text-base md:px-6 md:py-4 focus:border-secondary placeholder:text-dark-1 text-dark-1 border-primary-100"
 					type="text"
 					placeholder={placeholder}
 					id={label}

@@ -1,5 +1,6 @@
 import React from "react";
 import Button from "../../utilities/Button";
+import { Link } from "react-router-dom";
 
 const SuccessAction = () => {
 	return (
@@ -13,12 +14,16 @@ const SuccessAction = () => {
 			</p>
 
 			<div className="flex flex-col space-y-5">
-				<Button primary className="max-w-2xl mx-auto">
-					Say hello
-				</Button>
-				<Button secondary className="max-w-2xl mx-auto">
-					Keep swiping
-				</Button>
+				<Link to="/chat">
+					<Button primary className="max-w-2xl mx-auto">
+						Say hello
+					</Button>
+				</Link>
+				<Link to="/">
+					<Button secondary className="max-w-2xl mx-auto">
+						Keep swiping
+					</Button>
+				</Link>
 			</div>
 		</div>
 	);

@@ -9,6 +9,7 @@ import TextArea from "../utilities/TextArea";
 import Select from "../utilities/Select";
 import ages from "../content/ages";
 import genders from "../content/genders";
+import majors from "../content/majors";
 
 const EditPage = () => {
 	return (
@@ -46,6 +47,8 @@ const EditPage = () => {
 					required={true}
 					label="about"
 				/>
+
+				<Select required={true} label="major" options={majors} fluid />
 
 				<Input
 					placeholder="Sai Gon"
