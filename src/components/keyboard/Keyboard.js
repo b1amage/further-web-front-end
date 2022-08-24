@@ -26,7 +26,7 @@ export const Keyboard = () => {
         <div className='underline w-full flex justify-center'>
           <div className='w-[135px] h-[5px] bg-black rounded-[5px] mt-[65px] mb-2'></div>
         </div>
-        
+      
     </div>
   )
 }

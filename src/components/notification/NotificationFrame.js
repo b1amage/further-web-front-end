@@ -9,7 +9,7 @@ export const NotificationFrame = () => {
         <DisplaySvg svg={notification}/>
         <h1 className="text-center mt-6 text-primary-100 text-[32px]">Congratulations!</h1>
         <p className="text-center mt-3.5 text-lg">Your account is ready to use</p>
-        <Button name="Go to Homepage"/>
+        <Button name="Go to Homepage" path={"/"}/>
     </>
   )
 }
