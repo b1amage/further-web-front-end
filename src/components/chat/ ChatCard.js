@@ -7,7 +7,7 @@ const ChatCard = ({ img, isActive, lastest, name }) => {
 			<div className="relative w-[60px] h-[60px] md:w-[80px] md:h-[80px] lg:w-[100px] lg:h-[100px] rounded-full">
 				<img
 					src={img}
-					alt=""
+					alt="user avatar"
 					className="relative z-10 object-cover w-full h-full rounded-full"
 				/>
 				{isActive && (
