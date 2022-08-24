@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
+import { Link } from "react-router-dom";
 
 import NavButton from "./NavButton";
 
@@ -43,9 +44,11 @@ const NavBar = () => {
 		>
 			{navItems.length > 0 &&
 				navItems.map((item, index) => (
-					<NavButton key={index} isActive={item.isActive}>
-						<img src={item.logo} alt="svg icon" />
-					</NavButton>
+					<Link to={item.to} key={index}>
+						<NavButton isActive={item.isActive}>
+							<img src={item.logo} alt="svg icon" />
+						</NavButton>
+					</Link>
 				))}
 		</div>,
 		document.querySelector("#root")

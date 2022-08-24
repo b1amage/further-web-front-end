@@ -2,17 +2,39 @@ import React from "react";
 import HeroButton from "./HeroButton";
 import emptyHeart from "../../assets/svg/empty-heart.svg";
 import x from "../../assets/svg/x.svg";
+import { useNavigate } from "react-router-dom";
 
+const OptionButtonFrame = ({ primary }) => {
+	const navigate = useNavigate();
 
-const buttons = [x, emptyHeart];
+	const handleMatch = () => {
+		navigate(`/success/3/4`);
+	};
+	const handleReject = () => {
+		navigate(`/`);
+	};
 
-const OptionButtonFrame = () => {
+	const buttons = [
+		{ icon: x, onClick: handleReject },
+		{ icon: emptyHeart, onClick: handleMatch },
+	];
+
 	return (
-		<div className="absolute bottom-0 z-30 flex items-center justify-center space-x-8 -translate-x-1/2 translate-y-1/2 cursor-pointer left-1/2">
+		<div
+			className={` ${
+				primary
+					? "absolute bottom-0 z-30 -translate-x-1/2 translate-y-1/2 left-1/2"
+					: ""
+			}  flex items-center justify-center space-x-8 cursor-pointer `}
+		>
 			{buttons.length > 0 &&
 				buttons.map((item, index) => (
-					<HeroButton key={index} className="w-[76px] h-[76px]">
-						<img src={item} alt="svg icon" />
+					<HeroButton
+						onClick={item.onClick}
+						key={index}
+						className="w-[76px] h-[76px]"
+					>
+						<img src={item.icon} alt="svg icon" />
 					</HeroButton>
 				))}
 		</div>

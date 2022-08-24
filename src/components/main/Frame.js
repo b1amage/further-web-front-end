@@ -29,7 +29,6 @@ const Frame = () => {
 								alt="girl"
 								className="block object-cover w-full h-full rounded-[36px] relative before:bg-gradient-to-b from-transparent to-primary-100 before:overflow-hidden before:bottom-0 before:rounded-[36px] before:w-full before:h-3/5 before:absolute"
 							/>
-
 							<UserInfo
 								name="Kyle's wife"
 								age={20}
@@ -39,7 +38,7 @@ const Frame = () => {
 					))}
 			</Swiper>
 
-			<OptionButtonFrame />
+			<OptionButtonFrame primary />
 		</div>
 	);
 };

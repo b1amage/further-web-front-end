@@ -2,13 +2,19 @@ import React from "react";
 import NavBar from "../components/navbar/NavBar";
 import Header from "../components/header/Header";
 import Frame from "../components/main/Frame";
+import Grid from "../components/main/Grid";
 
 const HomePage = () => {
 	return (
-		<div className="container p-6 mx-auto min-h-[100vh]">
-			<Header />
+		<div className="page-container">
+			<Header filterable />
 			<NavBar />
-			<Frame />
+			<div className="md:hidden">
+				<Frame />
+			</div>
+			<div className="hidden md:block">
+				<Grid />
+			</div>
 		</div>
 	);
 };
