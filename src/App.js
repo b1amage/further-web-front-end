@@ -16,6 +16,7 @@ import EditPage from "./views/EditPage";
 import ChatPage from "./views/ChatPage";
 import ProfileOption from "./components/profile/ProfileOption";
 import SetupPage from "./views/SetupPage";
+import SetupImagePage from "./views/SetupImagePage";
 
 function App() {
 	return (
@@ -33,6 +34,7 @@ function App() {
 				<Route path="/profile" element={<ProfilePage />} />
 				<Route path="/profile/edit" element={<EditPage />} />
 				<Route path="/setup" element={<SetupPage />} />
+				<Route path="/setup/img" element={<SetupImagePage />} />
 
 				<Route path="*" element={<NotFoundPage />} />
 
