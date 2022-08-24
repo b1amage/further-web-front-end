@@ -9,12 +9,8 @@ const AgeFilter = () => {
 			</label>
 
 			<div className="flex items-center gap-5">
-				<Input
-					placeholder="From. Ex:18"
-					required={false}
-					label="from"
-				/>
-				<Input placeholder="To. Ex:21" required={false} label="to" />
+				<Input placeholder="18" required={false} label="from" />
+				<Input placeholder="21" required={false} label="to" />
 			</div>
 		</div>
 	);
