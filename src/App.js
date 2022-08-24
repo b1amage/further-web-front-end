@@ -21,7 +21,6 @@ import ProfileOption from "./components/profile/ProfileOption";
 import SetupPage from "./views/SetupPage";
 import SetupImagePage from "./views/SetupImagePage";
 
-
 function App() {
 	return (
 		<>
@@ -31,12 +30,22 @@ function App() {
 				<Route path="/match/all/:userId" element={<AllMatchPage />} />
 				<Route path="/user" element={<UserDetailPage />} />
 
-				<Route path="/forgot_password" element={<ForgotPasswordPage />} />
-				<Route path="/forgot_password/otp/:place" element={<OtpPage />}/> 
-				<Route path="/forgot_password/otp/:place/reset_password" element={<ResetPassword />}/> 
-				<Route path="/forgot_password/otp/:place/reset_password/notification" element={<NotificationPage />}/> 
-				
-	
+				<Route
+					path="/forgot_password"
+					element={<ForgotPasswordPage />}
+				/>
+				<Route
+					path="/forgot_password/otp/:place"
+					element={<OtpPage />}
+				/>
+				<Route
+					path="/forgot_password/otp/:place/reset_password"
+					element={<ResetPassword />}
+				/>
+				<Route
+					path="/forgot_password/otp/:place/reset_password/notification"
+					element={<NotificationPage />}
+				/>
 
 				<Route path="/chat" element={<ChatPage />} />
 				<Route
@@ -49,8 +58,6 @@ function App() {
 				<Route path="/setup/img" element={<SetupImagePage />} />
 
 				<Route path="*" element={<NotFoundPage />} />
-
-		
 			</Routes>
 			<div className="hidden">
 				<ProfileOption tooglable />
