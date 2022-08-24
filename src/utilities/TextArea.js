@@ -14,7 +14,7 @@ const TextArea = ({ label, placeholder, required }) => {
 				cols="30"
 				rows={viewport < 480 ? "2" : viewport < 768 ? "4" : "6"}
 				placeholder={placeholder}
-				className="w-full px-4 py-2 border-2 outline-none transteition-all text-dark-2 md:text-base md:px-6 md:py-4 focus:border-secondary duration-300placeholder:text-dark-1 rounded-xl border-primary-100"
+				className="w-full px-4 py-2 duration-300 bg-transparent border-2 outline-none transteition-all md:text-base md:px-6 md:py-4 focus:border-secondary placeholder:text-dark-1 placeholder:dark:text-white rounded-xl border-primary-100"
 			></textarea>
 		</div>
 	);

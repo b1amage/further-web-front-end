@@ -15,6 +15,7 @@ import NotFoundPage from "./views/NotFoundPage";
 import EditPage from "./views/EditPage";
 import ChatPage from "./views/ChatPage";
 import ProfileOption from "./components/profile/ProfileOption";
+import SetupPage from "./views/SetupPage";
 
 function App() {
 	return (
@@ -31,6 +32,7 @@ function App() {
 				/>
 				<Route path="/profile" element={<ProfilePage />} />
 				<Route path="/profile/edit" element={<EditPage />} />
+				<Route path="/setup" element={<SetupPage />} />
 
 				<Route path="*" element={<NotFoundPage />} />
 

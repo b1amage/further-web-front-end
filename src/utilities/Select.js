@@ -11,11 +11,11 @@ const Select = ({ options, label, required, fluid }) => {
 		>
 			<Label label={label} required={required} />
 
-			<div className="relative !text-dark-2">
+			<div className="relative !text-dark-2 dark:!text-white">
 				<select
 					name={label}
 					id={label}
-					className="block w-full px-4 py-2 transition-all duration-300 border-2 rounded-full outline-none appearance-none focus:border-secondary bg-trasparent md:text-base md:px-6 md:py-4 border-primary-100"
+					className="block w-full px-4 py-2 transition-all duration-300 bg-transparent border-2 rounded-full outline-none appearance-none focus:border-secondary bg-trasparent md:text-base md:px-6 md:py-4 border-primary-100"
 				>
 					{options?.length > 0 &&
 						options.map((item) => (
