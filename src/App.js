@@ -22,6 +22,7 @@ import SetupPage from "./views/SetupPage";
 import SetupImagePage from "./views/SetupImagePage";
 import AboutPage from "./views/AboutPage";
 import { ChatDetails } from "./views/ChatDetails";
+import { SelectInterest } from "./views/SelectInterest";
 
 function App() {
 	return (
@@ -60,6 +61,9 @@ function App() {
 				<Route path="/profile/edit" element={<EditPage />} />
 				<Route path="/setup" element={<SetupPage />} />
 				<Route path="/setup/img" element={<SetupImagePage />} />
+
+				<Route path="/select_interest" element={<SelectInterest />} />
+
 
 				<Route path="*" element={<NotFoundPage />} />
 			</Routes>

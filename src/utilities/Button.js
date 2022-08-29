@@ -1,8 +1,8 @@
 import React from "react";
 
-const Button = ({ primary, secondary, children, className }) => {
+const Button = ({ primary, secondary, children, className, onClick }) => {
 	return (
-		<button
+		<button onClick={onClick}
 			className={`${
 				primary
 					? "bg-gradient-to-br from-primary-50 to-primary-100 text-white"
