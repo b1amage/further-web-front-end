@@ -20,12 +20,14 @@ import ChatPage from "./views/ChatPage";
 import ProfileOption from "./components/profile/ProfileOption";
 import SetupPage from "./views/SetupPage";
 import SetupImagePage from "./views/SetupImagePage";
+import AboutPage from "./views/AboutPage";
 
 function App() {
 	return (
 		<>
 			<Routes>
 				<Route path="/" element={<HomePage />} />
+				<Route path="/about" element={<AboutPage />} />
 				<Route path="/match/:userId" element={<MatchPage />} />
 				<Route path="/match/all/:userId" element={<AllMatchPage />} />
 				<Route path="/user" element={<UserDetailPage />} />
