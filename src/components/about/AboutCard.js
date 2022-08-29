@@ -3,7 +3,7 @@ import React from "react";
 const AboutCard = ({ name, img, role, fb }) => {
 	return (
 		<a href={fb} target="_blank" rel="noreferrer">
-			<div className="cursor-pointer w-[300px] h-[300px] lg:w-[400px] lg:h-[400px] rounded-[36px] overflow-hidden relative">
+			<div className="cursor-pointer w-[300px] shadow-2xl h-[300px] lg:w-[400px] lg:h-[400px] rounded-[36px] overflow-hidden relative">
 				<img
 					src={img}
 					alt=""
