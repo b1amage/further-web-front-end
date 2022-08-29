@@ -21,6 +21,7 @@ import ProfileOption from "./components/profile/ProfileOption";
 import SetupPage from "./views/SetupPage";
 import SetupImagePage from "./views/SetupImagePage";
 import AboutPage from "./views/AboutPage";
+import { ChatDetails } from "./views/ChatDetails";
 
 function App() {
 	return (
@@ -50,6 +51,7 @@ function App() {
 				/>
 
 				<Route path="/chat" element={<ChatPage />} />
+				<Route path="/chat_details" element={<ChatDetails />} />
 				<Route
 					path="/success/:userId1/:userId2"
 					element={<SuccessMatchPage />}
