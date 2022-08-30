@@ -10,6 +10,8 @@ import Button from "../utilities/Button";
 
 const RegisterPage = () => {
 	const [isShowPassword, setIsShowPassword] = useState(false);
+	const [isShowConfirmPassword, setIsShowConfirmPassword] = useState(false);
+
 	return (
 		<div className="page-container">
 			<Header title="Register" />
@@ -28,19 +30,25 @@ const RegisterPage = () => {
 				/>
 
 				<Input
-					iconOnClick={() => setIsShowPassword(!isShowPassword)}
-					type={isShowPassword ? "text" : "password"}
+					iconOnClick={() =>
+						setIsShowConfirmPassword(!isShowConfirmPassword)
+					}
+					type={isShowConfirmPassword ? "text" : "password"}
 					label="Confirm Password"
 					placeholder="Confirm Password"
 					required
-					icon={isShowPassword ? eyeOpen : eyeClose}
+					icon={isShowConfirmPassword ? eyeOpen : eyeClose}
 				/>
 
-				<Button type="submit" primary className="mt-4">
+				<Button
+					type="submit"
+					primary
+					className="mt-4 md:w-1/2 md:mx-auto lg:text-2xl lg:h-[65px]"
+				>
 					Sign in
 				</Button>
 
-				<p className="p-4 text-center text-gray2">
+				<p className="p-4 pt-0 text-center text-gray2 md:text-xl lg:text-2xl">
 					Already has an account?{" "}
 					<span className="text-primary-100">Sign in</span>
 				</p>
