@@ -7,6 +7,7 @@ import LogoLg from "../utilities/LogoLg";
 import eyeOpen from "../assets/svg/eye-open.svg";
 import eyeClose from "../assets/svg/eye-close.svg";
 import Button from "../utilities/Button";
+import { Link } from "react-router-dom";
 
 const RegisterPage = () => {
 	const [isShowPassword, setIsShowPassword] = useState(false);
@@ -50,7 +51,9 @@ const RegisterPage = () => {
 
 				<p className="p-4 pt-0 text-center text-gray2 md:text-xl lg:text-2xl">
 					Already has an account?{" "}
-					<span className="text-primary-100">Sign in</span>
+					<Link to="/login" className="text-primary-100">
+						Sign in
+					</Link>
 				</p>
 			</form>
 

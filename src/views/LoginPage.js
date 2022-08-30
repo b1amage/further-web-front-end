@@ -8,6 +8,8 @@ import eyeClose from "../assets/svg/eye-close.svg";
 import eyeOpen from "../assets/svg/eye-open.svg";
 import Button from "../utilities/Button";
 
+import { Link } from "react-router-dom";
+
 const LoginPage = () => {
 	const [isShowPassword, setIsShowPassword] = useState(false);
 
@@ -34,6 +36,13 @@ const LoginPage = () => {
 				>
 					Sign in
 				</Button>
+
+				<p className="p-4 pt-0 text-center text-gray2 md:text-xl lg:text-2xl">
+					Don't have account?{" "}
+					<Link to="/register" className="text-primary-100">
+						Sign up
+					</Link>
+				</p>
 			</form>
 
 			<NavBar />
