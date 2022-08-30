@@ -22,6 +22,7 @@ import SetupPage from "./views/SetupPage";
 import SetupImagePage from "./views/SetupImagePage";
 import AboutPage from "./views/AboutPage";
 import RegisterPage from "./views/RegisterPage";
+import LoginPage from "./views/LoginPage";
 
 function App() {
 	return (
@@ -33,6 +34,7 @@ function App() {
 				<Route path="/match/all/:userId" element={<AllMatchPage />} />
 				<Route path="/user" element={<UserDetailPage />} />
 				<Route path="/register" element={<RegisterPage />} />
+				<Route path="/login" element={<LoginPage />} />
 
 				<Route
 					path="/forgot_password"
