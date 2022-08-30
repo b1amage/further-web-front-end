@@ -1,14 +1,11 @@
-import React, {useState} from 'react'
+import React from 'react'
 import { IdeaType } from './IdeaType'
 import heart from '../../assets/svg/heart.svg'
 import friends from '../../assets/svg/friends.svg'
 import fling from '../../assets/svg/fling.svg'
 import business from '../../assets/svg/business.svg'
-export const IdealTypeList = () => {
-    const [selectedType, setSelectedType] = useState(null)
-    const onChangeType = (e) => {
-      setSelectedType(e.target.value)
-    }
+export const IdealTypeList = ({onChangeType}) => {
+   
   return (
     <div className='w-full flex flex-wrap gap-5 h-full'>
         <IdeaType icon={heart} type={"Love"} id={"love"} onChangeType={onChangeType}/>

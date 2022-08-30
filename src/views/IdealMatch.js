@@ -1,10 +1,16 @@
-import React from "react";
+import React, {useState} from "react";
 import { Button } from "../components/forgot_password/Button";
 import Header from "../components/header/Header";
 import { IdealTypeList } from "../components/idea_match/IdealTypeList";
 import { SucessNotification } from "../components/idea_match/SucessNotification";
 
 export const IdealMatch = () => {
+  const [display, setDisplay] = useState(false)
+  const [selectedType, setSelectedType] = useState(null)
+  const [error, setError] = useState("")
+  const onChangeType = (e) => {
+    setSelectedType(e.target.value)
+  }
   return (
     <>
       <div className="w-full h-screen flex justify-center flex-col">
@@ -16,15 +22,18 @@ export const IdealMatch = () => {
         </div>
         
         <div className='h-full px-5'>
-          <IdealTypeList />
+          <IdealTypeList onChangeType={onChangeType}/>
         </div>
+
+        <span className='text-primary-100 mx-5 my-2'>{error}</span>
+
         <div className="pt-6 pb-[48px] px-6 h-fit flex items-center border-t border-t-gray rounded-t-[24px] relative bottom-0">
-          <Button name={"Next"} className={`!mt-4`} />
+          <Button name={"Next"} className={`!mt-4`} handleClick={() => selectedType ? setDisplay(state => !state) : setError("* Please select 1 type")}/>
         </div>
       </div>
 
       <div>
-        <SucessNotification />
+        <SucessNotification display={display}/>
       </div>
     </>
     
