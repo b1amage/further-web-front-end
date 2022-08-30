@@ -21,6 +21,7 @@ import ProfileOption from "./components/profile/ProfileOption";
 import SetupPage from "./views/SetupPage";
 import SetupImagePage from "./views/SetupImagePage";
 import AboutPage from "./views/AboutPage";
+import RegisterPage from "./views/RegisterPage";
 
 function App() {
 	return (
@@ -31,6 +32,7 @@ function App() {
 				<Route path="/match/:userId" element={<MatchPage />} />
 				<Route path="/match/all/:userId" element={<AllMatchPage />} />
 				<Route path="/user" element={<UserDetailPage />} />
+				<Route path="/register" element={<RegisterPage />} />
 
 				<Route
 					path="/forgot_password"
