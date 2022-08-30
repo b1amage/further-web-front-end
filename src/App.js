@@ -23,6 +23,7 @@ import SetupImagePage from "./views/SetupImagePage";
 import AboutPage from "./views/AboutPage";
 import { ChatDetails } from "./views/ChatDetails";
 import { SelectInterest } from "./views/SelectInterest";
+import { IdealMatch } from "./views/IdealMatch";
 
 function App() {
 	return (
@@ -63,6 +64,7 @@ function App() {
 				<Route path="/setup/img" element={<SetupImagePage />} />
 
 				<Route path="/select_interest" element={<SelectInterest />} />
+				<Route path="/ideal_match" element={<IdealMatch />} />
 
 
 				<Route path="*" element={<NotFoundPage />} />
