@@ -10,6 +10,7 @@ import Button from "../utilities/Button";
 import { Link } from "react-router-dom";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import authenticationApi from "../api/authenticationApi";
 
 const RegisterPage = () => {
 	const [isShowPassword, setIsShowPassword] = useState(false);
@@ -17,11 +18,13 @@ const RegisterPage = () => {
 
 	const formik = useFormik({
 		initialValues: {
+			username: "",
 			email: "",
 			password: "",
 			confirm: "",
 		},
 		validationSchema: Yup.object({
+			username: Yup.string().required("Please fill in this field!"),
 			email: Yup.string()
 				.required("Please fill in this field!")
 				.matches(
@@ -45,6 +48,8 @@ const RegisterPage = () => {
 		}),
 		onSubmit: (values) => {
 			console.log(values);
+
+			authenticationApi.register(values);
 		},
 	});
 
@@ -57,6 +62,15 @@ const RegisterPage = () => {
 				onSubmit={formik.handleSubmit}
 				className="flex flex-col gap-5 my-10 lg:gap-8"
 			>
+				<Input
+					label="username"
+					placeholder="Username"
+					required
+					value={formik.values.username}
+					onChange={formik.handleChange}
+					err={formik.errors.username}
+				/>
+
 				<Input
 					label="email"
 					placeholder="Email"
