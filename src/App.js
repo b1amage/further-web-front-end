@@ -64,7 +64,7 @@ function App() {
 				<Route path="/setup/img" element={<SetupImagePage />} />
 
 				<Route path="/select_interest" element={<SelectInterest />} />
-				<Route path="/ideal_match" element={<IdealMatch />} />
+				<Route path="/select_interest/ideal_match" element={<IdealMatch />} />
 
 
 				<Route path="*" element={<NotFoundPage />} />

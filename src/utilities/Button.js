@@ -1,8 +1,8 @@
 import React from "react";
 
-const Button = ({ primary, secondary, children, className, onClick, value }) => {
+const Button = ({ primary, secondary, children, className }) => {
 	return (
-		<button onClick={onClick}
+		<button
 			className={`${
 				primary
 					? "bg-gradient-to-br from-primary-50 to-primary-100 text-white"
@@ -10,7 +10,6 @@ const Button = ({ primary, secondary, children, className, onClick, value }) => 
 					? "border border-primary-100 text-primary-100 bg-transparent"
 					: ""
 			} rounded-[32px] w-full min-h-[55px] text-xl text-center font-semibold px-4 py-2 ${className}`}
-			value={value}
 		>
 			{children}
 		</button>
