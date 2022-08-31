@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { Button } from "../components/forgot_password/Button";
 import Header from "../components/header/Header";
 import { IdealTypeList } from "../components/idea_match/IdealTypeList";
@@ -41,10 +41,9 @@ export const IdealMatch = () => {
         </div>
       </form>
 
-      <div>
-        <SucessNotification display={display}/>
-      </div>
-    </>
-    
-  );
+			<div>
+				<SucessNotification display={display} />
+			</div>
+		</>
+	);
 };

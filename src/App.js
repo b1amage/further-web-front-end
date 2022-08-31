@@ -21,9 +21,14 @@ import ProfileOption from "./components/profile/ProfileOption";
 import SetupPage from "./views/SetupPage";
 import SetupImagePage from "./views/SetupImagePage";
 import AboutPage from "./views/AboutPage";
+
 import { ChatDetails } from "./views/ChatDetails";
 import { SelectInterest } from "./views/SelectInterest";
 import { IdealMatch } from "./views/IdealMatch";
+
+import RegisterPage from "./views/RegisterPage";
+import LoginPage from "./views/LoginPage";
+
 
 function App() {
 	return (
@@ -34,6 +39,8 @@ function App() {
 				<Route path="/match/:userId" element={<MatchPage />} />
 				<Route path="/match/all/:userId" element={<AllMatchPage />} />
 				<Route path="/user" element={<UserDetailPage />} />
+				<Route path="/register" element={<RegisterPage />} />
+				<Route path="/login" element={<LoginPage />} />
 
 				<Route
 					path="/forgot_password"
