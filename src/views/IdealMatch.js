@@ -11,9 +11,18 @@ export const IdealMatch = () => {
   const onChangeType = (e) => {
     setSelectedType(e.target.value)
   }
+
+  const handleIdealSubmit = (e) => {
+    e.preventDefault()
+    if (selectedType){
+      setDisplay(state => !state)
+    }else{
+      setError("* Please select 1 type")
+    }
+  }
   return (
     <>
-      <div className="w-full h-screen flex justify-center flex-col">
+      <form onSubmit={handleIdealSubmit} className="w-full h-screen flex justify-center flex-col">
         <div className='px-5'>
           <Header title={"Ideal Match"} />
           <div className="my-4">
@@ -28,9 +37,9 @@ export const IdealMatch = () => {
         <span className='text-primary-100 mx-5 my-2'>{error}</span>
 
         <div className="pt-6 pb-[48px] px-6 h-fit flex items-center border-t border-t-gray rounded-t-[24px] relative bottom-0">
-          <Button name={"Next"} className={`!mt-4`} handleClick={() => selectedType ? setDisplay(state => !state) : setError("* Please select 1 type")}/>
+          <Button name={"Next"} className={`!mt-4`} type={"submit"}/>
         </div>
-      </div>
+      </form>
 
       <div>
         <SucessNotification display={display}/>

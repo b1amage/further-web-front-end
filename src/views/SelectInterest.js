@@ -4,22 +4,10 @@ import { Button } from "../components/forgot_password/Button";
 import Header from "../components/header/Header";
 import { InterestList } from "../components/select_interest/InterestList";
 import { SelectedList } from "../components/select_interest/SelectedList";
+import { interestsList } from "../content/interests";
 
 export const SelectInterest = () => {
-  const [interests, setInterests] = useState([
-    "🎮 Gaming",
-    "💃🏻 Dancing",
-    "🗣 Language", 
-    "🎵 Music",
-    "🎬 Movie",
-    "📸 Photography",
-    "👗 Fashion", 
-    "📚 Book",
-    "✍🏻 Writing",
-    "⚽️ Football", 
-    "💪 Gym & Fitness",
-    "🍔 Food & Drink",
-  ]);
+  const [interests, setInterests] = useState([...interestsList]);
 
   interests.sort((a,b) => a.localeCompare(b))
 
@@ -56,8 +44,17 @@ export const SelectInterest = () => {
     setInterests(prev => [...prev, value])
   };
   
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    if (selectedInterests.length >= 3){
+      navigate("/select_interest/ideal_match") 
+    } else{
+      setError("* Please select at least 3 hobbies")
+    }
+  }
+
   return (
-    <div className="pt-6 h-screen inline-flex flex-col overflow-hidden">
+    <form onSubmit={handleSubmit} className="pt-6 h-screen inline-flex flex-col overflow-hidden">
       <div className="px-6 h-full">
         <Header title={"Select Your Interest"} />
         <div className="h-full">
@@ -73,8 +70,8 @@ export const SelectInterest = () => {
       </div>
       <span className='text-required mx-6 my-2'>{error}</span>
       <div className="pt-6 pb-[40px] px-6 h-fit inline-flex items-center border-t border-t-gray rounded-t-[24px]">
-        <Button name={"Next"} className={`!mt-4`} handleClick={() => selectedInterests.length >= 3 ? navigate("/select_interest/ideal_match") : setError("* Please select at least 3 hobbies")}/>
+        <Button name={"Next"} className={`!mt-4`} type={"submit"}/>
       </div>
-    </div>
+    </form>
   );
 };
