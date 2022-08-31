@@ -21,8 +21,14 @@ import ProfileOption from "./components/profile/ProfileOption";
 import SetupPage from "./views/SetupPage";
 import SetupImagePage from "./views/SetupImagePage";
 import AboutPage from "./views/AboutPage";
+
+import { ChatDetails } from "./views/ChatDetails";
+import { SelectInterest } from "./views/SelectInterest";
+import { IdealMatch } from "./views/IdealMatch";
+
 import RegisterPage from "./views/RegisterPage";
 import LoginPage from "./views/LoginPage";
+
 
 function App() {
 	return (
@@ -54,6 +60,7 @@ function App() {
 				/>
 
 				<Route path="/chat" element={<ChatPage />} />
+				<Route path="/chat_details" element={<ChatDetails />} />
 				<Route
 					path="/success/:userId1/:userId2"
 					element={<SuccessMatchPage />}
@@ -62,6 +69,10 @@ function App() {
 				<Route path="/profile/edit" element={<EditPage />} />
 				<Route path="/setup" element={<SetupPage />} />
 				<Route path="/setup/img" element={<SetupImagePage />} />
+
+				<Route path="/select_interest" element={<SelectInterest />} />
+				<Route path="/select_interest/ideal_match" element={<IdealMatch />} />
+
 
 				<Route path="*" element={<NotFoundPage />} />
 			</Routes>

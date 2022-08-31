@@ -36,6 +36,7 @@ module.exports = {
 				gray4: "#9098A1",
 				darkBlue: "#2C3A4B",
 				required: "#DA1414",
+				gray5:"#F4F6F9",
 			},
 		},
 		fontFamily: {
