@@ -8,39 +8,58 @@ import { DisplaySvg } from "../components/forgot_password/DisplaySvg";
 import { useNavigate } from "react-router-dom";
 import Header from "../components/header/Header";
 export const ForgotPasswordPage = () => {
-  const [selectedType, setSelectedType] = useState(null)
-  const onChangeType = (e) => {
-    setSelectedType(e.target.value)
-  }
-  
-  const navigate = useNavigate()
+	const [selectedType, setSelectedType] = useState(null);
+	const onChangeType = (e) => {
+		setSelectedType(e.target.value);
+	};
 
-  return (
-    <div>
-      <div className="px-6 py-7 w-full h-screen sm:px-[100px] md:px-[200px] lg:px-[350px]">
-        <Header title={"Forgot Password"} />
+	const navigate = useNavigate();
 
-        <DisplaySvg svg={forgotPassword} />
+	return (
+		<div>
+			<div className="px-6 py-7 w-full h-screen sm:px-[100px] md:px-[200px] lg:px-[350px]">
+				<Header title={"Forgot Password"} />
 
-        <div className="my-6">
-          <span>
-            Select which contact details should we use to reset your password
-          </span>
-        </div>
+				<DisplaySvg svg={forgotPassword} />
 
-        <div>
-          <Type id={"+6282******39"} icon={chat} type={"SMS"} onChangeType={onChangeType}/>
-          <Type id={"ex***le@yourdomain.com"} icon={email} type={"Email"} onChangeType={onChangeType}/>
-        </div>
+				<div className="my-6">
+					<span>
+						Select which contact details should we use to reset your
+						password
+					</span>
+				</div>
 
-        <div>
-          {selectedType ? (
-            <Button name="Continue" handleClick={() => navigate(`/forgot_password/otp/${selectedType}`)}/>
-          ) : (
-            <Button name="Continue" handleClick={() => navigate("/forgot_password")} />
-          )} 
-        </div>
-      </div>
-    </div>
-  );
+				<div>
+					<Type
+						id={"+6282******39"}
+						icon={chat}
+						type={"SMS"}
+						onChangeType={onChangeType}
+					/>
+					<Type
+						id={"ex***le@yourdomain.com"}
+						icon={email}
+						type={"Email"}
+						onChangeType={onChangeType}
+					/>
+				</div>
+
+				<div>
+					{selectedType ? (
+						<Button
+							name="Continue"
+							handleClick={() =>
+								navigate(`/forgot_password/otp/${selectedType}`)
+							}
+						/>
+					) : (
+						<Button
+							name="Continue"
+							handleClick={() => navigate("/forgot_password")}
+						/>
+					)}
+				</div>
+			</div>
+		</div>
+	);
 };
