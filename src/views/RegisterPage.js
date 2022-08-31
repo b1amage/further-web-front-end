@@ -8,26 +8,74 @@ import eyeOpen from "../assets/svg/eye-open.svg";
 import eyeClose from "../assets/svg/eye-close.svg";
 import Button from "../utilities/Button";
 import { Link } from "react-router-dom";
+import { useFormik } from "formik";
+import * as Yup from "yup";
 
 const RegisterPage = () => {
 	const [isShowPassword, setIsShowPassword] = useState(false);
 	const [isShowConfirmPassword, setIsShowConfirmPassword] = useState(false);
+
+	const formik = useFormik({
+		initialValues: {
+			email: "",
+			password: "",
+			confirm: "",
+		},
+		validationSchema: Yup.object({
+			email: Yup.string()
+				.required("Please fill in this field!")
+				.matches(
+					/^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/,
+					"Please enter a valid email address!"
+				),
+
+			password: Yup.string()
+				.required("Please fill in this field!")
+				.matches(
+					/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[a-zA-Z\d!@#$%^&*].{8,}$/,
+					"Password must have at least 8 characters, has at least 1 uppercase, 1 lowercase, 1 digit, 1 special character!"
+				),
+			confirm: Yup.string()
+				.required("Please fill in this field!")
+				.oneOf([Yup.ref("password"), null], "Passwords must match")
+				.matches(
+					/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[a-zA-Z\d!@#$%^&*].{8,}$/,
+					"Password must have at least 8 characters, has at least 1 uppercase, 1 lowercase, 1 digit, 1 special character!"
+				),
+		}),
+		onSubmit: (values) => {
+			console.log(values);
+		},
+	});
 
 	return (
 		<div className="page-container">
 			<Header title="Register" />
 			<LogoLg />
 
-			<form className="flex flex-col gap-5 my-10 lg:gap-8">
-				<Input label="Email" placeholder="Email" required />
+			<form
+				onSubmit={formik.handleSubmit}
+				className="flex flex-col gap-5 my-10 lg:gap-8"
+			>
+				<Input
+					label="email"
+					placeholder="Email"
+					required
+					value={formik.values.email}
+					onChange={formik.handleChange}
+					err={formik.errors.email}
+				/>
 
 				<Input
 					iconOnClick={() => setIsShowPassword(!isShowPassword)}
 					type={isShowPassword ? "text" : "password"}
-					label="Password"
+					label="password"
 					placeholder="Password"
 					required
 					icon={isShowPassword ? eyeOpen : eyeClose}
+					value={formik.values.password}
+					onChange={formik.handleChange}
+					err={formik.errors.password}
 				/>
 
 				<Input
@@ -35,10 +83,13 @@ const RegisterPage = () => {
 						setIsShowConfirmPassword(!isShowConfirmPassword)
 					}
 					type={isShowConfirmPassword ? "text" : "password"}
-					label="Confirm Password"
+					label="confirm"
 					placeholder="Confirm Password"
 					required
 					icon={isShowConfirmPassword ? eyeOpen : eyeClose}
+					value={formik.values.confirm}
+					onChange={formik.handleChange}
+					err={formik.errors.confirm}
 				/>
 
 				<Button

@@ -10,8 +10,36 @@ import Button from "../utilities/Button";
 
 import { Link } from "react-router-dom";
 
+import { useFormik } from "formik";
+import * as Yup from "yup";
+
 const LoginPage = () => {
 	const [isShowPassword, setIsShowPassword] = useState(false);
+
+	const formik = useFormik({
+		initialValues: {
+			email: "",
+			password: "",
+		},
+		validationSchema: Yup.object({
+			email: Yup.string()
+				.required("Please fill in this field!")
+				.matches(
+					/^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/,
+					"Please enter a valid email address!"
+				),
+
+			password: Yup.string()
+				.required("Please fill in this field!")
+				.matches(
+					/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[a-zA-Z\d!@#$%^&*].{8,}$/,
+					"Password must have at least 8 characters, has at least 1 uppercase, 1 lowercase, 1 digit, 1 special character!"
+				),
+		}),
+		onSubmit: (values) => {
+			console.log(values);
+		},
+	});
 
 	return (
 		<div className="page-container">
@@ -19,8 +47,18 @@ const LoginPage = () => {
 
 			<LogoLg />
 
-			<form className="flex flex-col gap-5 my-10 lg:gap-8">
-				<Input placeholder="Email" label="email" required />
+			<form
+				onSubmit={formik.handleSubmit}
+				className="flex flex-col gap-5 my-10 lg:gap-8"
+			>
+				<Input
+					placeholder="Email"
+					label="email"
+					required
+					value={formik.values.email}
+					onChange={formik.handleChange}
+					err={formik.errors.email}
+				/>
 				<Input
 					placeholder="Password"
 					label="password"
@@ -28,6 +66,9 @@ const LoginPage = () => {
 					type={isShowPassword ? "text" : "password"}
 					icon={isShowPassword ? eyeOpen : eyeClose}
 					iconOnClick={() => setIsShowPassword(!isShowPassword)}
+					value={formik.values.password}
+					onChange={formik.handleChange}
+					err={formik.errors.password}
 				/>
 
 				<Button

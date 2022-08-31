@@ -1,7 +1,18 @@
 import React from "react";
 import Label from "./Label";
+import error from "../assets/svg/error.svg";
 
-const Input = ({ placeholder, label, required, icon, type, iconOnClick }) => {
+const Input = ({
+	placeholder,
+	label,
+	required,
+	icon,
+	type,
+	iconOnClick,
+	value,
+	onChange,
+	err,
+}) => {
 	return (
 		<div className="flex flex-col space-y-2 lg:space-y-4">
 			<Label label={label} required={required} />
@@ -14,6 +25,8 @@ const Input = ({ placeholder, label, required, icon, type, iconOnClick }) => {
 					id={label}
 					name={label}
 					required={required}
+					value={value}
+					onChange={onChange}
 				/>
 
 				{icon && (
@@ -29,6 +42,15 @@ const Input = ({ placeholder, label, required, icon, type, iconOnClick }) => {
 					</div>
 				)}
 			</div>
+
+			{err && (
+				<div className="flex items-center gap-4 p-4 text-red-600 bg-red-100 rounded-full">
+					<div>
+						<img src={error} alt="" />
+					</div>
+					<h3>{err}</h3>
+				</div>
+			)}
 		</div>
 	);
 };
