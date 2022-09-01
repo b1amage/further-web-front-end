@@ -28,6 +28,7 @@ import { IdealMatch } from "./views/IdealMatch";
 
 import RegisterPage from "./views/RegisterPage";
 import LoginPage from "./views/LoginPage";
+import VerifyEmailPage from "./views/VerifyEmailPage";
 
 function App() {
 	return (
@@ -40,6 +41,7 @@ function App() {
 				<Route path="/user" element={<UserDetailPage />} />
 				<Route path="/register" element={<RegisterPage />} />
 				<Route path="/login" element={<LoginPage />} />
+				<Route path="/verify-email" element={<VerifyEmailPage />} />
 
 				<Route
 					path="/forgot_password"

@@ -111,7 +111,7 @@ const RegisterPage = () => {
 					primary
 					className="mt-4 md:w-1/2 md:mx-auto lg:text-2xl lg:h-[65px]"
 				>
-					Sign in
+					Sign up
 				</Button>
 
 				<p className="p-4 pt-0 text-center text-gray2 md:text-xl lg:text-2xl">
