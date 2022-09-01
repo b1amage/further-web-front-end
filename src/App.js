@@ -29,7 +29,6 @@ import { IdealMatch } from "./views/IdealMatch";
 import RegisterPage from "./views/RegisterPage";
 import LoginPage from "./views/LoginPage";
 
-
 function App() {
 	return (
 		<>
@@ -71,8 +70,10 @@ function App() {
 				<Route path="/setup/img" element={<SetupImagePage />} />
 
 				<Route path="/select_interest" element={<SelectInterest />} />
-				<Route path="/select_interest/ideal_match" element={<IdealMatch />} />
-
+				<Route
+					path="/select_interest/ideal_match"
+					element={<IdealMatch />}
+				/>
 
 				<Route path="*" element={<NotFoundPage />} />
 			</Routes>
