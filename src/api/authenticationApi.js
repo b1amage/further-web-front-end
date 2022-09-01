@@ -1,7 +1,7 @@
 import axiosClient from "./axiosClient";
 
 const authenticationApi = {
-	async register(values) {
+	async register(values, navigate) {
 		const url = "/auth/register";
 		try {
 			const response = await axiosClient.post(url, values);
@@ -10,10 +10,11 @@ const authenticationApi = {
 		} catch (error) {
 			console.log(error);
 			// navigate to register fail
+			navigate(`/error/${error.response.data.msg}`);
 		}
 	},
 
-	async login(values) {
+	async login(values, navigate) {
 		const url = "/auth/login";
 
 		try {
@@ -21,8 +22,9 @@ const authenticationApi = {
 			console.log(response);
 			return response;
 		} catch (error) {
-			console.log(error);
+			console.log("error:", error);
 			// navigate to login fail
+			navigate(`/error/${error.response.data.msg}`);
 		}
 	},
 

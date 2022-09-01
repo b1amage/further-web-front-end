@@ -28,7 +28,8 @@ import { IdealMatch } from "./views/IdealMatch";
 
 import RegisterPage from "./views/RegisterPage";
 import LoginPage from "./views/LoginPage";
-
+import VerifyEmailPage from "./views/VerifyEmailPage";
+import ErrorPage from "./views/ErrorPage";
 
 function App() {
 	return (
@@ -41,6 +42,8 @@ function App() {
 				<Route path="/user" element={<UserDetailPage />} />
 				<Route path="/register" element={<RegisterPage />} />
 				<Route path="/login" element={<LoginPage />} />
+				<Route path="/verify-email" element={<VerifyEmailPage />} />
+				<Route path="/error/:err" element={<ErrorPage />} />
 
 				<Route
 					path="/forgot_password"
@@ -70,9 +73,8 @@ function App() {
 				<Route path="/setup" element={<SetupPage />} />
 				<Route path="/setup/img" element={<SetupImagePage />} />
 
-				<Route path="/select_interest" element={<SelectInterest />} />
-				<Route path="/select_interest/ideal_match" element={<IdealMatch />} />
-
+				<Route path="/setup/interest" element={<SelectInterest />} />
+				<Route path="/setup/ideal_match" element={<IdealMatch />} />
 
 				<Route path="*" element={<NotFoundPage />} />
 			</Routes>
