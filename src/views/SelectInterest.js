@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Button } from "../components/forgot_password/Button";
-import Header from "../components/header/Header";
-import { InterestList } from "../components/select_interest/InterestList";
-import { SelectedList } from "../components/select_interest/SelectedList";
+import { SelectedInterestForm } from "../components/select_interest/SelectedInterestForm";
+import { SelectedInterestHeader } from "../components/select_interest/SelectedInterestHeader";
 import { interestsList } from "../content/interests";
 
 export const SelectInterest = () => {
@@ -44,32 +42,18 @@ export const SelectInterest = () => {
   
   const handleSubmit = (e) => {
     e.preventDefault()
-    if (selectedInterests.length >= 3){
-      navigate("/select_interest/ideal_match") 
-    } else{
-      setError("* Please select at least 3 hobbies")
-    }
+    console.log(selectedInterests)
+    // if (selectedInterests.length >= 3){
+    //   navigate("/select_interest/ideal_match") 
+    // } else{
+    //   setError("* Please select at least 3 hobbies")
+    // }
   }
 
   return (
-    <form onSubmit={handleSubmit} className="pt-6 h-screen inline-flex flex-col overflow-hidden">
-      <div className="px-6 h-full">
-        <Header title={"Select Your Interest"} />
-        <div className="h-full">
-          <p className="my-3">
-            Select your interests to match with users who have similar things in
-            common.
-          </p>
-          <InterestList array={interests} onChange={onChangeSelect} />
-        </div>
-      </div>
-      <div className="inline-flex h-1/5 mx-6 my-4 py-5 gap-4 flex-wrap overflow-y-scroll border-t border-t-gray">
-        <SelectedList array={selectedInterests} onChange={onChangeRemoveSelect} />
-      </div>
-      <span className='text-required mx-6 my-2'>{error}</span>
-      <div className="pt-6 pb-[40px] px-6 h-fit inline-flex items-center border-t border-t-gray rounded-t-[24px]">
-        <Button name={"Next"} className={`!mt-4`} type={"submit"}/>
-      </div>
-    </form>
+    <div className="pt-6 h-auto inline-flex flex-col overflow-hidden w-full md:items-center">
+      <SelectedInterestHeader onChange={onChangeSelect} />
+      <SelectedInterestForm onSubmit={handleSubmit}  array={interests} selectedList={selectedInterests} onChangeRemoveSelect={onChangeRemoveSelect} onChangeSelect={onChangeSelect} error={error}/>
+    </div>
   );
 };
