@@ -11,10 +11,12 @@ import { Link } from "react-router-dom";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import authenticationApi from "../api/authenticationApi";
+import { useNavigate } from "react-router-dom";
 
 const RegisterPage = () => {
 	const [isShowPassword, setIsShowPassword] = useState(false);
 	const [isShowConfirmPassword, setIsShowConfirmPassword] = useState(false);
+	const navigate = useNavigate();
 
 	const formik = useFormik({
 		initialValues: {
@@ -49,7 +51,7 @@ const RegisterPage = () => {
 		onSubmit: (values) => {
 			console.log(values);
 
-			authenticationApi.register(values);
+			authenticationApi.register(values, navigate);
 		},
 	});
 

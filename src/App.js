@@ -29,6 +29,7 @@ import { IdealMatch } from "./views/IdealMatch";
 import RegisterPage from "./views/RegisterPage";
 import LoginPage from "./views/LoginPage";
 import VerifyEmailPage from "./views/VerifyEmailPage";
+import ErrorPage from "./views/ErrorPage";
 
 function App() {
 	return (
@@ -42,6 +43,7 @@ function App() {
 				<Route path="/register" element={<RegisterPage />} />
 				<Route path="/login" element={<LoginPage />} />
 				<Route path="/verify-email" element={<VerifyEmailPage />} />
+				<Route path="/error/:err" element={<ErrorPage />} />
 
 				<Route
 					path="/forgot_password"
