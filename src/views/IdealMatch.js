@@ -13,12 +13,12 @@ export const IdealMatch = () => {
 
   const handleIdealSubmit = (e) => {
     e.preventDefault()
-    console.log(selectedType)
-    // if (selectedType){
-    //   setDisplay(state => !state)
-    // }else{
-    //   setError("* Please select 1 type")
-    // }
+    // console.log(selectedType)
+    if (selectedType){
+      setDisplay(state => !state)
+    }else{
+      setError("* Please select 1 type")
+    }
   }
   return (
     <>

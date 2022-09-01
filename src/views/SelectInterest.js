@@ -42,12 +42,12 @@ export const SelectInterest = () => {
   
   const handleSubmit = (e) => {
     e.preventDefault()
-    console.log(selectedInterests)
-    // if (selectedInterests.length >= 3){
-    //   navigate("/select_interest/ideal_match") 
-    // } else{
-    //   setError("* Please select at least 3 hobbies")
-    // }
+    // console.log(selectedInterests)
+    if (selectedInterests.length >= 3){
+      navigate("/select_interest/ideal_match") 
+    } else{
+      setError("* Please select at least 3 hobbies")
+    }
   }
 
   return (
