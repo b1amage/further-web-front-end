@@ -73,11 +73,8 @@ function App() {
 				<Route path="/setup" element={<SetupPage />} />
 				<Route path="/setup/img" element={<SetupImagePage />} />
 
-				<Route path="/select_interest" element={<SelectInterest />} />
-				<Route
-					path="/select_interest/ideal_match"
-					element={<IdealMatch />}
-				/>
+				<Route path="/setup/interest" element={<SelectInterest />} />
+				<Route path="/setup/ideal_match" element={<IdealMatch />} />
 
 				<Route path="*" element={<NotFoundPage />} />
 			</Routes>
