@@ -1,8 +1,9 @@
 import React from "react";
 import dropdown from "../assets/svg/dropdown.svg";
 import Label from "./Label";
+import error from "../assets/svg/error.svg";
 
-const Select = ({ options, label, required, fluid }) => {
+const Select = ({ options, label, required, fluid, value, onChange, err }) => {
 	return (
 		<div
 			className={`flex lg:space-y-4 flex-col space-y-2 ${
@@ -13,6 +14,8 @@ const Select = ({ options, label, required, fluid }) => {
 
 			<div className="relative !text-dark-2 dark:!text-white">
 				<select
+					value={value}
+					onChange={onChange}
 					name={label}
 					id={label}
 					className="block w-full px-4 py-2 transition-all duration-300 bg-transparent border-2 rounded-full outline-none appearance-none focus:border-secondary bg-trasparent md:text-base md:px-6 md:py-4 border-primary-100"
@@ -33,6 +36,15 @@ const Select = ({ options, label, required, fluid }) => {
 					<img src={dropdown} alt="" />
 				</div>
 			</div>
+
+			{err && (
+				<div className="flex items-center gap-4 p-4 text-red-600 bg-red-100 rounded-full">
+					<div>
+						<img src={error} alt="" />
+					</div>
+					<h3>{err}</h3>
+				</div>
+			)}
 		</div>
 	);
 };
