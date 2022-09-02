@@ -51,7 +51,7 @@ export const SelectInterest = () => {
   }
 
   return (
-    <div className="pt-6 h-auto inline-flex flex-col overflow-hidden w-full md:items-center">
+    <div className="pt-6 md:h-screen h-auto inline-flex flex-col overflow-hidden w-full md:items-center">
       <SelectedInterestHeader onChange={onChangeSelect} />
       <SelectedInterestForm onSubmit={handleSubmit}  array={interests} selectedList={selectedInterests} onChangeRemoveSelect={onChangeRemoveSelect} onChangeSelect={onChangeSelect} error={error}/>
     </div>

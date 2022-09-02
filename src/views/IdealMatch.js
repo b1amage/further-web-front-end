@@ -22,7 +22,7 @@ export const IdealMatch = () => {
   }
   return (
     <>
-      <div className="w-full h-screen flex justify-center flex-col">
+      <div className="w-full h-auto flex justify-between flex-col">
         <IdealMatchHeader />
         <IdealMatchForm onChange={onChangeType} onSubmit={handleIdealSubmit} error={error}/>
         <SucessNotification display={display} />
