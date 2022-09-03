@@ -10,7 +10,7 @@ export const SelectedList = ({array, onChange}) => {
               title={selectedInterest}
               key={index}
               isActive={true}
-              className={`!w-fit !h-fit rounded-[100px] !text-base`}
+              className={`md:w-[200px] lg:w-[300px] w-fit !h-fit rounded-[100px] !text-base`}
               onChange={(e) => onChange(e)}
             />
           );

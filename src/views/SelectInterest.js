@@ -34,6 +34,7 @@ export const SelectInterest = () => {
 		}
 	};
 
+
 	const onChangeRemoveSelect = (e) => {
 		const { value } = e.target;
 		setSelectedInterests(
@@ -67,4 +68,5 @@ export const SelectInterest = () => {
 			/>
 		</div>
 	);
+
 };

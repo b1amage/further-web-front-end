@@ -12,6 +12,7 @@ export const IdealMatch = () => {
 		setSelectedType(e.target.value);
 	};
 
+
 	const handleIdealSubmit = (e) => {
 		e.preventDefault();
 		// console.log(selectedType)
@@ -38,6 +39,7 @@ export const IdealMatch = () => {
 				/>
 				<SucessNotification display={display} />
 			</div>
+
 		</>
 	);
 };
