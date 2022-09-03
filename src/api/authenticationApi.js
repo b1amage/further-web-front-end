@@ -28,17 +28,30 @@ const authenticationApi = {
 		}
 	},
 
-	async verifyToken(query) {
+	async createProfile() {
+		const info = JSON.parse(localStorage.getItem("info"));
+		const images = JSON.parse(localStorage.getItem("images"));
+		const hobbies = JSON.parse(localStorage.getItem("hobbies"));
+		const verificationToken = JSON.parse(localStorage.getItem("token"));
+
+		const profile = {
+			verificationToken,
+			images,
+			age: info.age || 18,
+			gender: info.gender,
+			location: info.location,
+			hobbies,
+			school: info.school,
+		};
+
+		console.log(profile);
+
 		try {
-			const response = await axiosClient.post("/api/auth/verify-email", {
-				verificationToken: query.get("token"),
-			});
+			const response = axiosClient.post("/auth/createProfile", profile);
 
 			console.log(response);
-			return response.data;
-		} catch (error) {
-			console.log(error.response);
-			// navigate to error page
+		} catch (err) {
+			console.log(err);
 		}
 	},
 };

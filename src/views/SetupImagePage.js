@@ -1,8 +1,8 @@
 import React from "react";
 import Header from "../components/header/Header";
 import ImgFrame from "../components/setup/ImgFrame";
-import girl3 from "../assets/img/girl3.jpeg";
 import Button from "../utilities/Button";
+import { Link } from "react-router-dom";
 
 const SetupImagePage = () => {
 	return (
@@ -14,17 +14,17 @@ const SetupImagePage = () => {
 			</p>
 
 			<div className="grid grid-cols-2 gap-4 my-8 lg:gap-10 lg:grid-cols-3 place-items-center">
-				<ImgFrame img={girl3} />
-				<ImgFrame />
-				<ImgFrame />
-				<ImgFrame />
-				<ImgFrame />
-				<ImgFrame />
+				{Array(6)
+					.fill()
+					.map((_, index) => (
+						<ImgFrame key={index} id={index} />
+					))}
 			</div>
-
-			<Button primary className="my-10">
-				Next
-			</Button>
+			<Link to="/setup/interest">
+				<Button primary className="my-10">
+					Next
+				</Button>
+			</Link>
 		</div>
 	);
 };
