@@ -11,7 +11,7 @@ const VerifyEmailPage = () => {
 
 	useEffect(() => {
 		const saveToken = async () => {
-			localStorage.setItem("token", query.get("token"));
+			localStorage.setItem("token", JSON.stringify(query.get("token")));
 		};
 
 		saveToken();
