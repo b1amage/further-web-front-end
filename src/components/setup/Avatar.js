@@ -3,7 +3,7 @@ import imgHolder from "../../assets/svg/img-holder.svg";
 import edit from "../../assets/svg/edit.svg";
 import axios from "axios";
 
-const Avatar = ({ img, onClick, onEdit }) => {
+const Avatar = ({ onClick, onEdit }) => {
 	const [selectedFile, setSelectedFile] = useState();
 	const [isFilePicked, setIsFilePicked] = useState(false);
 	const [ava, setAva] = useState(imgHolder);
