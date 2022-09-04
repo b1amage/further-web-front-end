@@ -7,7 +7,8 @@ export const SelectedList = ({array, onChange}) => {
         {array.map((selectedInterest, index) => {
           return (
             <Interest
-              title={selectedInterest}
+              title={selectedInterest.title}
+              value={selectedInterest.value}
               key={index}
               isActive={true}
               className={`md:w-[200px] lg:w-[300px] w-fit !h-fit rounded-[100px] !text-base`}
