@@ -5,68 +5,86 @@ import { SelectedInterestHeader } from "../components/select_interest/SelectedIn
 import { interestsList } from "../content/interests";
 
 export const SelectInterest = () => {
-	const [interests, setInterests] = useState([...interestsList]);
+  const [interests, setInterests] = useState([...interestsList]);
 
-	interests.sort((a, b) => a.localeCompare(b));
+  interests.sort((a, b) => a.value.localeCompare(b.value));
 
-	const [selectedInterests, setSelectedInterests] = useState([]);
+  const [selectedInterests, setSelectedInterests] = useState([]);
 
-	const [error, setError] = useState("");
+  const [selectedValue, setSelectedValue] = useState([])
 
-	const navigate = useNavigate();
+  const [error, setError] = useState("");
 
-	const onChangeSelect = (e) => {
-		const { value } = e.target;
+  const navigate = useNavigate();
 
-		if (selectedInterests.length === 0) {
-			setSelectedInterests((prev) => [...prev, value]);
-			setInterests(interests.filter((item) => item !== value));
-		} else {
-			if (selectedInterests.includes(value)) {
-				let filterInterest = selectedInterests.filter(
-					(item) => item !== value
-				);
-				setSelectedInterests(filterInterest);
-			} else {
-				setSelectedInterests((prev) => [...prev, value]);
-				setInterests(interests.filter((item) => item !== value));
-			}
-		}
-	};
+  const onChangeSelect = (e) => {
+    const { name, value } = e.target;
+	const selectedItem = {
+		title: name,
+		value: value
+	}
 
+    if (selectedInterests.length === 0) {
+      setSelectedInterests((prev) => [
+        ...prev,
+        selectedItem,
+      ]);
+      setInterests(interests.filter((item) => item.value !== value));
+	  setSelectedValue(prev => [...prev, value])
+    } else {
+      if (
+        selectedInterests.includes(selectedItem)
+      ) {
+        setSelectedInterests(
+          selectedInterests.filter((item) => item.value !== selectedItem.value)
+        );
+		setSelectedValue(selectedValue.filter(val => val !== selectedItem.value))
 
-	const onChangeRemoveSelect = (e) => {
-		const { value } = e.target;
-		setSelectedInterests(
-			selectedInterests.filter((item) => item !== value)
-		);
-		setInterests((prev) => [...prev, value]);
-	};
+      } else {
+        setSelectedInterests((prev) => [
+          ...prev,
+          selectedItem,
+        ]);
+        setInterests(interests.filter((item) => item.value !== value));
+		setSelectedValue(prev => [...prev, selectedItem.value])
+      }
+    }
+  };
 
-	const handleSubmit = (e) => {
-		e.preventDefault();
-		// console.log(selectedInterests)
-		if (selectedInterests.length >= 3) {
-			console.log(selectedInterests);
-			localStorage.setItem("hobbies", JSON.stringify(selectedInterests));
-			navigate("/setup/ideal_match");
-		} else {
-			setError("* Please select at least 3 hobbies");
-		}
-	};
+  const onChangeRemoveSelect = (e) => {
+    const { name, value } = e.target;
+	const selectedItem = {
+		title: name,
+		value: value
+	}
+    setSelectedInterests(selectedInterests.filter((item) => item.value !== value));
+    setInterests((prev) => [...prev, selectedItem]);
+	setSelectedValue(selectedValue.filter(val => val !== value))
+  };
 
-	return (
-		<div className="inline-flex flex-col w-full h-auto pt-6 overflow-hidden md:items-center">
-			<SelectedInterestHeader onChange={onChangeSelect} />
-			<SelectedInterestForm
-				onSubmit={handleSubmit}
-				array={interests}
-				selectedList={selectedInterests}
-				onChangeRemoveSelect={onChangeRemoveSelect}
-				onChangeSelect={onChangeSelect}
-				error={error}
-			/>
-		</div>
-	);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // console.log(selectedInterests)
+    if (selectedInterests.length >= 3) {
+      console.log(selectedInterests);
+      localStorage.setItem("hobbies", JSON.stringify(selectedValue));
+      navigate("/setup/ideal_match");
+    } else {
+      setError("* Please select at least 3 hobbies");
+    }
+  };
 
+  return (
+    <div className="inline-flex flex-col w-full h-auto pt-6 overflow-hidden md:items-center">
+      <SelectedInterestHeader onChange={onChangeSelect} />
+      <SelectedInterestForm
+        onSubmit={handleSubmit}
+        array={interests}
+        selectedList={selectedInterests}
+        onChangeRemoveSelect={onChangeRemoveSelect}
+        onChangeSelect={onChangeSelect}
+        error={error}
+      />
+    </div>
+  );
 };
