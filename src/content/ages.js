@@ -1,2 +1,4 @@
-const ages = Array.from({ length: 100 }, (_, i) => i + 1);
+const ages = Array(100 - 18 + 1)
+	.fill()
+	.map((_, idx) => 18 + idx);
 export default ages;
