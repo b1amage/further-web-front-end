@@ -20,6 +20,7 @@ const authenticationApi = {
 		try {
 			const response = await axiosClient.post(url, values);
 			console.log(response);
+			navigate("/");
 			return response;
 		} catch (error) {
 			console.log("error:", error);

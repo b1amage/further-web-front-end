@@ -5,6 +5,8 @@ import Button from "../utilities/Button";
 import { Link } from "react-router-dom";
 
 const SetupImagePage = () => {
+	localStorage.setItem("images", []);
+
 	return (
 		<div className="page-container">
 			<Header title="Add Your Best Photos" />
