@@ -29,6 +29,22 @@ const authenticationApi = {
 		}
 	},
 
+	async logout(navigate) {
+		const url = "/auth/logout";
+		console.log("call logout");
+
+		try {
+			const response = await axiosClient.delete(url);
+			console.log(response);
+			navigate("/");
+			return response;
+		} catch (error) {
+			console.log("error:", error);
+			// navigate to logout fail
+			navigate(`/error/${error.response.data.msg}`);
+		}
+	},
+
 	async createProfile() {
 		const info = JSON.parse(localStorage.getItem("info"));
 		const images = JSON.parse(localStorage.getItem("images"));

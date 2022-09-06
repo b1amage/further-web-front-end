@@ -5,8 +5,16 @@ import NavBar from "../components/navbar/NavBar";
 import avatar from "../assets/img/girl5.jpeg";
 import ProfileOption from "../components/profile/ProfileOption";
 import profileOptions from "../content/profileOption";
+import logout from "../assets/svg/logout.svg";
+import { useNavigate } from "react-router-dom";
+import authenticationApi from "../api/authenticationApi";
 
 const ProfilePage = () => {
+	const navigate = useNavigate();
+
+	const handleLogout = (navigate) => {
+		authenticationApi.logout(navigate);
+	};
 	return (
 		<div className="page-container">
 			<Header title="Profile" />
@@ -29,8 +37,12 @@ const ProfilePage = () => {
 							title={item.title}
 							navigatable={item.navigatable}
 							tooglable={item.tooglable}
+							isLogout={item.isLogout}
 						/>
 					))}
+				<div onClick={() => handleLogout(navigate)}>
+					<ProfileOption icon={logout} title={"Log out"} />
+				</div>
 			</div>
 
 			<NavBar />

@@ -48,7 +48,7 @@ const ProfileOption = ({ title, icon, to, navigatable, tooglable }) => {
 	);
 };
 
-const Container = ({ navigatable, to, children, className }) => {
+const Container = ({ navigatable, to, children, className, onClick }) => {
 	return (
 		<>
 			{navigatable ? (
@@ -56,7 +56,9 @@ const Container = ({ navigatable, to, children, className }) => {
 					{children}
 				</Link>
 			) : (
-				<div className={className}>{children}</div>
+				<div onClick={onClick} className={className}>
+					{children}
+				</div>
 			)}
 		</>
 	);

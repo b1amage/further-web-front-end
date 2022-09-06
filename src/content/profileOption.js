@@ -1,6 +1,5 @@
 import profile from "../assets/svg/profile-pink.svg";
 import eye from "../assets/svg/eye.svg";
-import logout from "../assets/svg/logout.svg";
 import register from "../assets/svg/register.svg";
 import login from "../assets/svg/login.svg";
 
@@ -31,14 +30,7 @@ const profileOptions = [
 		icon: eye,
 		to: "/profile",
 		navigatable: false,
-		tooglable: logout,
-	},
-	{
-		title: "logout",
-		icon: profile,
-		to: "/",
-		navigatable: true,
-		tooglable: false,
+		tooglable: true,
 	},
 ];
 
