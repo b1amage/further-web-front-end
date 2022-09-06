@@ -25,7 +25,7 @@ const Select = ({ options, label, required, fluid, value, onChange, err }) => {
 							<option
 								value={item}
 								key={item}
-								className="appearance-none "
+								className="appearance-none"
 							>
 								{item}
 							</option>
