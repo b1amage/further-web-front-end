@@ -22,6 +22,7 @@ const authenticationApi = {
 				withCredentials: true,
 			});
 			console.log(response);
+			localStorage.setItem("user", JSON.stringify(response.data.user));
 			navigate("/");
 			return response;
 		} catch (error) {
@@ -73,6 +74,14 @@ const authenticationApi = {
 		} catch (err) {
 			console.log(err);
 		}
+	},
+
+	isLogin() {
+		return JSON.parse(localStorage.getItem("user"));
+	},
+
+	isAdmin() {
+		return JSON.parse(localStorage.getItem("user")).role === "admin";
 	},
 };
 
