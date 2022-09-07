@@ -18,7 +18,9 @@ const authenticationApi = {
 		const url = "/auth/login";
 
 		try {
-			const response = await axiosClient.post(url, values);
+			const response = await axiosClient.post(url, values, {
+				withCredentials: true,
+			});
 			console.log(response);
 			navigate("/");
 			return response;
@@ -31,10 +33,11 @@ const authenticationApi = {
 
 	async logout(navigate) {
 		const url = "/auth/logout";
-		console.log("call logout");
 
 		try {
-			const response = await axiosClient.delete(url);
+			const response = await axiosClient.delete(url, {
+				withCredentials: true,
+			});
 			console.log(response);
 			navigate("/");
 			return response;
