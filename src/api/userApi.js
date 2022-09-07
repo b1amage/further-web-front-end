@@ -1,16 +1,19 @@
 import axiosClient from "./axiosClient";
 
 const userApi = {
-	async getProfile(id, navigate) {
+	async getUser(id, navigate) {
 		const url = `/user/${id}`;
 		try {
-			const response = await axiosClient.get(url);
+			const response = await axiosClient.get(url, {
+				withCredentials: true,
+			});
 			console.log(response);
+
 			return response;
 		} catch (error) {
 			console.log(error);
 			// navigate to register fail
-			navigate(`/error/${error.response.data.msg}`);
+			// navigate(`/error/${error.response.data.msg}`);
 		}
 	},
 

@@ -15,7 +15,10 @@ const ProfileOption = ({ title, icon, to, navigatable, tooglable }) => {
 			className="py-3 hover:text-primary-100 transition-all duration-300 md:py-5 lg:py-8 cursor-pointer flex items-center justify-between border-y-[0.5px] md:border-y-[1px] border-gray"
 		>
 			<div className="flex items-center gap-5 lg:gap-8">
-				<NavButton className="!rounded-full w-[56px] h-[56px] md:w-[70px] md:h-[70px]">
+				<NavButton
+					isDown
+					className="!rounded-full w-[56px] h-[56px] md:w-[70px] md:h-[70px]"
+				>
 					<img src={icon} alt="" />
 				</NavButton>
 
