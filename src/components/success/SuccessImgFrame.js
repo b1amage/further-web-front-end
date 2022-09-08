@@ -1,12 +1,14 @@
 import React from "react";
-import successMatch from "../../assets/svg/success-match.svg";
-import boy from "../../assets/img/boyy.jpeg";
-import girl from "../../assets/img/girl2.jpeg";
+import { AiFillHeart } from "react-icons/ai";
+// import successMatch from "../../assets/svg/success-match.svg";
+// import boy from "../../assets/img/boyy.jpeg";
+// import girl from "../../assets/img/girl2.jpeg";
 
 const SuccessImgFrame = () => {
 	return (
 		<div className="relative h-[350px] my-10 md:my-14 lg:my-16 flex items-center justify-center">
-			<div className="absolute inset-0 z-10 flex items-center justify-center w-full mx-auto -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
+			<AiFillHeart className="text-[100px] text-primary-100 md:text-[160px] lg:text-[200px] animate-bounce"></AiFillHeart>
+			{/* <div className="absolute inset-0 z-10 flex items-center justify-center w-full mx-auto -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
 				<img src={successMatch} alt="" />
 			</div>
 
@@ -32,7 +34,7 @@ const SuccessImgFrame = () => {
 						className="object-cover w-full h-full"
 					/>
 				</div>
-			</div>
+			</div> */}
 		</div>
 	);
 };
