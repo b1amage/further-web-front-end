@@ -1,19 +1,36 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Pagination } from "swiper";
 import "swiper/scss";
 import "swiper/css/pagination";
+import userApi from "../api/userApi";
+import { useNavigate } from "react-router-dom";
 
 import DetailModel from "../components/detail/DetailModel";
 
-import girlPhotos from "../content/girls";
+import Header from "../components/header/Header";
 
 SwiperCore.use([Pagination]);
 
 const UserDetailPage = () => {
+	const [user, setUser] = useState();
+	const navigate = useNavigate();
+
+	useEffect(() => {
+		const id = JSON.parse(localStorage.getItem("user")).userId;
+
+		const getUser = async () => {
+			const response = await userApi.getUser(id, navigate);
+			setUser(response.data.user);
+		};
+
+		getUser();
+	}, [navigate]);
+
 	return (
-		<div className="relative mx-auto">
+		<div className="relative mx-auto page-container">
+			<Header title={user?.username} />
 			<div className="grid w-full h-screen mx-auto detail lg:hidden">
 				<Swiper
 					pagination={{ clickable: true }}
@@ -21,8 +38,8 @@ const UserDetailPage = () => {
 					spaceBetween={40}
 					slidesPerView="auto"
 				>
-					{girlPhotos.length > 0 &&
-						girlPhotos.map((item, index) => (
+					{user?.images?.length > 0 &&
+						user?.images.map((item, index) => (
 							<SwiperSlide key={index}>
 								<img
 									src={item}
@@ -37,8 +54,8 @@ const UserDetailPage = () => {
 			</div>
 
 			<div className="hidden grid-cols-3 gap-5 lg:grid page-container">
-				{girlPhotos.length > 0 &&
-					girlPhotos.map((item, index) => (
+				{user?.images?.length > 0 &&
+					user?.images.map((item, index) => (
 						<div
 							key={index}
 							className="w-[400px] shadow-2xl cursor-pointer shadow-primary-100 h-[400px] rounded-[24px] overflow-hidden"
@@ -52,7 +69,7 @@ const UserDetailPage = () => {
 					))}
 			</div>
 
-			<DetailModel />
+			<DetailModel user={user} />
 		</div>
 	);
 };
