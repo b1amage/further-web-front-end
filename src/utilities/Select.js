@@ -3,21 +3,30 @@ import dropdown from "../assets/svg/dropdown.svg";
 import Label from "./Label";
 import error from "../assets/svg/error.svg";
 
-const Select = ({ options, label, required, fluid, value, onChange, err }) => {
+const Select = ({
+	options,
+	label,
+	required,
+	fluid,
+	value,
+	onChange,
+	err,
+	id,
+}) => {
 	return (
 		<div
 			className={`flex lg:space-y-4 flex-col space-y-2 ${
 				fluid ? "w-full" : "w-1/2"
 			}`}
 		>
-			<Label label={label} required={required} />
+			<Label id={id} label={label} required={required} />
 
 			<div className="relative !text-dark-2 dark:!text-white">
 				<select
 					value={value}
 					onChange={onChange}
-					name={label}
-					id={label}
+					name={id || label}
+					id={id || label}
 					className="block w-full px-4 py-2 transition-all duration-300 bg-transparent border-2 rounded-full outline-none appearance-none focus:border-secondary bg-trasparent md:text-base md:px-6 md:py-4 border-primary-100"
 				>
 					{options?.length > 0 &&

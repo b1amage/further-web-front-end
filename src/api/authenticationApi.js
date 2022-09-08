@@ -40,6 +40,7 @@ const authenticationApi = {
 				withCredentials: true,
 			});
 			console.log(response);
+			localStorage.removeItem("user");
 			navigate("/");
 			return response;
 		} catch (error) {
@@ -77,7 +78,7 @@ const authenticationApi = {
 	},
 
 	isLogin() {
-		return JSON.parse(localStorage.getItem("user"));
+		return localStorage.getItem("user");
 	},
 
 	isAdmin() {

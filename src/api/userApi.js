@@ -13,7 +13,23 @@ const userApi = {
 		} catch (error) {
 			console.log(error);
 			// navigate to register fail
-			// navigate(`/error/${error.response.data.msg}`);
+			navigate(`/error/${error.response.data.msg}`);
+		}
+	},
+
+	async updateProfile(id, values, navigate) {
+		const url = `/user/${id}`;
+		try {
+			const response = await axiosClient.patch(url, values, {
+				withCredentials: true,
+			});
+			console.log(response);
+
+			return response;
+		} catch (error) {
+			console.log(error);
+			// navigate to register fail
+			navigate(`/error/${error.response.data.msg}`);
 		}
 	},
 

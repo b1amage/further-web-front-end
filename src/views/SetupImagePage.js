@@ -5,7 +5,7 @@ import Button from "../utilities/Button";
 import { Link } from "react-router-dom";
 
 const SetupImagePage = () => {
-	localStorage.setItem("images", []);
+	localStorage.setItem("images", JSON.stringify([]));
 
 	return (
 		<div className="page-container">
@@ -22,6 +22,7 @@ const SetupImagePage = () => {
 						<ImgFrame key={index} id={index} />
 					))}
 			</div>
+
 			<Link to="/setup/interest">
 				<Button primary className="my-10">
 					Next

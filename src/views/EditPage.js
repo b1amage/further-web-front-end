@@ -10,10 +10,12 @@ import ages from "../content/ages";
 import genders from "../content/genders";
 import majors from "../content/majors";
 import { useNavigate } from "react-router-dom";
+import schools from "../content/schools";
 
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import locations from "../content/locations";
+import SectionTitle from "../utilities/SectionTitle";
 
 const EditPage = () => {
 	const navigate = useNavigate();
@@ -23,13 +25,16 @@ const EditPage = () => {
 			name: "",
 			email: "",
 			phone: "",
-			gender: "",
+			gender: genders[0],
 			age: 18,
 			from: 18,
 			to: 24,
 			about: "",
-			major: "",
-			location: "",
+			major: majors[0],
+			location: locations[0],
+			school: schools[0],
+			interestGender: genders[0],
+			interestLocation: locations[0],
 		},
 		validationSchema: Yup.object({
 			name: Yup.string().required("Please fill in this field!"),
@@ -51,10 +56,14 @@ const EditPage = () => {
 			to: Yup.string().required("Please select an option!"),
 			major: Yup.string().required("Please select an option!"),
 			location: Yup.string().required("Please select an option!"),
+			school: Yup.string().required("Please select an option!"),
+			interestGender: Yup.string().required("Please select an option!"),
+			interestLocation: Yup.string().required("Please select an option!"),
 		}),
 		onSubmit: (values) => {
 			console.log(values);
-			navigate("/profile");
+			localStorage.setItem("updateInfo", JSON.stringify(values));
+			navigate("/setup/img");
 		},
 	});
 
@@ -66,6 +75,7 @@ const EditPage = () => {
 				onSubmit={formik.handleSubmit}
 				className="flex flex-col gap-5 my-10 lg:gap-8"
 			>
+				<SectionTitle>Personal information</SectionTitle>
 				<Input
 					placeholder="Kyle Nguyen"
 					required={true}
@@ -114,31 +124,21 @@ const EditPage = () => {
 					/>
 				</div>
 
-				<div className="flex items-center gap-5">
-					<Select
-						required={true}
-						label="from"
-						options={ages}
-						value={formik.values.from}
-						onChange={formik.handleChange}
-						err={formik.errors.from}
-					/>
-					<Select
-						required={true}
-						label="to"
-						options={ages}
-						value={formik.values.to}
-						onChange={formik.handleChange}
-						err={formik.errors.to}
-					/>
-				</div>
-
 				<TextArea
 					placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
 					label="about"
 					value={formik.values.about}
 					onChange={formik.handleChange}
 					err={formik.errors.about}
+				/>
+
+				<Select
+					fluid
+					label="school"
+					options={schools}
+					value={formik.values.school}
+					onChange={formik.handleChange}
+					err={formik.errors.school}
 				/>
 
 				<Select
@@ -160,6 +160,48 @@ const EditPage = () => {
 					onChange={formik.handleChange}
 					err={formik.errors.location}
 				/>
+
+				<SectionTitle>Interest in</SectionTitle>
+
+				<div className="flex items-center gap-5">
+					<Select
+						required={true}
+						label="from"
+						options={ages}
+						value={formik.values.from}
+						onChange={formik.handleChange}
+						err={formik.errors.from}
+					/>
+					<Select
+						required={true}
+						label="to"
+						options={ages}
+						value={formik.values.to}
+						onChange={formik.handleChange}
+						err={formik.errors.to}
+					/>
+				</div>
+
+				<div className="flex items-center gap-5">
+					<Select
+						required={true}
+						id="interestGender"
+						label="gender"
+						options={genders}
+						value={formik.values.interestGender}
+						onChange={formik.handleChange}
+						err={formik.errors.interestGender}
+					/>
+					<Select
+						required={true}
+						id="interestLocation"
+						label="location"
+						options={locations}
+						value={formik.values.interestLocation}
+						onChange={formik.handleChange}
+						err={formik.errors.interestLocation}
+					/>
+				</div>
 
 				<Button primary type="submit" className="mt-8">
 					Save changes
