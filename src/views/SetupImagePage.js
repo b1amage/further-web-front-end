@@ -28,13 +28,13 @@ const SetupImagePage = () => {
 				primary
 				className="my-10"
 				onClick={() => {
-					if (
-						JSON.parse(localStorage.getItem("images"))?.length < 1
-					) {
-						return;
-					} else {
-						navigate("/setup/interest");
-					}
+					// if (
+					// 	JSON.parse(localStorage.getItem("images"))?.length < 1
+					// ) {
+					// 	return;
+					// } else {
+					navigate("/setup/interest");
+					// }
 				}}
 			>
 				Next
