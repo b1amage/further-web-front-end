@@ -22,10 +22,10 @@ const SetupPage = () => {
 	const formik = useFormik({
 		initialValues: {
 			phone: "",
-			gender: "",
-			major: "",
-			location: "",
-			school: "",
+			gender: genders[0],
+			major: majors[0],
+			location: locations[0],
+			school: schools[0],
 		},
 		validationSchema: Yup.object({
 			phone: Yup.string()

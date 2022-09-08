@@ -21,7 +21,7 @@ const HomePage = () => {
 
 	useEffect(() => {
 		const getProfiles = async () => {
-			const response = await userApi.getInterestProfile(null);
+			const response = await userApi.getInterestProfile();
 
 			console.log("on use effect", response);
 			setProfile(response.data.results[0]);

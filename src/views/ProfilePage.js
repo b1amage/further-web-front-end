@@ -28,7 +28,9 @@ const ProfilePage = () => {
 			setUser(response.data.user);
 		};
 
-		getUser();
+		if (JSON.parse(localStorage.getItem("user"))) {
+			getUser();
+		}
 	}, [navigate]);
 
 	return (

@@ -1,9 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
+import userApi from "../api/userApi";
 import Header from "../components/header/Header";
 import MatchCard from "../components/match/MatchCard";
 import NavBar from "../components/navbar/NavBar";
 
 const AllMatchPage = () => {
+	useEffect(() => {
+		const getPeople = async () => {
+			const response = await userApi.getPeopleLiked();
+
+			console.log(response);
+		};
+
+		getPeople();
+	}, []);
+
 	return (
 		<div className="page-container">
 			<Header title="All match (269)" />

@@ -33,6 +33,22 @@ const userApi = {
 		}
 	},
 
+	async getPeopleLiked(navigate) {
+		const url = `/swipe/getWhoLikeYou`;
+		try {
+			const response = await axiosClient.get(url, {
+				withCredentials: true,
+			});
+			console.log(response);
+
+			return response;
+		} catch (error) {
+			console.log(error);
+			// navigate to register fail
+			navigate(`/error/${error.response.data.msg}`);
+		}
+	},
+
 	async swipe(id, like, navigate) {
 		const url = `/swipe/swipeProfile`;
 		const values = {
