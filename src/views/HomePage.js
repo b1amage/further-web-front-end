@@ -37,7 +37,7 @@ const HomePage = () => {
 		// TODO: check if matched
 		const peopleLiked = await userApi.getPeopleLiked(navigate);
 
-		const peopleLikedId = peopleLiked.map((item) => item._id);
+		const peopleLikedId = peopleLiked.data.results.map((item) => item._id);
 		if (peopleLikedId.includes(profile._id)) {
 			navigate(
 				`/success/${profile._id}/${
