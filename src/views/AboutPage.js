@@ -9,7 +9,7 @@ const AboutPage = () => {
 		<div className="page-container">
 			<Header title="About us" />
 
-			<div className="grid grid-cols-1 gap-5 my-8 lg:gap-10 md:grid-cols-2 lg:grid-cols-3 place-items-center">
+			<div className="grid grid-cols-1 gap-5 my-8 lg:gap-10 md:grid-cols-2 xl:grid-cols-3 place-items-center">
 				{about.length > 0 &&
 					about.map((item, index) => (
 						<AboutCard

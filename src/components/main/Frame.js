@@ -8,11 +8,10 @@ import "swiper/css/pagination";
 import OptionButtonFrame from "./OptionButtonFrame";
 import UserInfo from "./UserInfo";
 
-import girlPhotos from "../../content/girls";
-
 SwiperCore.use([Pagination]);
 
-const Frame = () => {
+const Frame = ({ profile, handleAccept, handleRefuse }) => {
+	console.log("frame", profile?.images);
 	return (
 		<div className="main grid h-[620px] w-[380px] lg:w-[600px] lg:h-[1000px] max-w-[95%] mx-auto grid-cols-1 rounded-[36px] mb-20 relative">
 			<Swiper
@@ -21,8 +20,8 @@ const Frame = () => {
 				spaceBetween={40}
 				slidesPerView="auto"
 			>
-				{girlPhotos.length > 0 &&
-					girlPhotos.map((item, index) => (
+				{profile?.images?.length > 0 &&
+					profile?.images.map((item, index) => (
 						<SwiperSlide key={index}>
 							<img
 								src={item}
@@ -30,15 +29,19 @@ const Frame = () => {
 								className="block object-cover w-full h-full rounded-[36px] relative before:bg-gradient-to-b from-transparent to-primary-100 before:overflow-hidden before:bottom-0 before:rounded-[36px] before:w-full before:h-3/5 before:absolute"
 							/>
 							<UserInfo
-								name="Kyle's wife"
-								age={20}
-								school="SSET"
+								name={profile?.username}
+								age={profile?.age}
+								school={profile?.school}
 							/>
 						</SwiperSlide>
 					))}
 			</Swiper>
 
-			<OptionButtonFrame primary />
+			<OptionButtonFrame
+				primary
+				handleAccept={handleAccept}
+				handleRefuse={handleRefuse}
+			/>
 		</div>
 	);
 };

@@ -1,13 +1,12 @@
 import React from "react";
-import girlPhotos from "../../content/girls";
 import OptionButtonFrame from "./OptionButtonFrame";
 
-const Grid = () => {
+const Grid = ({ profile, handleAccept, handleRefuse }) => {
 	return (
 		<div className="relative">
 			<div className="grid grid-cols-3 gap-5 p-5 my-5">
-				{girlPhotos.length > 0 &&
-					girlPhotos.map((item, index) => (
+				{profile?.images?.length > 0 &&
+					profile?.images.map((item, index) => (
 						<div
 							key={index}
 							className="overflow-hidden shadow-2xl shadow-primary-100 cursor-pointer h-[320px] lg:h-[500px] rounded-[36px]"
@@ -24,15 +23,16 @@ const Grid = () => {
 			<div className="flex rounded-[36px] shadow-2xl shadow-primary-100 justify-between p-8 my-5 bg-gradient-to-br from-primary-50 to-primary-100 via-primary-80">
 				<div className="flex flex-col gap-4 text-white lg:gap-6">
 					<h3 className="text-4xl font-semibold lg:text-6xl">
-						<span>Vo Thuy Hang</span>
-						<span>, 21</span>
+						<span>{profile?.username}</span>
+						<span>, {profile?.age}</span>
 					</h3>
-					<p className="text-lg lg:text-2xl">
-						Information Technology
-					</p>
+					<p className="text-lg lg:text-2xl">{profile?.school}</p>
 				</div>
 
-				<OptionButtonFrame />
+				<OptionButtonFrame
+					handleAccept={handleAccept}
+					handleRefuse={handleRefuse}
+				/>
 			</div>
 		</div>
 	);

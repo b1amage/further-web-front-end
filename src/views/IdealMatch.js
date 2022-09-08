@@ -47,8 +47,8 @@ export const IdealMatch = () => {
 					biography: updateInfo.about,
 					interested: {
 						interestedGender: updateInfo.interestGender,
-						interestedMinAge: updateInfo.from,
-						interestedMaxAge: updateInfo.to,
+						interestedMinAge: updateInfo.from * 1,
+						interestedMaxAge: updateInfo.to * 1,
 						interestedLocations: [updateInfo.interestLocation],
 					},
 				};

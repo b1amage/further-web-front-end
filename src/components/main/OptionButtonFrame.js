@@ -2,21 +2,14 @@ import React from "react";
 import HeroButton from "./HeroButton";
 import emptyHeart from "../../assets/svg/empty-heart.svg";
 import x from "../../assets/svg/x.svg";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 
-const OptionButtonFrame = ({ primary }) => {
-	const navigate = useNavigate();
-
-	const handleMatch = () => {
-		navigate(`/success/3/4`);
-	};
-	const handleReject = () => {
-		navigate(`/`);
-	};
+const OptionButtonFrame = ({ primary, handleAccept, handleRefuse }) => {
+	// const navigate = useNavigate();
 
 	const buttons = [
-		{ icon: x, onClick: handleReject },
-		{ icon: emptyHeart, onClick: handleMatch },
+		{ icon: x, onClick: handleRefuse },
+		{ icon: emptyHeart, onClick: handleAccept },
 	];
 
 	return (
