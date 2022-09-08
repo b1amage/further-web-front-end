@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import Button from "../../utilities/Button";
 import authenticationApi from "../../api/authenticationApi";
 
-const NoMore = () => {
+const NoMore = ({ isInMatch }) => {
 	return (
 		<div className="flex flex-col gap-10 text-center items-center justify-center h-[600px] md:h-[800px] lg:h-[700px]">
 			<FaHeartBroken className="text-8xl text-primary-100" />
@@ -21,7 +21,7 @@ const NoMore = () => {
 						primary
 						className="transition-all duration-300 hover:-translate-y-2 hover:shadow-md"
 					>
-						Go to profile setttings
+						{isInMatch ? "Keep swiping" : "Go to profile setttings"}
 					</Button>
 				</Link>
 			) : (
@@ -30,7 +30,7 @@ const NoMore = () => {
 						primary
 						className="transition-all duration-300 hover:-translate-y-2 hover:shadow-md"
 					>
-						Login
+						Go to login
 					</Button>
 				</Link>
 			)}

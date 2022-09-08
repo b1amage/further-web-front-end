@@ -2,9 +2,10 @@ import React from "react";
 import Header from "../components/header/Header";
 import ImgFrame from "../components/setup/ImgFrame";
 import Button from "../utilities/Button";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const SetupImagePage = () => {
+	const navigate = useNavigate();
 	localStorage.setItem("images", JSON.stringify([]));
 
 	return (
@@ -23,11 +24,21 @@ const SetupImagePage = () => {
 					))}
 			</div>
 
-			<Link to="/setup/interest">
-				<Button primary className="my-10">
-					Next
-				</Button>
-			</Link>
+			<Button
+				primary
+				className="my-10"
+				onClick={() => {
+					if (
+						JSON.parse(localStorage.getItem("images"))?.length < 1
+					) {
+						return;
+					} else {
+						navigate("/setup/interest");
+					}
+				}}
+			>
+				Next
+			</Button>
 		</div>
 	);
 };

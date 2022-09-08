@@ -1,9 +1,15 @@
 import React from "react";
 import girl2 from "../../assets/img/girl2.jpeg";
+import { useNavigate } from "react-router-dom";
 
 const MatchCard = ({ primary, secondary, user }) => {
+	const navigate = useNavigate();
+
 	return (
-		<div className="relative overflow-hidden shrink-0 snap-center scroll-ctn">
+		<div
+			onClick={() => navigate(`/user/${user.userId}`)}
+			className="relative overflow-hidden cursor-pointer shrink-0 snap-center scroll-ctn"
+		>
 			<div
 				className={`${
 					primary

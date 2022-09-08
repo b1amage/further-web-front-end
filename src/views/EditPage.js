@@ -20,19 +20,22 @@ import SectionTitle from "../utilities/SectionTitle";
 const EditPage = () => {
 	const navigate = useNavigate();
 
+	const info = JSON.parse(localStorage.getItem("info"));
+	const user = JSON.parse(localStorage.getItem("user"));
+
 	const formik = useFormik({
 		initialValues: {
-			name: "",
-			email: "",
-			phone: "",
-			gender: genders[0],
+			name: user.name,
+			email: user.email,
+			phone: user.phone,
+			gender: info.gender,
 			age: 18,
 			from: 18,
 			to: 24,
 			about: "",
-			major: majors[0],
-			location: locations[0],
-			school: schools[0],
+			major: info.major,
+			location: info.location,
+			school: info.school,
 			interestGender: genders[0],
 			interestLocation: locations[0],
 		},

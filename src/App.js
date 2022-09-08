@@ -38,8 +38,8 @@ function App() {
 				<Route path="/" element={<HomePage />} />
 				<Route path="/about" element={<AboutPage />} />
 				<Route path="/match/:userId" element={<MatchPage />} />
-				<Route path="/match/all/:userId" element={<AllMatchPage />} />
-				<Route path="/user" element={<UserDetailPage />} />
+				<Route path="/match/all" element={<AllMatchPage />} />
+				<Route path="/user/:id" element={<UserDetailPage />} />
 				<Route path="/register" element={<RegisterPage />} />
 				<Route path="/login" element={<LoginPage />} />
 				<Route path="/verify-email" element={<VerifyEmailPage />} />

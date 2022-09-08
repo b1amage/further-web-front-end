@@ -7,7 +7,7 @@ import profile from "../assets/svg/profile.svg";
 const navItems = [
 	{ logo: home, isActive: true, to: "/" },
 	{ logo: about, isActive: false, to: "/about" },
-	{ logo: heart, isActive: false, to: "/match/1" },
+	{ logo: heart, isActive: false, to: "/match/all" },
 	{ logo: chat, isActive: false, to: "/chat" },
 	{ logo: profile, isActive: false, to: "/profile" },
 ];

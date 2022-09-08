@@ -5,7 +5,7 @@ import SwiperCore, { Pagination } from "swiper";
 import "swiper/scss";
 import "swiper/css/pagination";
 import userApi from "../api/userApi";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 import DetailModel from "../components/detail/DetailModel";
 
@@ -16,9 +16,10 @@ SwiperCore.use([Pagination]);
 const UserDetailPage = () => {
 	const [user, setUser] = useState();
 	const navigate = useNavigate();
+	const { id } = useParams();
 
 	useEffect(() => {
-		const id = JSON.parse(localStorage.getItem("user")).userId;
+		// const id = JSON.parse(localStorage.getItem("user")).userId;
 
 		const getUser = async () => {
 			const response = await userApi.getUser(id, navigate);
@@ -26,7 +27,7 @@ const UserDetailPage = () => {
 		};
 
 		getUser();
-	}, [navigate]);
+	}, [navigate, id]);
 
 	return (
 		<div className="relative mx-auto page-container">
