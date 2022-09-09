@@ -44,7 +44,7 @@ const ImgFrame = ({ id }) => {
 
 							axios({
 								method: "post",
-								url: "http://localhost:8080/api/auth/upload-image",
+								url: "https://rmitinder.herokuapp.com/api/auth/upload-image",
 								data: bodyFormData,
 								headers: {
 									"Content-Type": "multipart/form-data",
