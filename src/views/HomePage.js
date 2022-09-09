@@ -6,6 +6,7 @@ import Grid from "../components/main/Grid";
 import userApi from "../api/userApi";
 import { useNavigate } from "react-router-dom";
 import NoMore from "../components/main/NoMore";
+import authenticationApi from "../api/authenticationApi";
 
 const HomePage = () => {
 	const [profile, setProfile] = useState();
@@ -24,10 +25,12 @@ const HomePage = () => {
 			const response = await userApi.getInterestProfile();
 
 			console.log("on use effect", response);
-			setProfile(response.data.results[0]);
+			setProfile(response?.data.results[0]);
 		};
 
-		getProfiles();
+		if (authenticationApi.isLogin()) {
+			getProfiles();
+		}
 	}, []);
 
 	const handleAccept = async () => {

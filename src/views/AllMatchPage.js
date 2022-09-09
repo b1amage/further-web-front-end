@@ -4,19 +4,26 @@ import Header from "../components/header/Header";
 import NoMore from "../components/main/NoMore";
 import MatchCard from "../components/match/MatchCard";
 import NavBar from "../components/navbar/NavBar";
+import { useNavigate } from "react-router-dom";
+import authenticationApi from "../api/authenticationApi";
 
 const AllMatchPage = () => {
 	const [people, setPeople] = useState([]);
+	const navigate = useNavigate();
 
 	useEffect(() => {
 		const getPeople = async () => {
-			const response = await userApi.getPeopleLiked();
+			const response = await userApi.getPeopleLiked(navigate);
 
 			setPeople(response.data.results);
 		};
 
-		getPeople();
-	}, []);
+		if (authenticationApi.isLogin()) {
+			getPeople();
+		} else {
+			setPeople(null);
+		}
+	}, [navigate]);
 
 	return (
 		<div className="page-container">
