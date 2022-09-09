@@ -10,6 +10,7 @@ const profileOptions = [
 		to: "/profile/edit",
 		navigatable: true,
 		tooglable: false,
+		requiredLogin: true,
 	},
 	{
 		title: "Register",

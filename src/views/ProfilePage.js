@@ -35,6 +35,7 @@ const ProfilePage = () => {
 				{profileOptions.length > 0 &&
 					profileOptions.map((item, index) => (
 						<ProfileOption
+							requiredLogin={item.requiredLogin}
 							key={index}
 							to={item.to}
 							icon={item.icon}
@@ -45,7 +46,11 @@ const ProfilePage = () => {
 						/>
 					))}
 				<div onClick={() => handleLogout(navigate)}>
-					<ProfileOption icon={logout} title={"Log out"} />
+					<ProfileOption
+						requiredLogin
+						icon={logout}
+						title={"Log out"}
+					/>
 				</div>
 			</div>
 

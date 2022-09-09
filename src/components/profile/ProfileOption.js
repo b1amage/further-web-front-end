@@ -4,15 +4,26 @@ import SectionTitle from "../../utilities/SectionTitle";
 import NavButton from "../navbar/NavButton";
 import useDarkMode from "../../hooks/useDarkMode";
 import arrow from "../../assets/svg/arrow.svg";
+import authenticationApi from "../../api/authenticationApi";
 
-const ProfileOption = ({ title, icon, to, navigatable, tooglable }) => {
+const ProfileOption = ({
+	title,
+	icon,
+	to,
+	navigatable,
+	tooglable,
+	requiredLogin,
+}) => {
 	const { isDarkMode, toggleDarkMode } = useDarkMode();
+	const isLogin = authenticationApi.isLogin();
 
 	return (
 		<Container
 			navigatable={navigatable}
 			to={to}
-			className="py-3 hover:text-primary-100 transition-all duration-300 md:py-5 lg:py-8 cursor-pointer flex items-center justify-between border-y-[0.5px] md:border-y-[1px] border-gray"
+			className={`py-3 hover:text-primary-100 transition-all duration-300 md:py-5 lg:py-8 cursor-pointer flex items-center justify-between border-y-[0.5px] md:border-y-[1px] border-gray ${
+				requiredLogin && !isLogin ? "hidden" : ""
+			}`}
 		>
 			<div className="flex items-center gap-5 lg:gap-8">
 				<NavButton
