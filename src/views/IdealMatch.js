@@ -39,7 +39,7 @@ export const IdealMatch = () => {
 				const values = {
 					username: updateInfo.name,
 					images,
-					age: updateInfo.age,
+					age: updateInfo.age * 1,
 					gender: updateInfo.gender,
 					location: updateInfo.location,
 					hobbies,
