@@ -31,12 +31,15 @@ import LoginPage from "./views/LoginPage";
 import VerifyEmailPage from "./views/VerifyEmailPage";
 import ErrorPage from "./views/ErrorPage";
 import DashboardPage from "./views/DashboardPage";
+import CheckMailPage from "./views/CheckMailPage";
 
 function App() {
 	return (
 		<>
 			<Routes>
 				<Route path="/" element={<HomePage />} />
+				<Route path="/checkmail" element={<CheckMailPage />} />
+
 				<Route path="/about" element={<AboutPage />} />
 				<Route path="/match/:userId" element={<MatchPage />} />
 				<Route path="/match/all" element={<AllMatchPage />} />

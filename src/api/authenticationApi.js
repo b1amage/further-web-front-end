@@ -6,6 +6,7 @@ const authenticationApi = {
 		try {
 			const response = await axiosClient.post(url, values);
 			console.log(response);
+			navigate("/checkmail");
 			return response;
 		} catch (error) {
 			console.log(error);
