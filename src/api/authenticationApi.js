@@ -65,6 +65,7 @@ const authenticationApi = {
 			location: info.location,
 			hobbies,
 			school: info.school,
+			biography: info.about,
 		};
 
 		console.log(profile);

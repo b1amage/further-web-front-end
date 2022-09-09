@@ -14,6 +14,7 @@ import locations from "../content/locations";
 import schools from "../content/schools";
 import useViewport from "../hooks/useViewport";
 import { useNavigate } from "react-router-dom";
+import TextArea from "../utilities/TextArea";
 
 const SetupPage = () => {
 	const { width } = useViewport();
@@ -22,6 +23,7 @@ const SetupPage = () => {
 	const formik = useFormik({
 		initialValues: {
 			phone: "",
+			about: "",
 			gender: genders[0],
 			major: majors[0],
 			location: locations[0],
@@ -73,6 +75,15 @@ const SetupPage = () => {
 					onChange={formik.handleChange}
 					err={formik.errors.phone}
 				/>
+
+				<TextArea
+					value={formik.values.about}
+					onChange={formik.handleChange}
+					err={formik.errors.about}
+					label="about"
+					placeholder="Something about you"
+				/>
+
 				<div className="flex flex-col lg:flex-row lg:gap-5">
 					<Select
 						fluid={width < 1284}
