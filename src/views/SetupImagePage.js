@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import Header from "../components/header/Header";
 import ImgFrame from "../components/setup/ImgFrame";
 import Button from "../utilities/Button";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import error from "../assets/svg/error.svg";
 
 const SetupImagePage = () => {
-	// const navigate = useNavigate();
+	const [showErr, setShowErr] = useState(false);
+	const navigate = useNavigate();
 	localStorage.setItem("images", JSON.stringify([]));
 
 	return (
@@ -14,6 +16,14 @@ const SetupImagePage = () => {
 			<p className="my-4 md:text-xl lg:text-2xl">
 				Add your best photos to get a higher amount of daily matches.
 			</p>
+			{showErr && (
+				<div className="flex items-center gap-4 p-4 text-red-600 bg-red-100 rounded-full">
+					<div>
+						<img src={error} alt="" />
+					</div>
+					<h3>Please upload at least one image</h3>
+				</div>
+			)}
 			<div className="grid grid-cols-2 gap-4 my-8 lg:gap-10 lg:grid-cols-3 place-items-center">
 				{Array(6)
 					.fill()
@@ -22,11 +32,21 @@ const SetupImagePage = () => {
 					))}
 			</div>
 
-			<Link to="/setup/interest">
-				<Button primary className="my-10">
-					Next
-				</Button>
-			</Link>
+			{/* <Link to="/setup/interest"> */}
+			<Button
+				onClick={() => {
+					if (JSON.parse(localStorage.getItem("images")).length < 1) {
+						setShowErr(true);
+						return;
+					}
+					navigate("/setup/interest");
+				}}
+				primary
+				className="my-10"
+			>
+				Next
+			</Button>
+			{/* </Link> */}
 		</div>
 	);
 };
