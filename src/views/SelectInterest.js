@@ -69,7 +69,7 @@ export const SelectInterest = () => {
 
 			console.log(data);
 
-			navigate("/setup/ideal_match");
+			navigate("/setup/ideal-match");
 		} else {
 			setError("* Please select at least 3 hobbies");
 		}

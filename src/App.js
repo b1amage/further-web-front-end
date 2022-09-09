@@ -46,24 +46,24 @@ function App() {
 				<Route path="/error/:err" element={<ErrorPage />} />
 
 				<Route
-					path="/forgot_password"
+					path="/forgot-password"
 					element={<ForgotPasswordPage />}
 				/>
 				<Route
-					path="/forgot_password/otp/:place"
+					path="/forgot-password/otp/:place"
 					element={<OtpPage />}
 				/>
 				<Route
-					path="/forgot_password/otp/:place/reset_password"
+					path="/reset-password"
 					element={<ResetPassword />}
 				/>
 				<Route
-					path="/forgot_password/otp/:place/reset_password/notification"
+					path="/reset-password/notification"
 					element={<NotificationPage />}
 				/>
 
 				<Route path="/chat" element={<ChatPage />} />
-				<Route path="/chat_details" element={<ChatDetails />} />
+				<Route path="/chat-details" element={<ChatDetails />} />
 				<Route
 					path="/success/:userId1/:userId2"
 					element={<SuccessMatchPage />}
@@ -74,7 +74,7 @@ function App() {
 				<Route path="/setup/img" element={<SetupImagePage />} />
 
 				<Route path="/setup/interest" element={<SelectInterest />} />
-				<Route path="/setup/ideal_match" element={<IdealMatch />} />
+				<Route path="/setup/ideal-match" element={<IdealMatch />} />
 
 				<Route path="*" element={<NotFoundPage />} />
 			</Routes>

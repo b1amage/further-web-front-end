@@ -1,45 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import { RememberPwd } from "./RememberPwd";
 import { SubmitFormButton } from "./SubmitFormButton";
-import { useNavigate, useParams } from "react-router-dom";
+
 import { InputBox } from "./InputBox";
-export const ResetPasswordForm = () => {
-  const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
-  const {place} = useParams()
-  const [newPwd, setNewPwd] = useState("")
-  const [confirmPwd, setConfirmPwd] = useState("")
-  const [error, setError] = useState("")
-  const onChangeNewPassword = (e) => {
-    setNewPwd(e.target.value)
-  }
 
-  const onChangeConfirmPassword = (e) => {
-    setConfirmPwd(e.target.value)
-  }
-
-  const navigate = useNavigate()
-
-  const validatePassword = (e) => {
-    e.preventDefault()
-    if (newPwd.length < 8){
-      setError("* Password must have at least 8 characters")
-    } else{
-      if (newPwd.length > 20){
-        setError("* Password length must not longer than 20 characters")
-      } else{
-        if (!passwordRegex.test(newPwd)){
-          setError("* Invalid password")
-        } else{
-          if (newPwd !== confirmPwd){
-            setError("* Invalid password")
-          } else{
-            navigate(`/forgot_password/otp/${place}/reset_password/notification`)
-          }
-        }
-      }
-    }
-  };
-
+export const ResetPasswordForm = ({validatePassword, newPwd, onChangeNewPassword, confirmPwd, onChangeConfirmPassword, error}) => {
   return (
     <div className="mt-[60px]">
       <form onSubmit={validatePassword}>
