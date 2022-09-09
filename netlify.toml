@@ -1,6 +1,6 @@
 [[redirects]]
   from = "/api/*"
-  to = "http://localhost:8080/api/:splat"
+  to = "https://rmitinder.herokuapp.com/api/:splat"
   status = 200
   force = true
   headers = {X-From = "Netlify"}
