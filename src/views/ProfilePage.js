@@ -25,7 +25,7 @@ const ProfilePage = () => {
 
 			<div className="w-[120px] h-[120px] md:w-[180px] md:h-[180px] lg:w-[200px] lg:h-[200px] md:my-10 lg:my-14 my-6 rounded-full overflow-hidden mx-auto">
 				<img
-					src={avatar}
+					src={avatar || holder}
 					alt=""
 					className="object-cover w-full h-full"
 				/>
