@@ -38,6 +38,19 @@ module.exports = {
 				required: "#DA1414",
 				gray5: "#F4F6F9",
 			},
+			keyframes: {
+				beat: {
+					"0%": { scale: "1" },
+					"50%": { scale: "0.6" },
+				},
+				breath: {
+					"50%": { color: "#FD788C" },
+				},
+			},
+			animation: {
+				beat: "beat 1s ease-in-out infinite",
+				breath: "breath 1s ease-in-out infinite",
+			},
 		},
 		fontFamily: {
 			sourceSansPro: ["Source Sans Pro", "sans-serif"],

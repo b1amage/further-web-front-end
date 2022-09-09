@@ -7,9 +7,11 @@ import userApi from "../api/userApi";
 import { useNavigate } from "react-router-dom";
 import NoMore from "../components/main/NoMore";
 import authenticationApi from "../api/authenticationApi";
+import Loading from "../utilities/Loading";
 
 const HomePage = () => {
 	const [profile, setProfile] = useState();
+	const [loading, setLoading] = useState(true);
 
 	const navigate = useNavigate();
 
@@ -22,10 +24,15 @@ const HomePage = () => {
 
 	useEffect(() => {
 		const getProfiles = async () => {
+			setLoading(true);
+
 			const response = await userApi.getInterestProfile();
 
 			console.log("on use effect", response);
+
 			setProfile(response?.data.results[0]);
+
+			setLoading(false);
 		};
 
 		if (authenticationApi.isLogin()) {
@@ -48,18 +55,23 @@ const HomePage = () => {
 		// 		}`
 		// 	);
 		// }
-
+		setLoading(true);
 		// call new api
 		const newUser = await getNewProfile();
 		setProfile(newUser);
 		console.log("profile", profile);
+		setLoading(false);
 	};
 	const handleRefuse = async () => {
 		console.log("che");
 		await userApi.swipe(profile._id, false, navigate);
+
+		setLoading(true);
+
 		const newUser = await getNewProfile();
 		setProfile(newUser);
 		console.log("profile", profile);
+		setLoading(false);
 	};
 
 	return (
@@ -67,7 +79,9 @@ const HomePage = () => {
 			<Header />
 			<NavBar />
 
-			{profile ? (
+			{loading ? (
+				<Loading />
+			) : profile ? (
 				<>
 					<div className="md:hidden">
 						<Frame

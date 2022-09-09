@@ -6,16 +6,20 @@ import MatchCard from "../components/match/MatchCard";
 import NavBar from "../components/navbar/NavBar";
 import { useNavigate } from "react-router-dom";
 import authenticationApi from "../api/authenticationApi";
+import Loading from "../utilities/Loading";
 
 const AllMatchPage = () => {
 	const [people, setPeople] = useState([]);
+	const [loading, setLoading] = useState(true);
 	const navigate = useNavigate();
 
 	useEffect(() => {
 		const getPeople = async () => {
+			setLoading(true);
 			const response = await userApi.getPeopleLiked(navigate);
 
 			setPeople(response.data.results);
+			setLoading(false);
 		};
 
 		if (authenticationApi.isLogin()) {
@@ -29,7 +33,9 @@ const AllMatchPage = () => {
 		<div className="page-container">
 			<Header title={`All match (${people?.length || 0})`} />
 
-			{people ? (
+			{loading ? (
+				<Loading />
+			) : people ? (
 				<div className="grid grid-cols-1 gap-5 my-10 md:gap-y-8 lg:gap-y-10 md:grid-cols-3 xl:grid-cols-4 place-items-center">
 					{people?.length > 0 &&
 						people.map((item, index) => (
