@@ -1,11 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Pagination } from "swiper";
 import "swiper/scss";
 import "swiper/css/pagination";
-import userApi from "../api/userApi";
-import { useNavigate, useParams } from "react-router-dom";
 
 import DetailModel from "../components/detail/DetailModel";
 
@@ -14,20 +12,9 @@ import Header from "../components/header/Header";
 SwiperCore.use([Pagination]);
 
 const UserDetailPage = () => {
-	const [user, setUser] = useState();
-	const navigate = useNavigate();
-	const { id } = useParams();
-
-	useEffect(() => {
-		// const id = JSON.parse(localStorage.getItem("user")).userId;
-
-		const getUser = async () => {
-			const response = await userApi.getUser(id, navigate);
-			setUser(response.data.user);
-		};
-
-		getUser();
-	}, [navigate, id]);
+	// const [user, setUser] = useState();
+	const user = JSON.parse(localStorage.getItem("detail"));
+	console.log("detail", user);
 
 	return (
 		<div className="relative mx-auto page-container">
@@ -39,8 +26,8 @@ const UserDetailPage = () => {
 					spaceBetween={40}
 					slidesPerView="auto"
 				>
-					{user?.images?.length > 0 &&
-						user?.images.map((item, index) => (
+					{user.from.images.length > 0 &&
+						user.from.images.map((item, index) => (
 							<SwiperSlide key={index}>
 								<img
 									src={item}
@@ -55,8 +42,8 @@ const UserDetailPage = () => {
 			</div>
 
 			<div className="hidden grid-cols-3 gap-5 lg:grid page-container">
-				{user?.images?.length > 0 &&
-					user?.images.map((item, index) => (
+				{user.from.images.length > 0 &&
+					user.from.images.map((item, index) => (
 						<div
 							key={index}
 							className="w-[400px] shadow-2xl cursor-pointer shadow-primary-100 h-[400px] rounded-[24px] overflow-hidden"

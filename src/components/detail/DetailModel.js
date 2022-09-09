@@ -16,7 +16,7 @@ const DetailModel = ({ user }) => {
 			<div className="flex items-center justify-between px-3 my-4">
 				<div className="flex flex-col lg:gap-5">
 					<h3 className="text-2xl font-semibold lg:text-4xl">
-						{user?.username}, {user?.age}
+						{user.from.username}, {user.from.age}
 					</h3>
 					<p className="text-lg lg:text-xl">{user?.major}</p>
 				</div>
@@ -31,7 +31,7 @@ const DetailModel = ({ user }) => {
 					<h3 className="text-2xl font-semibold lg:text-4xl">
 						About
 					</h3>
-					<p className="text-sm lg:text-lg">{user?.about}</p>
+					<p className="text-sm lg:text-lg">{user.from.about}</p>
 				</div>
 			)}
 
@@ -39,7 +39,7 @@ const DetailModel = ({ user }) => {
 				<h3 className="text-2xl font-semibold lg:text-4xl">Interest</h3>
 
 				<div className="flex flex-wrap gap-3">
-					{user?.hobbies.map((item, index) => (
+					{user.from.hobbies.map((item, index) => (
 						<FavoriteCard
 							key={index}
 							content={getInterestTitle(item)}
