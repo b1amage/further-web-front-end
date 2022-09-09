@@ -15,7 +15,9 @@ const ProfilePage = () => {
 		authenticationApi.logout(navigate);
 	};
 
-	const avatar = localStorage.getItem("image");
+	const avatar = authenticationApi.isLogin()
+		? localStorage.getItem("image")
+		: holder;
 
 	return (
 		<div className="page-container">
@@ -23,7 +25,7 @@ const ProfilePage = () => {
 
 			<div className="w-[120px] h-[120px] md:w-[180px] md:h-[180px] lg:w-[200px] lg:h-[200px] md:my-10 lg:my-14 my-6 rounded-full overflow-hidden mx-auto">
 				<img
-					src={avatar || holder}
+					src={avatar}
 					alt=""
 					className="object-cover w-full h-full"
 				/>

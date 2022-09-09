@@ -14,6 +14,7 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import authenticationApi from "../api/authenticationApi";
 import { useNavigate } from "react-router-dom";
+import AlreadyLogin from "../components/login/AlreadyLogin";
 
 const LoginPage = () => {
 	const [isShowPassword, setIsShowPassword] = useState(false);
@@ -51,44 +52,60 @@ const LoginPage = () => {
 
 			<LogoLg />
 
-			<form
-				onSubmit={formik.handleSubmit}
-				className="flex flex-col gap-5 my-10 lg:gap-8"
-			>
-				<Input
-					placeholder="Email"
-					label="email"
-					required
-					value={formik.values.email}
-					onChange={formik.handleChange}
-					err={formik.errors.email}
-				/>
-				<Input
-					placeholder="Password"
-					label="password"
-					required
-					type={isShowPassword ? "text" : "password"}
-					icon={isShowPassword ? eyeOpen : eyeClose}
-					iconOnClick={() => setIsShowPassword(!isShowPassword)}
-					value={formik.values.password}
-					onChange={formik.handleChange}
-					err={formik.errors.password}
-				/>
-
-				<Button
-					primary
-					className="mt-4 md:w-1/2 md:mx-auto lg:text-2xl lg:h-[65px]"
+			{authenticationApi.isLogin() ? (
+				<AlreadyLogin />
+			) : (
+				<form
+					onSubmit={formik.handleSubmit}
+					className="flex flex-col gap-5 my-10 lg:gap-8"
 				>
-					Sign in
-				</Button>
+					<Input
+						placeholder="Email"
+						label="email"
+						required
+						value={formik.values.email}
+						onChange={formik.handleChange}
+						err={formik.errors.email}
+					/>
+					<Input
+						placeholder="Password"
+						label="password"
+						required
+						type={isShowPassword ? "text" : "password"}
+						icon={isShowPassword ? eyeOpen : eyeClose}
+						iconOnClick={() => setIsShowPassword(!isShowPassword)}
+						value={formik.values.password}
+						onChange={formik.handleChange}
+						err={formik.errors.password}
+					/>
 
-				<p className="p-4 pt-0 text-center text-gray2 md:text-xl lg:text-2xl">
-					Don't have account?{" "}
-					<Link to="/register" className="text-primary-100">
-						Sign up
-					</Link>
-				</p>
-			</form>
+					<Button
+						primary
+						className="mt-4 md:w-1/2 md:mx-auto lg:text-2xl lg:h-[65px]"
+					>
+						Sign in
+					</Button>
+
+					<div className="flex flex-col items-center justify-center lg:gap-5 lg:flex-row">
+						<p className="p-4 pt-0 text-center text-gray2 md:text-xl lg:text-2xl">
+							Don't have account?{" "}
+							<Link to="/register" className="text-primary-100">
+								Sign up
+							</Link>
+						</p>
+
+						<p className="p-4 pt-0 text-center text-gray2 md:text-xl lg:text-2xl">
+							Forgot password?{" "}
+							<Link
+								to="/forgot_password"
+								className="text-primary-100"
+							>
+								Reset
+							</Link>
+						</p>
+					</div>
+				</form>
+			)}
 
 			<NavBar />
 		</div>
