@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const axiosClient = axios.create({
-	baseURL: "https://rmitinder.herokuapp.com/api",
+	baseURL: "",
 	headers: {
 		"Content-Type": "application/json",
 	},
