@@ -8,7 +8,7 @@ import khoi from "../assets/img/khoi.jpeg";
 const about = [
 	{
 		name: "Chau Loan",
-		role: "Project Manager",
+		role: "Technical Writer",
 		img: loan,
 		fb: "https://www.facebook.com/chauloannotloan",
 	},
