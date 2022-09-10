@@ -49,6 +49,21 @@ const adminApi = {
 			navigate(`/error/${error.response.data.msg}`);
 		}
 	},
+	async createUser(values, navigate) {
+		const url = `/user/createProfileByAdmin`;
+
+		try {
+			const response = await axiosClient.post(url, values, {
+				withCredentials: true,
+			});
+
+			return response;
+		} catch (error) {
+			console.log(error);
+			// navigate to register fail
+			navigate(`/error/${error.response.data.msg}`);
+		}
+	},
 };
 
 export default adminApi;

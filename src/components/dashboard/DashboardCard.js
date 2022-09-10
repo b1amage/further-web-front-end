@@ -31,7 +31,7 @@ const DashboardCard = ({ user, onEdit, onDelete }) => {
 				</h3>
 			</div>
 
-			<div className="absolute z-10 w-full bg-white bg-opacity-60 top-2 h-[100px] flex gap-5 items-center justify-center">
+			<div className="absolute z-10 w-full dark:bg-dark-4 dark:bg-opacity-50 bg-white bg-opacity-60 top-0 h-[100px] flex gap-5 items-center justify-center">
 				<Button
 					onClick={onEdit}
 					primary

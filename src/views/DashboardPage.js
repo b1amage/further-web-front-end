@@ -63,6 +63,10 @@ const DashboardPage = () => {
 		setUsers(data);
 	};
 
+	const closeModal = () => {
+		setShowModal(false);
+	};
+
 	const setNC = (nc) => {
 		setNextCursor(nc);
 	};
@@ -139,14 +143,21 @@ const DashboardPage = () => {
 				</>
 			)}
 
-			{showModal && <Modal isForAdd={isForAdd} />}
+			{showModal && (
+				<Modal
+					closeModal={closeModal}
+					setData={setData}
+					isForAdd={isForAdd}
+				/>
+			)}
 
 			<EditBoard setNC={setNC} onAdd={onAdd} setData={setData} />
 		</div>
 	);
 };
 
-const Modal = ({ isForAdd }) => {
+const Modal = ({ isForAdd, setData, closeModal }) => {
+	const navigate = useNavigate();
 	const formik = useFormik({
 		initialValues: {
 			username: "",
@@ -154,7 +165,7 @@ const Modal = ({ isForAdd }) => {
 			age: ages[0] * 1,
 			locations: locations[0],
 			school: schools[0],
-			hobbies: interestsList[0].value,
+			hobbies: interestsList[0].title,
 			biography: "",
 			from: ages[0],
 			to: ages[6],
@@ -202,6 +213,32 @@ const Modal = ({ isForAdd }) => {
 		}),
 		onSubmit: (values) => {
 			console.log(values);
+			if (isForAdd) {
+				const create = async () => {
+					const response = await adminApi.createUser(
+						{
+							username: values.username,
+							age: values.age * 1,
+							gender: values.gender,
+							location: values.locations,
+							hobbies: [
+								values.hobbies.split(" ")[1],
+								"Coding",
+								"Cooking",
+							],
+							school: values.school,
+						},
+						navigate
+					);
+
+					console.log(response);
+				};
+
+				create();
+			} else {
+			}
+
+			closeModal();
 		},
 	});
 
@@ -362,7 +399,7 @@ const EditBoard = ({ onAdd, setData, setNC }) => {
 	}, [filterDebounce, navigate, setData, setNC]);
 
 	return ReactDOM.createPortal(
-		<div className="sticky bottom-0 w-full bg-opacity-75 bg-white dark:bg-dark-4 h-[200px] z-[100] lg:p-16 rounded-t-[36px] p-5 flex md:flex-row md:justify-between flex-col gap-5 justify-center items-center">
+		<div className="sticky bottom-0 w-full border-2 dark:border-dark-3 border-gray bg-white dark:bg-dark-4 h-[200px] z-[100] lg:p-16 rounded-t-[36px] p-5 flex md:flex-row md:justify-between flex-col gap-5 justify-center items-center">
 			<div className="w-[300px] lg:w-[400px] h-auto relative">
 				<Input
 					onChange={handleChange}
