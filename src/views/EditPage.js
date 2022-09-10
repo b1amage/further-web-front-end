@@ -32,7 +32,7 @@ const EditPage = () => {
 			age: info?.age * 1 || 18,
 			from: info?.from * 1 || 18,
 			to: info?.to * 1 || 24,
-			about: info.about || "",
+			about: info?.about || "",
 			major: info?.major || majors[0],
 			location: info?.location || locations[0],
 			school: info?.school || schools[0],
