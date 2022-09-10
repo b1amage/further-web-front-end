@@ -20,6 +20,8 @@ import * as Yup from "yup";
 import adminApi from "../api/adminApi";
 import { useNavigate } from "react-router-dom";
 import Loading from "../utilities/Loading";
+import logout from "../assets/svg/logout.svg";
+import authenticationApi from "../api/authenticationApi";
 
 const DashboardPage = () => {
 	const [showModal, setShowModal] = useState(false);
@@ -449,13 +451,6 @@ const EditBoard = ({ onAdd, setData, setNC }) => {
 
 	return ReactDOM.createPortal(
 		<div className="sticky bottom-0 w-full border-2 dark:border-dark-3 border-gray bg-white dark:bg-dark-4 h-[200px] z-[100] lg:p-16 rounded-t-[36px] p-5 flex md:flex-row md:justify-between flex-col gap-5 justify-center items-center">
-			<div className="w-[300px] lg:w-[400px] h-auto relative">
-				<Input
-					onChange={handleChange}
-					icon={search}
-					placeholder="Search user"
-				/>
-			</div>
 			<Button
 				onClick={onAdd}
 				primary
@@ -464,9 +459,30 @@ const EditBoard = ({ onAdd, setData, setNC }) => {
 				+
 			</Button>
 
-			<SectionTitle className="text-primary-100 md:w-[300px] lg:w-[400px] text-center">
-				Total: 45 users
-			</SectionTitle>
+			<div className="w-[300px] lg:w-[400px] h-auto relative">
+				<Input
+					onChange={handleChange}
+					icon={search}
+					placeholder="Search user"
+				/>
+			</div>
+
+			<div
+				onClick={() => {
+					const logout = async () => {
+						const response = await authenticationApi.logout(
+							navigate
+						);
+
+						console.log(response);
+					};
+
+					logout();
+				}}
+				className="w-[60px] h-[60px] flex items-center cursor-pointer justify-center bg-primary-50 bg-opacity-50 rounded-full"
+			>
+				<img src={logout} alt="" className="object-cover" />
+			</div>
 		</div>,
 		document.querySelector("body")
 	);
