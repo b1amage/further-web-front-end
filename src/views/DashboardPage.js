@@ -22,6 +22,7 @@ import { useNavigate } from "react-router-dom";
 import Loading from "../utilities/Loading";
 import logout from "../assets/svg/logout.svg";
 import authenticationApi from "../api/authenticationApi";
+import Avatar from "../components/setup/Avatar";
 
 const DashboardPage = () => {
 	const [showModal, setShowModal] = useState(false);
@@ -248,7 +249,8 @@ const Modal = ({ isForAdd, setData, closeModal, data }) => {
 					const updateData = {
 						username: values.username,
 						images: [
-							"https://res.cloudinary.com/dma21c4n9/image/upload/v1659256280/file-upload/Female_i3astd.png",
+							localStorage.getItem("image") ||
+								"https://res.cloudinary.com/dma21c4n9/image/upload/v1662780881/file-upload/300765943_639982391021978_2637931582795209254_n_budvbq.png",
 						],
 						age: values.age * 1,
 						gender: values.gender,
@@ -295,128 +297,131 @@ const Modal = ({ isForAdd, setData, closeModal, data }) => {
 
 	return ReactDOM.createPortal(
 		<div className="absolute inset-0 bg-black bg-opacity-50 z-[120]">
-			<form
-				onSubmit={formik.handleSubmit}
-				className="flex flex-col w-full gap-5 p-10 mx-auto my-10 overflow-y-scroll bg-white md:w-4/5 dark:bg-dark-3 rounded-3xl lg:gap-4"
-			>
+			<div className="flex flex-col w-full gap-5 p-10 mx-auto my-10 overflow-y-scroll bg-white md:w-4/5 dark:bg-dark-3 rounded-3xl lg:gap-4">
 				<SectionTitle className="text-center">
 					{isForAdd ? "Create user" : "Edit user"}
 				</SectionTitle>
-				<Input
-					placeholder="baonguyen33"
-					label="username"
-					required
-					value={formik.values.username}
-					onChange={formik.handleChange}
-					err={formik.errors.username}
-				/>
-
-				<div className="flex items-center gap-5">
-					<Select
-						required={true}
-						label="gender"
-						options={genders}
-						value={formik.values.gender}
+				{!isForAdd && <Avatar />}
+				<form
+					onSubmit={formik.handleSubmit}
+					className="flex flex-col w-full gap-5 p-10 mx-auto my-10 overflow-y-scroll bg-white md:w-4/5 dark:bg-dark-3 rounded-3xl lg:gap-4"
+				>
+					<Input
+						placeholder="baonguyen33"
+						label="username"
+						required
+						value={formik.values.username}
 						onChange={formik.handleChange}
-						err={formik.errors.gender}
+						err={formik.errors.username}
 					/>
-					<Select
-						required={true}
-						label="age"
-						options={ages}
-						value={formik.values.age}
-						onChange={formik.handleChange}
-						err={formik.errors.age}
-					/>
-				</div>
 
-				<div className="flex items-center gap-5">
-					<Select
-						required={true}
-						label="location"
-						options={locations}
-						value={formik.values.location}
-						onChange={formik.handleChange}
-						err={formik.errors.location}
-					/>
-					<Select
-						required={true}
-						label="school"
-						options={schools}
-						value={formik.values.school}
-						onChange={formik.handleChange}
-						err={formik.errors.school}
-					/>
-				</div>
-
-				<Select
-					fluid
-					required={true}
-					label="hobbies"
-					options={interestsList.map((item) => item.title)}
-					value={formik.values.hobbies}
-					onChange={formik.handleChange}
-					err={formik.errors.hobbies}
-				/>
-
-				{!isForAdd && (
-					<>
-						<TextArea
-							label="biography"
-							placeholder="Something about the user"
-							value={formik.values.biography}
+					<div className="flex items-center gap-5">
+						<Select
+							required={true}
+							label="gender"
+							options={genders}
+							value={formik.values.gender}
 							onChange={formik.handleChange}
-							err={formik.errors.biography}
+							err={formik.errors.gender}
 						/>
+						<Select
+							required={true}
+							label="age"
+							options={ages}
+							value={formik.values.age}
+							onChange={formik.handleChange}
+							err={formik.errors.age}
+						/>
+					</div>
 
-						<SectionTitle>Interest information</SectionTitle>
+					<div className="flex items-center gap-5">
+						<Select
+							required={true}
+							label="location"
+							options={locations}
+							value={formik.values.location}
+							onChange={formik.handleChange}
+							err={formik.errors.location}
+						/>
+						<Select
+							required={true}
+							label="school"
+							options={schools}
+							value={formik.values.school}
+							onChange={formik.handleChange}
+							err={formik.errors.school}
+						/>
+					</div>
 
-						<div className="flex items-center gap-5">
-							<Select
-								required={true}
-								label="from"
-								options={ages}
-								value={formik.values.from}
-								onChange={formik.handleChange}
-								err={formik.errors.from}
-							/>
-							<Select
-								required={true}
-								label="to"
-								options={ages}
-								value={formik.values.to}
-								onChange={formik.handleChange}
-								err={formik.errors.to}
-							/>
-						</div>
+					<Select
+						fluid
+						required={true}
+						label="hobbies"
+						options={interestsList.map((item) => item.title)}
+						value={formik.values.hobbies}
+						onChange={formik.handleChange}
+						err={formik.errors.hobbies}
+					/>
 
-						<div className="flex items-center gap-5">
-							<Select
-								required={true}
-								label="Gender"
-								id="interestedGender"
-								options={genders}
-								value={formik.values.interestedGender}
+					{!isForAdd && (
+						<>
+							<TextArea
+								label="biography"
+								placeholder="Something about the user"
+								value={formik.values.biography}
 								onChange={formik.handleChange}
-								err={formik.errors.interestedGender}
+								err={formik.errors.biography}
 							/>
-							<Select
-								required={true}
-								label="Location"
-								id="interestedLocations"
-								options={locations}
-								value={formik.values.interestedLocations}
-								onChange={formik.handleChange}
-								err={formik.errors.interestedLocations}
-							/>
-						</div>
-					</>
-				)}
 
-				<Button primary type="submit">
-					{isForAdd ? "Create" : "Edit"}
-				</Button>
-			</form>
+							<SectionTitle>Interest information</SectionTitle>
+
+							<div className="flex items-center gap-5">
+								<Select
+									required={true}
+									label="from"
+									options={ages}
+									value={formik.values.from}
+									onChange={formik.handleChange}
+									err={formik.errors.from}
+								/>
+								<Select
+									required={true}
+									label="to"
+									options={ages}
+									value={formik.values.to}
+									onChange={formik.handleChange}
+									err={formik.errors.to}
+								/>
+							</div>
+
+							<div className="flex items-center gap-5">
+								<Select
+									required={true}
+									label="Gender"
+									id="interestedGender"
+									options={genders}
+									value={formik.values.interestedGender}
+									onChange={formik.handleChange}
+									err={formik.errors.interestedGender}
+								/>
+								<Select
+									required={true}
+									label="Location"
+									id="interestedLocations"
+									options={locations}
+									value={formik.values.interestedLocations}
+									onChange={formik.handleChange}
+									err={formik.errors.interestedLocations}
+								/>
+							</div>
+						</>
+					)}
+
+					<Button primary type="submit">
+						{isForAdd ? "Create" : "Edit"}
+					</Button>
+				</form>
+			</div>
 		</div>,
 		document.querySelector("body")
 	);
