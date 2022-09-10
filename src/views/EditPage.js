@@ -128,7 +128,7 @@ const EditPage = () => {
 				</div>
 
 				<TextArea
-					placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
+					placeholder="Something about you"
 					label="about"
 					value={formik.values.about}
 					onChange={formik.handleChange}
