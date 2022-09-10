@@ -77,7 +77,7 @@ const HomePage = () => {
 	return (
 		<div className="page-container">
 			<Header />
-			<NavBar />
+			<NavBar page="home" />
 
 			{loading ? (
 				<Loading />

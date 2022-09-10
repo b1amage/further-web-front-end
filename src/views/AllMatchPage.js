@@ -46,7 +46,7 @@ const AllMatchPage = () => {
 				<NoMore isInMatch />
 			)}
 
-			<NavBar />
+			<NavBar page="match" />
 		</div>
 	);
 };

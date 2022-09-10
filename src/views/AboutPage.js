@@ -22,7 +22,7 @@ const AboutPage = () => {
 					))}
 			</div>
 
-			<NavBar />
+			<NavBar page="about" />
 		</div>
 	);
 };

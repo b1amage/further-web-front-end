@@ -6,7 +6,7 @@ import NavButton from "./NavButton";
 
 import navItems from "../../content/navItems";
 
-const NavBar = () => {
+const NavBar = ({ page }) => {
 	const [show, setShow] = useState(true);
 	const [lastScrollY, setLastScrollY] = useState(0);
 
@@ -45,8 +45,15 @@ const NavBar = () => {
 			{navItems.length > 0 &&
 				navItems.map((item, index) => (
 					<Link to={item.to} key={index}>
-						<NavButton isActive={item.isActive}>
-							<img src={item.logo} alt="svg icon" />
+						<NavButton isActive={item.title === page}>
+							<img
+								src={
+									item.title === page
+										? item.logoActive
+										: item.logo
+								}
+								alt="svg icon"
+							/>
 						</NavButton>
 					</Link>
 				))}

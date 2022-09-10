@@ -54,7 +54,7 @@ const ProfilePage = () => {
 				</div>
 			</div>
 
-			<NavBar />
+			<NavBar page="profile" />
 		</div>
 	);
 };
