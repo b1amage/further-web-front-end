@@ -17,6 +17,38 @@ const adminApi = {
 			navigate(`/error/${error.response.data.msg}`);
 		}
 	},
+
+	async getUserByName(navigate, username) {
+		const url = `/user?username=${username}`;
+
+		try {
+			const response = await axiosClient.get(url, {
+				withCredentials: true,
+			});
+
+			return response;
+		} catch (error) {
+			console.log(error);
+			// navigate to register fail
+			navigate(`/error/${error.response.data.msg}`);
+		}
+	},
+
+	async deleteUser(navigate, id) {
+		const url = `/user/${id}`;
+
+		try {
+			const response = await axiosClient.delete(url, {
+				withCredentials: true,
+			});
+
+			return response;
+		} catch (error) {
+			console.log(error);
+			// navigate to register fail
+			navigate(`/error/${error.response.data.msg}`);
+		}
+	},
 };
 
 export default adminApi;

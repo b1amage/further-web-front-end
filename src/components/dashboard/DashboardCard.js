@@ -41,7 +41,10 @@ const DashboardCard = ({ user, onEdit, onDelete }) => {
 				</Button>
 
 				<Button
-					onClick={onDelete}
+					onClick={(e) => {
+						e.stopPropagation();
+						onDelete(user._id);
+					}}
 					primary
 					className="w-[60px] h-[60px] flex justify-center items-center"
 				>

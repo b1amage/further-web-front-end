@@ -27,6 +27,7 @@ const DashboardPage = () => {
 	const [users, setUsers] = useState([]);
 	const [nextCursor, setNextCursor] = useState();
 	const [loading, setLoading] = useState();
+	const [loadMore, setLoadMore] = useState();
 
 	const navigate = useNavigate();
 
@@ -58,13 +59,29 @@ const DashboardPage = () => {
 		}
 	}, [showModal, isForAdd]);
 
+	const setData = (data) => {
+		setUsers(data);
+	};
+
+	const setNC = (nc) => {
+		setNextCursor(nc);
+	};
+
 	const onEdit = () => {
 		setIsForAdd(false);
 		setShowModal(true);
 	};
 
-	const onDelete = () => {
-		setShowModal(true);
+	const onDelete = (id) => {
+		const del = async () => {
+			const newUsers = users.filter((item) => item._id !== id);
+			setUsers(newUsers);
+
+			const response = await adminApi.deleteUser(navigate, id);
+			console.log(response);
+		};
+
+		del();
 	};
 
 	const onAdd = () => {
@@ -74,14 +91,14 @@ const DashboardPage = () => {
 
 	const handleShowMore = () => {
 		const getMore = async () => {
-			setLoading(true);
+			setLoadMore(true);
 
 			const response = await adminApi.getAllUsers(nextCursor, navigate);
 			console.log(response);
 			setUsers([...users, ...response.data.results]);
 			setNextCursor(response.data.next_cursor);
 
-			setLoading(false);
+			setLoadMore(false);
 		};
 
 		getMore();
@@ -110,6 +127,10 @@ const DashboardPage = () => {
 							))}
 					</div>
 
+					{loadMore && (
+						<div className="w-[60px] h-[60px] bg-transparent border-4 border-b-transparent border-l-primary-100 border-t-primary-100 border-r-primary-80 rounded-full animate-spin mx-auto my-5"></div>
+					)}
+
 					{nextCursor && (
 						<Button onClick={handleShowMore} primary>
 							Show more
@@ -120,7 +141,7 @@ const DashboardPage = () => {
 
 			{showModal && <Modal isForAdd={isForAdd} />}
 
-			<EditBoard onAdd={onAdd} />
+			<EditBoard setNC={setNC} onAdd={onAdd} setData={setData} />
 		</div>
 	);
 };
@@ -313,19 +334,32 @@ const Modal = ({ isForAdd }) => {
 	);
 };
 
-const EditBoard = ({ onAdd }) => {
+const EditBoard = ({ onAdd, setData, setNC }) => {
 	const [filter, setFilter] = useState("");
 	const filterDebounce = useDebounce(filter, 500);
 	const handleChange = (e) => {
 		setFilter(e.target.value);
 	};
+	const navigate = useNavigate();
 
-	React.useEffect(() => {
+	useEffect(() => {
 		if (filterDebounce) {
 			// call api
+			const getByName = async () => {
+				console.log("debounce", filterDebounce);
+				const response = await adminApi.getUserByName(
+					navigate,
+					filterDebounce
+				);
+				console.log(response);
+				setData(response.data.results);
+				setNC(response.data.next_cursor);
+			};
+
+			getByName();
 		} else {
 		}
-	}, [filterDebounce]);
+	}, [filterDebounce, navigate, setData, setNC]);
 
 	return ReactDOM.createPortal(
 		<div className="sticky bottom-0 w-full bg-opacity-75 bg-white dark:bg-dark-4 h-[200px] z-[100] lg:p-16 rounded-t-[36px] p-5 flex md:flex-row md:justify-between flex-col gap-5 justify-center items-center">
