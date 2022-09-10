@@ -10,6 +10,7 @@
 		"axios": "^0.27.2",
 		"formik": "^2.2.9",
 		"framer-motion": "^6.3.16",
+		"lodash": "^4.17.21",
 		"ng-numeric-keyboard": "^1.0.1",
 		"node-sass": "^7.0.1",
 		"otp-input-react": "^0.3.0",
