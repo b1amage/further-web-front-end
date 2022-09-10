@@ -12,6 +12,7 @@ const Select = ({
 	onChange,
 	err,
 	id,
+	multiple,
 }) => {
 	return (
 		<div
@@ -23,6 +24,7 @@ const Select = ({
 
 			<div className="relative !text-dark-2 dark:!text-white">
 				<select
+					multiple={multiple}
 					value={value}
 					onChange={onChange}
 					name={id || label}

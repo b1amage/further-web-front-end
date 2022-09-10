@@ -24,7 +24,13 @@ const authenticationApi = {
 			});
 			console.log(response);
 			localStorage.setItem("user", JSON.stringify(response.data.user));
-			navigate("/");
+
+			if (response.data.user.role === "admin") {
+				navigate("/dashboard");
+			} else {
+				navigate("/");
+			}
+
 			return response;
 		} catch (error) {
 			console.log("error:", error);

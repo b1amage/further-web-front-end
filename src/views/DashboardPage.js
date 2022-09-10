@@ -15,6 +15,8 @@ import schools from "../content/schools";
 import locations from "../content/locations";
 import { interestsList } from "../content/interests";
 import TextArea from "../utilities/TextArea";
+import { useFormik } from "formik";
+import * as Yup from "yup";
 
 const DashboardPage = () => {
 	const [showModal, setShowModal] = useState(false);
@@ -76,17 +78,99 @@ const DashboardPage = () => {
 };
 
 const Modal = ({ isForAdd }) => {
+	const formik = useFormik({
+		initialValues: {
+			username: "",
+			gender: genders[0],
+			age: ages[0] * 1,
+			locations: locations[0],
+			school: schools[0],
+			hobbies: interestsList[0].value,
+			biography: "",
+			from: ages[0],
+			to: ages[6],
+			interestedGender: genders[0],
+			interestedLocation: locations[0],
+		},
+		validationSchema: Yup.object({
+			username: Yup.string().required("Please fill in this field!"),
+			gender: Yup.string().required(
+				"Please select an option for this field!"
+			),
+			age: Yup.string().required(
+				"Please select an option for this field!"
+			),
+			locations: Yup.string().required(
+				"Please select an option for this field!"
+			),
+			school: Yup.string().required(
+				"Please select an option for this field!"
+			),
+			hobbies: Yup.string().required(
+				"Please select an option for this field!"
+			),
+
+			from:
+				!isForAdd &&
+				Yup.string().required(
+					"Please select an option for this field!"
+				),
+			to:
+				!isForAdd &&
+				Yup.string().required(
+					"Please select an option for this field!"
+				),
+			interestedGender:
+				!isForAdd &&
+				Yup.string().required(
+					"Please select an option for this field!"
+				),
+			interestedLocation:
+				!isForAdd &&
+				Yup.string().required(
+					"Please select an option for this field!"
+				),
+		}),
+		onSubmit: (values) => {
+			console.log(values);
+		},
+	});
+
 	return ReactDOM.createPortal(
 		<div className="absolute inset-0 bg-black bg-opacity-50 z-[120]">
-			<form className="flex flex-col w-full gap-5 p-10 mx-auto my-10 overflow-y-scroll bg-white md:w-4/5 dark:bg-dark-3 rounded-3xl lg:gap-4">
+			<form
+				onSubmit={formik.handleSubmit}
+				className="flex flex-col w-full gap-5 p-10 mx-auto my-10 overflow-y-scroll bg-white md:w-4/5 dark:bg-dark-3 rounded-3xl lg:gap-4"
+			>
 				<SectionTitle className="text-center">
 					{isForAdd ? "Create user" : "Edit user"}
 				</SectionTitle>
-				<Input placeholder="baonguyen33" label="username" required />
+				<Input
+					placeholder="baonguyen33"
+					label="username"
+					required
+					value={formik.values.username}
+					onChange={formik.handleChange}
+					err={formik.errors.username}
+				/>
 
 				<div className="flex items-center gap-5">
-					<Select required={true} label="gender" options={genders} />
-					<Select required={true} label="age" options={ages} />
+					<Select
+						required={true}
+						label="gender"
+						options={genders}
+						value={formik.values.gender}
+						onChange={formik.handleChange}
+						err={formik.errors.gender}
+					/>
+					<Select
+						required={true}
+						label="age"
+						options={ages}
+						value={formik.values.age}
+						onChange={formik.handleChange}
+						err={formik.errors.age}
+					/>
 				</div>
 
 				<div className="flex items-center gap-5">
@@ -94,8 +178,18 @@ const Modal = ({ isForAdd }) => {
 						required={true}
 						label="location"
 						options={locations}
+						value={formik.values.location}
+						onChange={formik.handleChange}
+						err={formik.errors.location}
 					/>
-					<Select required={true} label="school" options={schools} />
+					<Select
+						required={true}
+						label="school"
+						options={schools}
+						value={formik.values.school}
+						onChange={formik.handleChange}
+						err={formik.errors.school}
+					/>
 				</div>
 
 				<Select
@@ -103,14 +197,19 @@ const Modal = ({ isForAdd }) => {
 					required={true}
 					label="hobbies"
 					options={interestsList.map((item) => item.title)}
+					value={formik.values.hobbies}
+					onChange={formik.handleChange}
+					err={formik.errors.hobbies}
 				/>
 
 				{!isForAdd && (
 					<>
 						<TextArea
-							required={true}
 							label="biography"
 							placeholder="Something about the user"
+							value={formik.values.biography}
+							onChange={formik.handleChange}
+							err={formik.errors.biography}
 						/>
 
 						<SectionTitle>Interest information</SectionTitle>
@@ -120,8 +219,18 @@ const Modal = ({ isForAdd }) => {
 								required={true}
 								label="from"
 								options={ages}
+								value={formik.values.from}
+								onChange={formik.handleChange}
+								err={formik.errors.from}
 							/>
-							<Select required={true} label="to" options={ages} />
+							<Select
+								required={true}
+								label="to"
+								options={ages}
+								value={formik.values.to}
+								onChange={formik.handleChange}
+								err={formik.errors.to}
+							/>
 						</div>
 
 						<div className="flex items-center gap-5">
@@ -130,12 +239,18 @@ const Modal = ({ isForAdd }) => {
 								label="Gender"
 								id="interestedGender"
 								options={genders}
+								value={formik.values.interestedGender}
+								onChange={formik.handleChange}
+								err={formik.errors.interestedGender}
 							/>
 							<Select
 								required={true}
 								label="Location"
 								id="interestedLocations"
 								options={locations}
+								value={formik.values.interestedLocations}
+								onChange={formik.handleChange}
+								err={formik.errors.interestedLocations}
 							/>
 						</div>
 					</>
