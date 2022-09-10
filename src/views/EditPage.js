@@ -36,8 +36,8 @@ const EditPage = () => {
 			major: info?.major || majors[0],
 			location: info?.location || locations[0],
 			school: info?.school || schools[0],
-			interestGender: info.interestGender || genders[0],
-			interestLocation: info.interestLocation || locations[0],
+			interestGender: info?.interestGender || genders[0],
+			interestLocation: info?.interestLocation || locations[0],
 		},
 		validationSchema: Yup.object({
 			name: Yup.string().required("Please fill in this field!"),
