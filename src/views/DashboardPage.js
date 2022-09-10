@@ -17,10 +17,31 @@ import { interestsList } from "../content/interests";
 import TextArea from "../utilities/TextArea";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import adminApi from "../api/adminApi";
+import { useNavigate } from "react-router-dom";
+import Loading from "../utilities/Loading";
 
 const DashboardPage = () => {
 	const [showModal, setShowModal] = useState(false);
 	const [isForAdd, setIsForAdd] = useState();
+	const [users, setUsers] = useState([]);
+	// const [nextCursor, setNextCursor] = useState();
+	const [loading, setLoading] = useState();
+
+	const navigate = useNavigate();
+
+	useEffect(() => {
+		const getAll = async () => {
+			setLoading(true);
+
+			const response = await adminApi.getAllUsers(navigate);
+			setUsers(response.data.results);
+
+			setLoading(false);
+		};
+
+		getAll();
+	}, [navigate]);
 
 	useEffect(() => {
 		if (showModal) {
@@ -50,6 +71,16 @@ const DashboardPage = () => {
 		setShowModal(true);
 	};
 
+	// const handleShowMore = () => {
+	// 	const getMore = async () => {
+	// 		const response = await adminApi.getAllUsers(navigate);
+	// 		console.log(response);
+	// 		setUsers([...users, ...response.data.results]);
+	// 		localStorage.setItem("nextCursor", response.data.next_cursor);
+	// 	};
+
+	// 	getMore();
+	// };
 	return (
 		<div
 			className={`relative page-container ${
@@ -58,17 +89,25 @@ const DashboardPage = () => {
 		>
 			<Header title="CMS Dashboard" />
 
-			<div className="grid grid-cols-1 gap-5 my-10 md:gap-y-8 lg:gap-y-10 md:grid-cols-3 xl:grid-cols-4 place-items-center">
-				{Array(8)
-					.fill()
-					.map((item, index) => (
-						<DashboardCard
-							key={index}
-							onDelete={onDelete}
-							onEdit={onEdit}
-						/>
-					))}
-			</div>
+			{loading ? (
+				<Loading />
+			) : (
+				<>
+					<div className="grid grid-cols-1 gap-5 my-10 md:gap-y-8 lg:gap-y-10 md:grid-cols-3 xl:grid-cols-4 place-items-center">
+						{users?.length > 0 &&
+							users.map((item, index) => (
+								<DashboardCard
+									user={item}
+									key={index}
+									onDelete={onDelete}
+									onEdit={onEdit}
+								/>
+							))}
+					</div>
+
+					<Button primary>Show more</Button>
+				</>
+			)}
 
 			{showModal && <Modal isForAdd={isForAdd} />}
 
