@@ -90,7 +90,10 @@ const authenticationApi = {
 	},
 
 	isAdmin() {
-		return JSON.parse(localStorage.getItem("user")).role === "admin";
+		return (
+			localStorage.getItem("user") &&
+			JSON.parse(localStorage.getItem("user")).role === "admin"
+		);
 	},
 };
 

@@ -23,6 +23,7 @@ import Loading from "../utilities/Loading";
 import logout from "../assets/svg/logout.svg";
 import authenticationApi from "../api/authenticationApi";
 import Avatar from "../components/setup/Avatar";
+import NoMore from "../components/main/NoMore";
 
 const DashboardPage = () => {
 	const [showModal, setShowModal] = useState(false);
@@ -118,7 +119,9 @@ const DashboardPage = () => {
 		>
 			<Header title="CMS Dashboard" />
 
-			{loading ? (
+			{!authenticationApi.isAdmin() ? (
+				<NoMore />
+			) : loading ? (
 				<Loading />
 			) : (
 				<>
