@@ -17,8 +17,8 @@ const DashboardCard = ({ user, onEdit, onDelete }) => {
 			<div className="w-full h-full">
 				<img
 					src={
-						user.images[0] ||
-						"https://images.unsplash.com/photo-1514315384763-ba401779410f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=983&q=80"
+						(user.images && user.images[0]) ||
+						"https://res.cloudinary.com/dma21c4n9/image/upload/v1662780881/file-upload/300765943_639982391021978_2637931582795209254_n_budvbq.png"
 					}
 					alt="girl beautiful img"
 					className="object-cover w-full h-full transition-all duration-300 hover:scale-125"
@@ -33,7 +33,11 @@ const DashboardCard = ({ user, onEdit, onDelete }) => {
 
 			<div className="absolute z-10 w-full dark:bg-dark-4 dark:bg-opacity-50 bg-white bg-opacity-60 top-0 h-[100px] flex gap-5 items-center justify-center">
 				<Button
-					onClick={onEdit}
+					onClick={(e) => {
+						e.stopPropagation();
+						localStorage.setItem("updateId", user._id);
+						onEdit();
+					}}
 					primary
 					className="w-[60px] h-[60px] flex justify-center items-center"
 				>

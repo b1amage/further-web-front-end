@@ -148,6 +148,7 @@ const DashboardPage = () => {
 					closeModal={closeModal}
 					setData={setData}
 					isForAdd={isForAdd}
+					data={users}
 				/>
 			)}
 
@@ -156,7 +157,7 @@ const DashboardPage = () => {
 	);
 };
 
-const Modal = ({ isForAdd, setData, closeModal }) => {
+const Modal = ({ isForAdd, setData, closeModal, data }) => {
 	const navigate = useNavigate();
 	const formik = useFormik({
 		initialValues: {
@@ -214,20 +215,25 @@ const Modal = ({ isForAdd, setData, closeModal }) => {
 		onSubmit: (values) => {
 			console.log(values);
 			if (isForAdd) {
+				const addData = {
+					username: values.username,
+					age: values.age * 1,
+					gender: values.gender,
+					location: values.locations,
+					hobbies: [
+						values.hobbies.split(" ")[1],
+						"Coding",
+						"Cooking",
+					],
+					school: values.school,
+				};
+
+				const newData = [addData, ...data];
+				setData(newData);
+
 				const create = async () => {
 					const response = await adminApi.createUser(
-						{
-							username: values.username,
-							age: values.age * 1,
-							gender: values.gender,
-							location: values.locations,
-							hobbies: [
-								values.hobbies.split(" ")[1],
-								"Coding",
-								"Cooking",
-							],
-							school: values.school,
-						},
+						addData,
 						navigate
 					);
 
@@ -236,6 +242,49 @@ const Modal = ({ isForAdd, setData, closeModal }) => {
 
 				create();
 			} else {
+				const update = async () => {
+					const updateData = {
+						username: values.username,
+						images: [
+							"https://res.cloudinary.com/dma21c4n9/image/upload/v1659256280/file-upload/Female_i3astd.png",
+						],
+						age: values.age * 1,
+						gender: values.gender,
+						location: values.locations,
+						hobbies: [
+							values.hobbies.split(" ")[1],
+							"Coding",
+							"Watching TV",
+						],
+						school: values.school,
+						biography: values.biography,
+						interested: {
+							interestedGender: values.interestedGender,
+							interestedMinAge: values.from * 1,
+							interestedMaxAge: values.to * 1,
+							interestedLocations: [values.interestedLocation],
+						},
+					};
+
+					const newData = data.map((item) => {
+						if (item._id === localStorage.getItem("updateId")) {
+							return updateData;
+						}
+						return item;
+					});
+
+					setData(newData);
+
+					const response = await adminApi.updateUser(
+						localStorage.getItem("updateId"),
+						updateData,
+						navigate
+					);
+
+					console.log(response);
+				};
+
+				update();
 			}
 
 			closeModal();
