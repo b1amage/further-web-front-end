@@ -25,7 +25,7 @@ const DashboardPage = () => {
 	const [showModal, setShowModal] = useState(false);
 	const [isForAdd, setIsForAdd] = useState();
 	const [users, setUsers] = useState([]);
-	// const [nextCursor, setNextCursor] = useState();
+	const [nextCursor, setNextCursor] = useState();
 	const [loading, setLoading] = useState();
 
 	const navigate = useNavigate();
@@ -34,8 +34,9 @@ const DashboardPage = () => {
 		const getAll = async () => {
 			setLoading(true);
 
-			const response = await adminApi.getAllUsers(navigate);
+			const response = await adminApi.getAllUsers(false, navigate);
 			setUsers(response.data.results);
+			setNextCursor(response.data.next_cursor);
 
 			setLoading(false);
 		};
@@ -71,16 +72,20 @@ const DashboardPage = () => {
 		setShowModal(true);
 	};
 
-	// const handleShowMore = () => {
-	// 	const getMore = async () => {
-	// 		const response = await adminApi.getAllUsers(navigate);
-	// 		console.log(response);
-	// 		setUsers([...users, ...response.data.results]);
-	// 		localStorage.setItem("nextCursor", response.data.next_cursor);
-	// 	};
+	const handleShowMore = () => {
+		const getMore = async () => {
+			setLoading(true);
 
-	// 	getMore();
-	// };
+			const response = await adminApi.getAllUsers(nextCursor, navigate);
+			console.log(response);
+			setUsers([...users, ...response.data.results]);
+			setNextCursor(response.data.next_cursor);
+
+			setLoading(false);
+		};
+
+		getMore();
+	};
 	return (
 		<div
 			className={`relative page-container ${
@@ -105,7 +110,11 @@ const DashboardPage = () => {
 							))}
 					</div>
 
-					<Button primary>Show more</Button>
+					{nextCursor && (
+						<Button onClick={handleShowMore} primary>
+							Show more
+						</Button>
+					)}
 				</>
 			)}
 

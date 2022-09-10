@@ -1,8 +1,8 @@
 import axiosClient from "./axiosClient";
 
 const adminApi = {
-	async getAllUsers(navigate) {
-		const url = `user`;
+	async getAllUsers(nextCursor, navigate) {
+		const url = nextCursor ? `/user?next_cursor=${nextCursor}` : "/user";
 
 		try {
 			const response = await axiosClient.get(url, {
