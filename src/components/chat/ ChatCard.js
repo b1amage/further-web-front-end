@@ -1,9 +1,12 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import SectionTitle from "../../utilities/SectionTitle";
 
-const ChatCard = ({ img, isActive, lastest, name }) => {
+const ChatCard = ({ img, isActive, lastest, name, roomId }) => {
+	const navigate = useNavigate()
+
 	return (
-		<div className="transiton-all duration-300 hover:shadow-lg hover:-translate-y-2 flex cursor-pointer items-center gap-3 md:gap-5 lg:gap-10 p-4 md:p-6 lg:p-8 border border-gray hover:border-primary-100 rounded-[16px]">
+		<div onClick={() => navigate(`/chat-details/${roomId}`)} className="transiton-all duration-300 hover:shadow-lg hover:-translate-y-2 flex cursor-pointer items-center gap-3 md:gap-5 lg:gap-10 p-4 md:p-6 lg:p-8 border border-gray hover:border-primary-100 rounded-[16px]">
 			<div className="relative w-[60px] h-[60px] md:w-[80px] md:h-[80px] lg:w-[100px] lg:h-[100px] rounded-full">
 				<img
 					src={img}

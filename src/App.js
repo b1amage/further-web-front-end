@@ -68,7 +68,7 @@ function App() {
 				/>
 
 				<Route path="/chat" element={<ChatPage />} />
-				<Route path="/chat-details" element={<ChatDetails />} />
+				<Route path="/chat-details/:roomId" element={<ChatDetails />} />
 				<Route
 					path="/success/:userId1/:userId2"
 					element={<SuccessMatchPage />}

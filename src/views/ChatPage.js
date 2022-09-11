@@ -1,13 +1,26 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../components/header/Header";
 import SearchBox from "../components/chat/SearchBox";
 import NavBar from "../components/navbar/NavBar";
 import ChatCard from "../components/chat/ ChatCard";
-import girl5 from "../assets/img/girl5.jpeg";
 import authenticationApi from "../api/authenticationApi";
 import NoMore from "../components/main/NoMore";
+import { useNavigate } from "react-router-dom";
+import roomChatApi from "../api/roomChatApi";
 
 const ChatPage = () => {
+	const [matches, setMatches] = useState([])
+
+	const navigate = useNavigate()
+
+	useEffect(() => {
+		roomChatApi.getWhoMatchYou(navigate).then(res => {
+			// console.log(res)
+			setMatches(res.data.results)
+			// setOpponent(res.data.results[0]["participants"])
+		})
+	}, [navigate])
+
 	return (
 		<div className="page-container">
 			<Header title="Inbox" />
@@ -17,19 +30,18 @@ const ChatPage = () => {
 				<NoMore />
 			) : (
 				<div className="flex flex-col gap-5">
-					{Array(8)
-						.fill()
-						.map((_, index) => (
+					{matches.map((match, index) => (
 							<ChatCard
 								key={index}
-								img={girl5}
+								img={match.participants[0].images[0]}
 								isActive
-								name="Wife No.1"
+								name={match.participants[0].username}
 								lastest={{
 									message: "Let's go for a drink",
 									time: "22:00",
 									messageCount: 2,
 								}}
+								roomId={match._id}
 							/>
 						))}
 				</div>
