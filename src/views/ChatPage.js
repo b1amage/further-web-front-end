@@ -17,9 +17,16 @@ const ChatPage = () => {
 		roomChatApi.getWhoMatchYou(navigate).then(res => {
 			// console.log(res)
 			setMatches(res.data.results)
-			// setOpponent(res.data.results[0]["participants"])
 		})
 	}, [navigate])
+
+	const accessChat = (roomId, username) => {
+		roomChatApi.getMessageAccessToken(navigate).then(res => {
+			navigate(`/chat-details/${roomId}/${res.data.token}`)
+			
+		})
+		localStorage.setItem("opponent", username)
+	}
 
 	return (
 		<div className="page-container">
@@ -41,7 +48,7 @@ const ChatPage = () => {
 									time: "22:00",
 									messageCount: 2,
 								}}
-								roomId={match._id}
+								onClick={() => accessChat(match._id, match.participants[0].username, match.participants[0]._id)}
 							/>
 						))}
 				</div>

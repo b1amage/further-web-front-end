@@ -11,7 +11,7 @@ export const SucessNotification = ({ display }) => {
 				display ? "flex" : "hidden"
 			}`}
 		>
-			<div className="bg-white w-full h-[460px] flex flex-col items-center px-10 rounded-[24px]">
+			<div className="bg-gray w-full h-[460px] flex flex-col items-center px-10 rounded-[24px]">
 				<img src={createSucess} alt="notification" className="my-8" />
 				<div className="flex flex-col h-full leading-10 text-center">
 					<SectionTitle

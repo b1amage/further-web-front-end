@@ -34,7 +34,7 @@ const Input = ({
 
 				{icon && (
 					<button
-						onClick={iconOnClick}
+						type={iconOnClick}
 						className="absolute -translate-y-1/2 top-1/2 right-5"
 					>
 						<img
