@@ -11,7 +11,18 @@ export const SelectInterest = () => {
 			title: interestsList.filter((obj) => obj.value === item)[0].title,
 		};
 	});
-	const [interests, setInterests] = useState([...interestsList]);
+
+	const newInterestsList = interestsList
+		.map((item) => {
+			if (!hobbies.filter((i) => i.value === item.value).length < 1) {
+				return null;
+			}
+
+			return item;
+		})
+		.filter((item) => item !== null);
+
+	const [interests, setInterests] = useState(newInterestsList);
 
 	interests.sort((a, b) => a.value.localeCompare(b.value));
 
