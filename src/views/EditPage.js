@@ -2,7 +2,7 @@ import React from "react";
 import Header from "../components/header/Header";
 import Input from "../utilities/Input";
 import mail from "../assets/svg/mail.svg";
-import phone from "../assets/svg/phone.svg";
+// import phone from "../assets/svg/phone.svg";
 import Button from "../utilities/Button";
 import TextArea from "../utilities/TextArea";
 import Select from "../utilities/Select";
@@ -27,17 +27,17 @@ const EditPage = () => {
 		initialValues: {
 			name: user?.name,
 			email: user?.email,
-			phone: info?.phone,
+			// phone: info?.phone,
 			gender: info?.gender || genders[0],
 			age: info?.age * 1 || 18,
 			from: info?.from * 1 || 18,
 			to: info?.to * 1 || 24,
-			about: info.about || "",
+			about: info?.about || "",
 			major: info?.major || majors[0],
 			location: info?.location || locations[0],
 			school: info?.school || schools[0],
-			interestGender: info.interestGender || genders[0],
-			interestLocation: info.interestLocation || locations[0],
+			interestGender: info?.interestGender || genders[0],
+			interestLocation: info?.interestLocation || locations[0],
 		},
 		validationSchema: Yup.object({
 			name: Yup.string().required("Please fill in this field!"),
@@ -47,12 +47,12 @@ const EditPage = () => {
 					/^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/,
 					"Please enter a valid email address!"
 				),
-			phone: Yup.string()
-				.required("Please fill in this field!")
-				.matches(
-					/^(0?)(3[2-9]|5[6|8|9]|7[0|6-9]|8[0-6|8|9]|9[0-4|6-9])[0-9]{7}$/,
-					"Please enter a valid phone number"
-				),
+			// phone: Yup.string()
+			// 	.required("Please fill in this field!")
+			// 	.matches(
+			// 		/^(0?)(3[2-9]|5[6|8|9]|7[0|6-9]|8[0-6|8|9]|9[0-4|6-9])[0-9]{7}$/,
+			// 		"Please enter a valid phone number"
+			// 	),
 			gender: Yup.string().required("Please select an option!"),
 			age: Yup.string().required("Please select an option!"),
 			from: Yup.string().required("Please select an option!"),
@@ -98,7 +98,7 @@ const EditPage = () => {
 					err={formik.errors.email}
 				/>
 
-				<Input
+				{/* <Input
 					placeholder="+84 913 981 345"
 					required={true}
 					label="phone"
@@ -106,7 +106,7 @@ const EditPage = () => {
 					value={formik.values.phone}
 					onChange={formik.handleChange}
 					err={formik.errors.phone}
-				/>
+				/> */}
 
 				<div className="flex items-center gap-5">
 					<Select
@@ -128,7 +128,7 @@ const EditPage = () => {
 				</div>
 
 				<TextArea
-					placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
+					placeholder="Something about you"
 					label="about"
 					value={formik.values.about}
 					onChange={formik.handleChange}

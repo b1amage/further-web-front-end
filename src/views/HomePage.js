@@ -23,6 +23,12 @@ const HomePage = () => {
 	};
 
 	useEffect(() => {
+		if (authenticationApi.isAdmin()) {
+			navigate("/dashboard");
+		}
+	}, [navigate]);
+
+	useEffect(() => {
 		const getProfiles = async () => {
 			setLoading(true);
 
@@ -77,7 +83,7 @@ const HomePage = () => {
 	return (
 		<div className="page-container">
 			<Header />
-			<NavBar />
+			<NavBar page="home" />
 
 			{loading ? (
 				<Loading />

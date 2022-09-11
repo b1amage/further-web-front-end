@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Header from "../components/header/Header";
 import NavBar from "../components/navbar/NavBar";
 import holder from "../assets/svg/img-holder.svg";
@@ -18,6 +18,12 @@ const ProfilePage = () => {
 	const avatar = authenticationApi.isLogin()
 		? localStorage.getItem("image")
 		: holder;
+
+	useEffect(() => {
+		if (authenticationApi.isAdmin()) {
+			navigate("/dashboard");
+		}
+	}, [navigate]);
 
 	return (
 		<div className="page-container">
@@ -54,7 +60,7 @@ const ProfilePage = () => {
 				</div>
 			</div>
 
-			<NavBar />
+			<NavBar page="profile" />
 		</div>
 	);
 };

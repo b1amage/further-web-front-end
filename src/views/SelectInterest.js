@@ -5,11 +5,28 @@ import { SelectedInterestHeader } from "../components/select_interest/SelectedIn
 import { interestsList } from "../content/interests";
 
 export const SelectInterest = () => {
-	const [interests, setInterests] = useState([...interestsList]);
+	const hobbies = JSON.parse(localStorage.getItem("hobbies")).map((item) => {
+		return {
+			value: item,
+			title: interestsList.filter((obj) => obj.value === item)[0].title,
+		};
+	});
+
+	const newInterestsList = interestsList
+		.map((item) => {
+			if (!hobbies.filter((i) => i.value === item.value).length < 1) {
+				return null;
+			}
+
+			return item;
+		})
+		.filter((item) => item !== null);
+
+	const [interests, setInterests] = useState(newInterestsList);
 
 	interests.sort((a, b) => a.value.localeCompare(b.value));
 
-	const [selectedInterests, setSelectedInterests] = useState([]);
+	const [selectedInterests, setSelectedInterests] = useState(hobbies);
 
 	const [selectedValue, setSelectedValue] = useState([]);
 
@@ -44,6 +61,8 @@ export const SelectInterest = () => {
 				setSelectedValue((prev) => [...prev, selectedItem.value]);
 			}
 		}
+
+		console.log("selectedInterest", selectedInterests);
 	};
 
 	const onChangeRemoveSelect = (e) => {

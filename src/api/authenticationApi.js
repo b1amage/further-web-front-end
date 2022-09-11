@@ -24,7 +24,13 @@ const authenticationApi = {
 			});
 			console.log(response);
 			localStorage.setItem("user", JSON.stringify(response.data.user));
-			navigate("/");
+
+			if (response.data.user.role === "admin") {
+				navigate("/dashboard");
+			} else {
+				navigate("/");
+			}
+
 			return response;
 		} catch (error) {
 			console.log("error:", error);
@@ -84,7 +90,10 @@ const authenticationApi = {
 	},
 
 	isAdmin() {
-		return JSON.parse(localStorage.getItem("user")).role === "admin";
+		return (
+			localStorage.getItem("user") &&
+			JSON.parse(localStorage.getItem("user")).role === "admin"
+		);
 	},
 };
 

@@ -1,9 +1,9 @@
 import React from "react";
 import Header from "../components/header/Header";
 import Avatar from "../components/setup/Avatar";
-import Input from "../utilities/Input";
+// import Input from "../utilities/Input";
 
-import phone from "../assets/svg/phone.svg";
+// import phone from "../assets/svg/phone.svg";
 import Select from "../utilities/Select";
 import genders from "../content/genders";
 import majors from "../content/majors";
@@ -22,7 +22,7 @@ const SetupPage = () => {
 
 	const formik = useFormik({
 		initialValues: {
-			phone: "",
+			// phone: "",
 			about: "",
 			gender: genders[0],
 			major: majors[0],
@@ -30,12 +30,12 @@ const SetupPage = () => {
 			school: schools[0],
 		},
 		validationSchema: Yup.object({
-			phone: Yup.string()
-				.required("Please fill in this field!")
-				.matches(
-					/^(0?)(3[2-9]|5[6|8|9]|7[0|6-9]|8[0-6|8|9]|9[0-4|6-9])[0-9]{7}$/,
-					"Please enter a valid phone number"
-				),
+			// phone: Yup.string()
+			// 	.required("Please fill in this field!")
+			// 	.matches(
+			// 		/^(0?)(3[2-9]|5[6|8|9]|7[0|6-9]|8[0-6|8|9]|9[0-4|6-9])[0-9]{7}$/,
+			// 		"Please enter a valid phone number"
+			// 	),
 			gender: Yup.string().required(
 				"Please select an option in this field!"
 			),
@@ -66,7 +66,7 @@ const SetupPage = () => {
 				onSubmit={formik.handleSubmit}
 				className="flex flex-col gap-5 my-10 lg:gap-8"
 			>
-				<Input
+				{/* <Input
 					placeholder="+84913981324"
 					required
 					label="phone"
@@ -74,7 +74,7 @@ const SetupPage = () => {
 					value={formik.values.phone}
 					onChange={formik.handleChange}
 					err={formik.errors.phone}
-				/>
+				/> */}
 
 				<TextArea
 					value={formik.values.about}

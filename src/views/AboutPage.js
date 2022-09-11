@@ -1,10 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
 import AboutCard from "../components/about/AboutCard";
 import Header from "../components/header/Header";
 import NavBar from "../components/navbar/NavBar";
 import about from "../content/about";
+import { useNavigate } from "react-router-dom";
+import authenticationApi from "../api/authenticationApi";
 
 const AboutPage = () => {
+	const navigate = useNavigate();
+
+	useEffect(() => {
+		if (authenticationApi.isAdmin()) {
+			navigate("/dashboard");
+		}
+	}, [navigate]);
 	return (
 		<div className="page-container">
 			<Header title="About us" />
@@ -22,7 +31,7 @@ const AboutPage = () => {
 					))}
 			</div>
 
-			<NavBar />
+			<NavBar page="about" />
 		</div>
 	);
 };

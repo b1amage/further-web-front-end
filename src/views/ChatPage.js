@@ -47,7 +47,7 @@ const ChatPage = () => {
 				</div>
 			)}
 
-			<NavBar />
+			<NavBar page="chat" />
 		</div>
 	);
 };
