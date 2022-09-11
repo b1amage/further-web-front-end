@@ -14,6 +14,12 @@ const AllMatchPage = () => {
 	const navigate = useNavigate();
 
 	useEffect(() => {
+		if (authenticationApi.isAdmin()) {
+			navigate("/dashboard");
+		}
+	}, [navigate]);
+
+	useEffect(() => {
 		const getPeople = async () => {
 			setLoading(true);
 			const response = await userApi.getPeopleLiked(navigate);

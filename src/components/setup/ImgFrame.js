@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-const ImgFrame = ({ id }) => {
+const ImgFrame = ({ id, dfImage }) => {
 	const [selectedFile, setSelectedFile] = useState();
 	const [isFilePicked, setIsFilePicked] = useState(false);
 	const [img, setImg] = useState();

@@ -23,6 +23,12 @@ const HomePage = () => {
 	};
 
 	useEffect(() => {
+		if (authenticationApi.isAdmin()) {
+			navigate("/dashboard");
+		}
+	}, [navigate]);
+
+	useEffect(() => {
 		const getProfiles = async () => {
 			setLoading(true);
 
