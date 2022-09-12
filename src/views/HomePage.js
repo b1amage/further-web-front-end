@@ -51,16 +51,18 @@ const HomePage = () => {
 		await userApi.swipe(profile._id, true, navigate);
 
 		// TODO: check if matched
-		// const peopleLiked = await userApi.getPeopleLiked(navigate);
+		const peopleLiked = await userApi.getPeopleLiked(navigate);
+		const peopleLikedId = peopleLiked.data.results.map((item) => item._id);
+		console.log(peopleLikedId);
 
-		// const peopleLikedId = peopleLiked.data.results.map((item) => item._id);
-		// if (peopleLikedId.includes(profile._id)) {
-		// 	navigate(
-		// 		`/success/${profile._id}/${
-		// 			JSON.parse(localStorage.getItem("user")).userId
-		// 		}`
-		// 	);
-		// }
+		if (peopleLikedId.includes(profile._id)) {
+			navigate(
+				`/success/${profile._id}/${
+					JSON.parse(localStorage.getItem("user")).userId
+				}`
+			);
+		}
+
 		setLoading(true);
 		// call new api
 		const newUser = await getNewProfile();

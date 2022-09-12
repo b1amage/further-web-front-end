@@ -15,6 +15,7 @@ const ProfilePage = () => {
 		authenticationApi.logout(navigate);
 	};
 
+	// !Bug here: just display on the device register -> known bug
 	const avatar = authenticationApi.isLogin()
 		? localStorage.getItem("image")
 		: holder;
