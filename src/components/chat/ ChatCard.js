@@ -5,7 +5,7 @@ const ChatCard = ({ img, isActive, lastest, name, onClick }) => {
 	return (
 		<div
 			onClick={onClick}
-			className="transiton-all duration-300 hover:shadow-lg hover:-translate-y-2 flex cursor-pointer items-center gap-3 md:gap-5 lg:gap-10 p-4 md:p-6 lg:p-8 border border-gray dark:border-dark-3 hover:border-primary-100 rounded-[16px]"
+			className="transiton-all duration-300 hover:shadow-lg hover:-translate-y-2 flex cursor-pointer items-center gap-3 md:gap-5 lg:gap-10 p-4 md:p-6 lg:p-8 border border-gray dark:border-darkBlue hover:border-primary-100 rounded-[16px]"
 		>
 			<div className="relative w-[60px] h-[60px] md:w-[80px] md:h-[80px] lg:w-[100px] lg:h-[100px] rounded-full">
 				<img

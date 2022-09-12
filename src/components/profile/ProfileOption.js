@@ -21,7 +21,7 @@ const ProfileOption = ({
 		<Container
 			navigatable={navigatable}
 			to={to}
-			className={`py-3 hover:text-primary-100 transition-all duration-300 md:py-5 lg:py-8 cursor-pointer flex items-center justify-between border-y-[0.5px] md:border-y-[1px] border-gray ${
+			className={`py-3 hover:text-primary-100 transition-all duration-300 md:py-5 lg:py-8 cursor-pointer flex items-center justify-between border-y-[0.5px] md:border-y-[1px] border-gray dark:border-darkBlue ${
 				requiredLogin && !isLogin ? "hidden" : ""
 			}`}
 		>
