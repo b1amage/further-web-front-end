@@ -3,7 +3,11 @@
 ### Note
 
 -   Demo: https://rmit-tinder.netlify.app/
-    ![Screenshot](sc.png)
+    <img
+    src="./sc.png"
+    alt="Alt text"
+    title="Optional title"
+    style="display: inline-block; margin: 0 auto; max-width: 300px">
 
 ### Course Information
 

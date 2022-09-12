@@ -54,14 +54,15 @@ const HomePage = () => {
 		const peopleLiked = await userApi.getPeopleLiked(navigate);
 		const peopleLikedId = peopleLiked.data.results.map((item) => item._id);
 		console.log(peopleLikedId);
+		console.log(peopleLikedId.includes(profile._id));
 
-		if (peopleLikedId.includes(profile._id)) {
-			navigate(
-				`/success/${profile._id}/${
-					JSON.parse(localStorage.getItem("user")).userId
-				}`
-			);
-		}
+		// if (peopleLikedId.includes(profile._id)) {
+		// 	navigate(
+		// 		`/success/${profile._id}/${
+		// 			JSON.parse(localStorage.getItem("user")).userId
+		// 		}`
+		// 	);
+		// }
 
 		setLoading(true);
 		// call new api
