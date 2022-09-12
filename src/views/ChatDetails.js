@@ -14,18 +14,21 @@ export const ChatDetails = () => {
     roomId: "",
     message: "",
   });
+  const [nextCursor, setNextCursor] = useState()
   const { roomId, token } = useParams();
   const navigate = useNavigate();
 
-  // const socketRef = useRef()
+  useEffect(() => {
+    roomChatApi.getRoomMessages(roomId,navigate).then((res) => {
+      setChatContent(res.data.results.reverse());
+      setNextCursor(res.data.next_cursor)
+      //   console.log(res);
+    });
+  },[navigate, roomId])
 
   useEffect(() => {
     const socket = io("http://localhost:8080", {
       auth: { token: token },
-    });
-    roomChatApi.getRoomMessages(roomId, navigate).then((res) => {
-      setChatContent(res.data.results.reverse());
-      //   console.log(res);
     });
 
     socket.emit(
@@ -37,29 +40,43 @@ export const ChatDetails = () => {
     socket.emit("send-chat-message", data);
 
     socket.on("chat-message", (chat) => {
-	  roomChatApi.getRoomMessages(roomId, navigate).then((res) => {
-		setChatContent(res.data.results.reverse());
-		//   console.log(res);
-	  });
+      console.log(chat)
+      setChatContent(prev => [...prev, {user: chat.userId, name: chat.name, content: chat.message}])
     });
-  }, [navigate, roomId, data, token]);
+
+    return () => {
+      socket.off("chat-message")
+    }
+  }, [roomId, data, token]);
 
   const sendMessage = (e) => {
     e.preventDefault();
-    roomChatApi.createMessage(roomId, currentMessage).then((res) => {
-      setData({
-        userId: res.data.message.user,
-        roomId: res.data.message.room,
-        message: res.data.message.content,
-      });
+    
+    setChatContent(prev => [...prev, {user: JSON.parse(localStorage.getItem("user")).userId,name: JSON.parse(localStorage.getItem("user")).name,
+    roomId: roomId, content: currentMessage}])
+
+    setData({
+      userId: JSON.parse(localStorage.getItem("user")).userId,
+      roomId: roomId,
+      message: currentMessage,
     });
+
+    roomChatApi.createMessage(roomId, currentMessage)
+
     setCurrentMessage("");
   };
 
+  const handleShowMore = async () => {
+			const response = await roomChatApi.getRoomMessages(nextCursor, navigate);
+			console.log(response);
+			setChatContent([...chatContent, ...response.data.results]);
+			setNextCursor(response.data.next_cursor);
+	};
+
   return (
     <div className="flex flex-col w-full h-screen">
-      <ChatHeader opponent={localStorage.getItem("opponent")} />
-      <ChatDetailsContent date={"Today"} chatContent={chatContent} />
+      <ChatHeader  opponent={localStorage.getItem("opponent")} />
+      <ChatDetailsContent loadMore={handleShowMore} date={"Today"} chatContent={chatContent} />
       <ChatFooter
         onChange={(e) => setCurrentMessage(e.target.value)}
         onClick={sendMessage}
