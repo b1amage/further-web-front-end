@@ -1,13 +1,20 @@
-import React from 'react'
-import { IdeaType } from './IdeaType'
-import { idealTypes } from '../../content/idealTypeMatch'
-export const IdealTypeList = ({onChangeType}) => {
-   
-  return (
-    <div className='w-full flex flex-wrap gap-10 h-fit px-6 justify-center'>
-        {idealTypes.map((ideal, index) => {
-          return <IdeaType icon={ideal.icon} type={ideal.type} id={ideal.id} onChangeType={onChangeType} key={index} />
-        })}
-    </div>
-  )
-}
+import React from "react";
+import { IdeaType } from "./IdeaType";
+import { idealTypes } from "../../content/idealTypeMatch";
+export const IdealTypeList = ({ onChangeType }) => {
+	return (
+		<div className="flex flex-wrap justify-center w-full gap-10 px-6 h-fit">
+			{idealTypes.map((ideal, index) => {
+				return (
+					<IdeaType
+						icon={ideal.icon}
+						type={ideal.type}
+						id={ideal.id}
+						onChangeType={onChangeType}
+						key={index}
+					/>
+				);
+			})}
+		</div>
+	);
+};
