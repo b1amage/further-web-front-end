@@ -27,7 +27,7 @@ export const ChatDetails = () => {
 	}, [navigate, roomId]);
 
 	useEffect(() => {
-		const socket = io("http://localhost:8080", {
+		const socket = io("https://rmitinder.herokuapp.com", {
 			auth: { token: token },
 		});
 
