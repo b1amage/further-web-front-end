@@ -32,7 +32,7 @@
 	}
 
 	.page-container {
-		@apply container p-6 mx-auto min-h-[100vh] md:min-h-0;
+		@apply container p-6 mx-auto min-h-[100vh] md:min-h-0 !pb-12;
 	}
 }
 
