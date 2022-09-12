@@ -39,7 +39,9 @@ const AllMatchPage = () => {
 		<div className="page-container">
 			<Header title={`All match (${people?.length || 0})`} />
 
-			{loading ? (
+			{!authenticationApi.isLogin() ? (
+				<NoMore />
+			) : loading ? (
 				<Loading />
 			) : people ? (
 				<div className="grid grid-cols-1 gap-5 my-10 md:gap-y-8 lg:gap-y-10 md:grid-cols-3 xl:grid-cols-4 place-items-center">

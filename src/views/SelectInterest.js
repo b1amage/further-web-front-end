@@ -5,12 +5,19 @@ import { SelectedInterestHeader } from "../components/select_interest/SelectedIn
 import { interestsList } from "../content/interests";
 
 export const SelectInterest = () => {
-	const hobbies = JSON.parse(localStorage.getItem("hobbies")).map((item) => {
-		return {
-			value: item,
-			title: interestsList.filter((obj) => obj.value === item)[0].title,
-		};
-	});
+	const hobbiesList = JSON.parse(localStorage.getItem("hobbies")) || [];
+
+	const hobbies =
+		hobbiesList.length < 1
+			? []
+			: hobbiesList.map((item) => {
+					return {
+						value: item,
+						title: interestsList.filter(
+							(obj) => obj.value === item
+						)[0].title,
+					};
+			  });
 
 	const newInterestsList = interestsList
 		.map((item) => {

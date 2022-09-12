@@ -51,9 +51,11 @@ const HomePage = () => {
 		await userApi.swipe(profile._id, true, navigate);
 
 		// TODO: check if matched
-		// const peopleLiked = await userApi.getPeopleLiked(navigate);
+		const peopleLiked = await userApi.getPeopleLiked(navigate);
+		const peopleLikedId = peopleLiked.data.results.map((item) => item._id);
+		console.log(peopleLikedId);
+		console.log(peopleLikedId.includes(profile._id));
 
-		// const peopleLikedId = peopleLiked.data.results.map((item) => item._id);
 		// if (peopleLikedId.includes(profile._id)) {
 		// 	navigate(
 		// 		`/success/${profile._id}/${
@@ -61,6 +63,7 @@ const HomePage = () => {
 		// 		}`
 		// 	);
 		// }
+
 		setLoading(true);
 		// call new api
 		const newUser = await getNewProfile();
@@ -85,7 +88,9 @@ const HomePage = () => {
 			<Header />
 			<NavBar page="home" />
 
-			{loading ? (
+			{!authenticationApi.isLogin() ? (
+				<NoMore />
+			) : loading ? (
 				<Loading />
 			) : profile ? (
 				<>
