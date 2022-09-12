@@ -66,6 +66,7 @@ const LoginPage = () => {
 						value={formik.values.email}
 						onChange={formik.handleChange}
 						err={formik.errors.email}
+						type="text"
 					/>
 					<Input
 						placeholder="Password"
@@ -80,6 +81,7 @@ const LoginPage = () => {
 					/>
 
 					<Button
+						type="submit"
 						primary
 						className="mt-4 md:w-1/2 md:mx-auto lg:text-2xl lg:h-[65px]"
 					>
