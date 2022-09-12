@@ -11,7 +11,7 @@ import forgotPasswordApi from "../api/forgotPasswordApi";
 export const ForgotPasswordPage = () => {
 	const [selectedType, setSelectedType] = useState(null);
 
-	const [message, setMessage] = useState("")
+	const [message, setMessage] = useState("");
 	const onChangeType = (e) => {
 		setSelectedType(e.target.value);
 	};
@@ -19,15 +19,18 @@ export const ForgotPasswordPage = () => {
 	const navigate = useNavigate();
 
 	const handleSubmit = (e) => {
-		e.preventDefault()
-		forgotPasswordApi.forgotPassword(selectedType, navigate).then(res => {
-			setMessage(res.data.msg)
-		})
-	}
+		e.preventDefault();
+		forgotPasswordApi.forgotPassword(selectedType, navigate).then((res) => {
+			setMessage(res.data.msg);
+		});
+	};
 
 	return (
 		<div>
-			<form onSubmit={handleSubmit} className="px-6 py-7 w-full h-screen sm:px-[100px] md:px-[200px] lg:px-[350px]">
+			<form
+				onSubmit={handleSubmit}
+				className="px-6 py-7 w-full h-screen sm:px-[100px] md:px-[200px] lg:px-[350px]"
+			>
 				<Header title={"Forgot Password"} />
 
 				<DisplaySvg svg={forgotPassword} />
@@ -48,8 +51,12 @@ export const ForgotPasswordPage = () => {
 					/>
 				</div>
 
-				<div className="mt-[80px]">	
-					<Button type={"submit"} name={"Continue"} message={message}/>
+				<div className="mt-[80px]">
+					<Button
+						type={"submit"}
+						name={"Continue"}
+						message={message}
+					/>
 				</div>
 			</form>
 		</div>

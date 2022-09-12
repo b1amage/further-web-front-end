@@ -49,7 +49,7 @@ const Select = ({
 			</div>
 
 			{err && (
-				<div className="flex items-center gap-4 p-4 text-red-600 bg-red-100 rounded-full">
+				<div className="flex items-center gap-4 p-4 text-red-600 bg-red-100 rounded-full dark:bg-red-600 dark:bg-opacity-30 dark:text-required">
 					<div>
 						<img src={error} alt="" />
 					</div>
