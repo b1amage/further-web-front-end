@@ -76,7 +76,10 @@ export const ResetPassword = () => {
 	}, [query, navigate]);
 
 	return (
-		<div className="mx-6 mt-7 sm:mx-[100px] md:mx-[200px] lg:mx-[350px]">
+		<div
+			// className="mx-6 mt-7 sm:mx-[100px] md:mx-[200px] lg:mx-[350px]"
+			className="page-container"
+		>
 			<Header title={"Forgot Password"} />
 			<DisplaySvg svg={resetPasswordFrame} />
 			<ResetPasswordForm
