@@ -88,7 +88,7 @@ const AllMatchPage = () => {
 				)}
 			</div>
 
-			<div>
+			<div className="mt-20">
 				<SectionTitle className="my-8">Who Matched you</SectionTitle>
 				{!authenticationApi.isLogin() ? (
 					<NoMore />
