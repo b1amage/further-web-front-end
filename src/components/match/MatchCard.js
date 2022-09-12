@@ -2,9 +2,21 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 
 import OptionButtonFrame from "../main/OptionButtonFrame";
+import userApi from "../../api/userApi";
 
 const MatchCard = ({ primary, secondary, user, isMatch }) => {
 	const navigate = useNavigate();
+
+	const handleAccept = () => {
+		console.log("love");
+
+		userApi.swipe(user.from._id, true, navigate);
+	};
+
+	const handleRefuse = () => {
+		console.log("che");
+		userApi.swipe(user.from._id, false, navigate);
+	};
 
 	return (
 		<div className="relative flex flex-col">
@@ -56,7 +68,10 @@ const MatchCard = ({ primary, secondary, user, isMatch }) => {
 
 			{!isMatch && (
 				<div className="absolute bottom-0 -translate-x-1/2 translate-y-1/2 left-1/2">
-					<OptionButtonFrame />
+					<OptionButtonFrame
+						handleAccept={handleAccept}
+						handleRefuse={handleRefuse}
+					/>
 				</div>
 			)}
 		</div>
