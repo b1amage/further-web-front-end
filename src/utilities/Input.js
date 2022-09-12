@@ -33,8 +33,8 @@ const Input = ({
 				/>
 
 				{icon && (
-					<div
-						onClick={iconOnClick}
+					<button
+						type={iconOnClick}
 						className="absolute -translate-y-1/2 top-1/2 right-5"
 					>
 						<img
@@ -42,7 +42,7 @@ const Input = ({
 							alt="mail"
 							className="object-cover w-full h-full"
 						/>
-					</div>
+					</button>
 				)}
 			</div>
 
