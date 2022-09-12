@@ -2,7 +2,8 @@
 
 ### Note
 
--   Demo: https://rmitinder.netlify.app/
+-   Demo: https://rmit-tinder.netlify.app/
+    ![Screenshot](sc.png)
 
 ### Course Information
 
@@ -17,12 +18,12 @@
 
 -   Supervisor: Dr. Nguyen Ngoc Thanh
 
+-   Project manager: Nguyen Chau Loan (s3880115)
 -   Frontend developer: Nguyen Luu Quoc Bao (s3877698)
 -   Frontend developer: Bui Quang An (s3877482)
 -   Backend developer: Dao Kha Tuan (s3877347)
 -   Backend developer: Nguyen Trong Minh Long (s3878694)
 -   Backend developer: Vo Huu Khoi (s3891187)
--   Bussiness Analyst: Nguyen Chau Loan (s3880115)
 
 ### Project Information
 
@@ -39,6 +40,7 @@
 
     -   Frontend: HTML, ReactJS, TailwindCSS, SocketIO
     -   Backend: MongoDB, ExpressJS, NodeJS, SocketIO
+    -   Hosting: Netlify, Heroku, AWS
 
 -   Project started date: 1 August 2022
 -   Project finished date: 11 September 2022
