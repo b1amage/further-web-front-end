@@ -32,7 +32,7 @@ const Input = ({
 
 				{icon && (
 					<button
-						type={iconChatOnClick}
+						iconChatOnClick={iconChatOnClick}
 						onClick={iconOnClick}
 						className="absolute -translate-y-1/2 top-1/2 right-5"
 					>
