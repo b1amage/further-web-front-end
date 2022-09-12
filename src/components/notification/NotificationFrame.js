@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 export const NotificationFrame = ({ message }) => {
 	const navigate = useNavigate();
 	return (
-		<>
+		<div className="w-full">
 			<DisplaySvg svg={notification} />
 			<h1 className="text-center mt-6 text-primary-100 text-[32px]">
 				Congratulations!
@@ -16,6 +16,6 @@ export const NotificationFrame = ({ message }) => {
 				{message}
 			</p>
 			<Button name="Go to Homepage" handleClick={() => navigate("/")} />
-		</>
+		</div>
 	);
 };

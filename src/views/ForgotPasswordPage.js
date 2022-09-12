@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import forgotPassword from "../assets/svg/forgotPassword.svg";
+import forgotPasswordDarkMode from "../assets/svg/forgotPasswordDarkMode.svg";
 import email from "../assets/svg/email.svg";
 import { Button } from "../components/forgot_password/Button";
 import { Type } from "../components/forgot_password/Type";
@@ -26,24 +27,27 @@ export const ForgotPasswordPage = () => {
 	};
 
 	return (
-		<div>
+		<div className="h-screen">
 			<form
 				onSubmit={handleSubmit}
-				className="page-container"
+				className="page-container w-full h-screen flex flex-col items-center justify-center"
 				// className="px-6 py-7 w-full h-screen sm:px-[100px] md:px-[200px] lg:px-[350px]"
-			>
-				<Header title={"Forgot Password"} />
+			>	
+				<div className="w-full">
+					<Header title={"Forgot Password"} />
+				</div>
+				
 
-				<DisplaySvg svg={forgotPassword} />
+				<DisplaySvg svg={localStorage.getItem("theme") === "light" ? forgotPassword : forgotPasswordDarkMode} />
 
-				<div className="my-6">
+				<div className="my-6 w-full">
 					<span>
 						Select which contact details should we use to reset your
 						password
 					</span>
 				</div>
 
-				<div>
+				<div className="w-full">
 					<Type
 						id={JSON.parse(localStorage.getItem("user")).email}
 						icon={email}
@@ -52,7 +56,7 @@ export const ForgotPasswordPage = () => {
 					/>
 				</div>
 
-				<div className="mt-[80px]">
+				<div className="mt-[80px] w-full">
 					<Button
 						type={"submit"}
 						name={"Continue"}
