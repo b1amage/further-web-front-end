@@ -35,20 +35,20 @@ const Grid = ({ profile, handleAccept, handleRefuse }) => {
 						<p className="my-4 text-lg font-normal text-black dark:text-white">
 							{profile?.biography}
 						</p>
-					</h3>
-					<p className="text-lg lg:text-2xl">{profile?.school}</p>
-				</div>
+						<p className="text-lg lg:text-2xl">{profile?.school}</p>
 
-				<div className="flex flex-wrap items-center gap-2 mt-2 mb-8">
-					{profile?.hobbies?.length &&
-						profile?.hobbies.map((item, index) => (
-							<div
-								key={index}
-								className="px-6 py-3 text-white text-xl bg-gradient-to-br from-primary-50 to-primary-100 rounded-[36px]"
-							>
-								{getTitle(item)}
-							</div>
-						))}
+						<div className="flex flex-wrap items-center gap-4 mt-4 mb-8">
+							{profile?.hobbies?.length &&
+								profile?.hobbies.map((item, index) => (
+									<div
+										key={index}
+										className="px-6 py-3 text-white text-xl bg-gradient-to-br from-primary-50 to-primary-100 rounded-[36px]"
+									>
+										{getTitle(item)}
+									</div>
+								))}
+						</div>
+					</h3>
 				</div>
 
 				<OptionButtonFrame
