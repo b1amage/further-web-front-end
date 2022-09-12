@@ -9,7 +9,7 @@ export const ChatFooter = ({ onChange, onClick, value }) => {
 				icon={send}
 				className={"!h-[64px] !rounded-[20px] pr-[60px]"}
 				onChange={onChange}
-				iconOnClick={"submit"}
+				iconChatOnClick={"submit"}
 				value={value}
 			/>
 		</form>

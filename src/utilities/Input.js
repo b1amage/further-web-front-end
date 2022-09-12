@@ -12,6 +12,7 @@ const Input = ({
 	value,
 	onChange,
 	err,
+	iconChatOnClick,
 }) => {
 	return (
 		<div className="flex flex-col space-y-2 lg:space-y-4">
@@ -31,6 +32,7 @@ const Input = ({
 
 				{icon && (
 					<button
+						type={iconChatOnClick}
 						onClick={iconOnClick}
 						className="absolute -translate-y-1/2 top-1/2 right-5"
 					>
