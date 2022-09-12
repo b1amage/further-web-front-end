@@ -1,8 +1,19 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { OpponentChatBox } from "./opponent/OpponentChatBox";
 import { UserChatBox } from "./user/UserChatBox";
 import arrowUp from "../../../assets/svg/arrow-up.svg";
+
 export const ChatDetailsContent = ({ loadMore, date, chatContent }) => {
+	const messagesEndRef = useRef(null);
+
+	const scrollToBottom = () => {
+		messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+	};
+
+	useEffect(() => {
+		scrollToBottom();
+	}, [chatContent]);
+
 	return (
 		<div className="px-[24px] h-full overflow-y-scroll">
 			<div
@@ -29,6 +40,7 @@ export const ChatDetailsContent = ({ loadMore, date, chatContent }) => {
 					);
 				}
 			})}
+			<div ref={messagesEndRef} />
 		</div>
 	);
 };
