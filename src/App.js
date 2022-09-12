@@ -8,7 +8,6 @@ import { ResetPassword } from "./views/ResetPassword";
 import { NotificationPage } from "./views/NotificationPage";
 import UserDetailPage from "./views/UserDetailPage";
 
-import { OtpPage } from "./views/OtpPage";
 import MatchPage from "./views/MatchPage";
 import AllMatchPage from "./views/AllMatchPage";
 
@@ -54,21 +53,18 @@ function App() {
 					path="/forgot-password"
 					element={<ForgotPasswordPage />}
 				/>
-				<Route
-					path="/forgot-password/otp/:place"
-					element={<OtpPage />}
-				/>
-				<Route
-					path="/reset-password"
-					element={<ResetPassword />}
-				/>
+
+				<Route path="/reset-password" element={<ResetPassword />} />
 				<Route
 					path="/reset-password/notification"
 					element={<NotificationPage />}
 				/>
 
 				<Route path="/chat" element={<ChatPage />} />
-				<Route path="/chat-details/:roomId/:token" element={<ChatDetails />} />
+				<Route
+					path="/chat-details/:roomId/:token"
+					element={<ChatDetails />}
+				/>
 				<Route
 					path="/success/:userId1/:userId2"
 					element={<SuccessMatchPage />}

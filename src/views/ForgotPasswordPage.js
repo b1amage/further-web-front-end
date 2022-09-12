@@ -29,7 +29,8 @@ export const ForgotPasswordPage = () => {
 		<div>
 			<form
 				onSubmit={handleSubmit}
-				className="px-6 py-7 w-full h-screen sm:px-[100px] md:px-[200px] lg:px-[350px]"
+				className="page-container"
+				// className="px-6 py-7 w-full h-screen sm:px-[100px] md:px-[200px] lg:px-[350px]"
 			>
 				<Header title={"Forgot Password"} />
 
