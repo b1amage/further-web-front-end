@@ -88,7 +88,9 @@ const HomePage = () => {
 			<Header />
 			<NavBar page="home" />
 
-			{loading ? (
+			{!authenticationApi.isLogin() ? (
+				<NoMore />
+			) : loading ? (
 				<Loading />
 			) : profile ? (
 				<>
