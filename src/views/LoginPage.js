@@ -54,7 +54,7 @@ const LoginPage = () => {
 		<div className="page-container">
 			<Header title="Sign in" />
 
-			{!loading && <LogoLg />}
+			{!loading && !authenticationApi.isLogin() && <LogoLg />}
 
 			{authenticationApi.isLogin() ? (
 				<AlreadyLogin />
