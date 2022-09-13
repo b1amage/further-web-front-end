@@ -2,9 +2,9 @@ import React from "react";
 
 export const OpponentChatBox = ({ content, time }) => {
 	return (
-		<div className="w-full flex justify-start">
-			<div className="md:w-1/3 w-3/4 my-3 mr-[40px] py-[12px] bg-dark-1 border border-dark-3 px-6 rounded-r-[16px] rounded-bl-[16px] text-black dark:text-white items-end">
-				<span className="pr-2 break-words">{content}</span>
+		<div className="w-full inline-flex justify-start">
+			<div className="inline-flex h-auto w-3/5 my-3 py-[12px] text-black dark:text-white  px-6">
+				<span className="inline-block w-fit px-6 py-4 break-all dark:bg-dark-1 border dark:border-dark-3 bg-gray border-none rounded-r-[16px] rounded-bl-[16px]">{content}</span>
 			</div>
 		</div>
 

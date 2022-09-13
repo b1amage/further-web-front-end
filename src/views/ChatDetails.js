@@ -5,10 +5,12 @@ import { ChatFooter } from "../components/chat/chat_details/ChatFooter";
 import { useNavigate, useParams } from "react-router-dom";
 import roomChatApi from "../api/roomChatApi";
 import { io } from "socket.io-client";
+import authenticationApi from "../api/authenticationApi";
 
 export const ChatDetails = () => {
 	const [currentMessage, setCurrentMessage] = useState("");
 	const [chatContent, setChatContent] = useState([]);
+	const [loading, setLoading] = useState(true);
 	const [data, setData] = useState({
 		userId: "",
 		roomId: "",
@@ -19,11 +21,20 @@ export const ChatDetails = () => {
 	const navigate = useNavigate();
 
 	useEffect(() => {
-		roomChatApi.getRoomMessages(roomId, navigate).then((res) => {
-			setChatContent(res.data.results.reverse());
-			setNextCursor(res.data.next_cursor);
-			//   console.log(res);
-		});
+		const getMessages = async () => {
+			setLoading(true)
+			const response = await roomChatApi.getRoomMessages(roomId, nextCursor,navigate)
+			setChatContent(response.data.results.reverse());
+			setNextCursor(response.data.next_cursor);
+			//   console.log(response);
+			setLoading(false)
+		}
+
+		if (authenticationApi.isLogin()){
+			getMessages()
+		} else{
+			setChatContent(null)
+		}
 	}, [navigate, roomId]);
 
 	useEffect(() => {
@@ -71,22 +82,26 @@ export const ChatDetails = () => {
 			message: currentMessage,
 		});
 
-		roomChatApi.createMessage(roomId, currentMessage);
-
+		
 		setCurrentMessage("");
 	};
 
-	const handleShowMore = async () => {
-		roomChatApi.getRoomMessages(roomId, nextCursor, navigate)(res => {
-      setChatContent([...res.data.results, ...chatContent]);
-		  setNextCursor(res.data.next_cursor);
-    })
+	const handleShowMore = () => {
+		const getMore = async () => {
+			const response = await roomChatApi.getRoomMessages(roomId, nextCursor, navigate);
+			console.log(response);
+			setChatContent([...response.data.results, ...chatContent]);
+			setNextCursor(response.data.next_cursor);
+		};
+
+		getMore();
 	};
 
 	return (
 		<div className="flex flex-col w-full h-screen page-container">
 			<ChatHeader opponent={localStorage.getItem("opponent")} />
 			<ChatDetailsContent
+				loading={loading}
 				loadMore={handleShowMore}
 				date={"Today"}
 				chatContent={chatContent}

@@ -7,19 +7,33 @@ import authenticationApi from "../api/authenticationApi";
 import NoMore from "../components/main/NoMore";
 import { useNavigate } from "react-router-dom";
 import roomChatApi from "../api/roomChatApi";
+import Loading from "../utilities/Loading";
 
 const ChatPage = () => {
 	const [matches, setMatches] = useState([]);
-
+	const [loading, setLoading] = useState(true)
+	// const [roomId, setRoomId] = useState("")
+	// const [latestMessage, setLatestMessage] = useState("")
 	const navigate = useNavigate();
 
 	useEffect(() => {
-		roomChatApi.getWhoMatchYou(navigate).then((res) => {
-			// console.log(res)
-			setMatches(res.data.results);
-		});
+		const getMatches = async () => {
+			setLoading(true)
+			const response = await roomChatApi.getWhoMatchYou(navigate)
+			setMatches(response.data.results);
+			setLoading(false)
+		}
+
+		if (authenticationApi.isLogin()){
+			getMatches()
+		} else{
+			setMatches(null)
+		}
 	}, [navigate]);
 
+	// useEffect(() => {
+	// 	roomChatApi.getRoomMessages()
+	// })
 	const accessChat = (roomId, username) => {
 		roomChatApi.getMessageAccessToken(navigate).then((res) => {
 			navigate(`/chat-details/${roomId}/${res.data.token}`);
@@ -33,7 +47,9 @@ const ChatPage = () => {
 
 			{!authenticationApi.isLogin() ? (
 				<NoMore />
-			) : (
+			) : loading ? (
+				<Loading />
+			) : matches ?(
 				<div className="flex flex-col gap-5 my-8 lg:my-12">
 					{matches.map((match, index) => (
 						<ChatCard
@@ -42,7 +58,7 @@ const ChatPage = () => {
 							isActive
 							name={match.participants[0].username}
 							lastest={{
-								message: "Let's go for a drink",
+								message: localStorage.getItem("latestMessage"),
 								time: "22:00",
 								messageCount: 2,
 							}}
@@ -56,7 +72,10 @@ const ChatPage = () => {
 						/>
 					))}
 				</div>
-			)}
+			) : (
+				<NoMore isInMatch />
+			)
+		}
 
 			<NavBar page="chat" />
 		</div>

@@ -47,8 +47,8 @@ const roomChatApi = {
 		}
 	},
 
-	async getRoomMessages(roomId, navigate) {
-		const url = `/message/getRoomMessages?roomId=${roomId}`;
+	async getRoomMessages(roomId, nextCursor,navigate) {
+		const url = nextCursor ? `/message/getRoomMessages?roomId=${roomId}&next_cursor=${nextCursor}` :`/message/getRoomMessages?roomId=${roomId}`;
 		try {
 			const response = await axiosClient.get(url, {
 				withCredentials: true,
