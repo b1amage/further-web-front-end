@@ -35,35 +35,30 @@ export const ResetPassword = () => {
 		if (newPwd.length < 8) {
 			setError("* Password must have at least 8 characters");
 		} else {
-			if (newPwd.length > 20) {
-				setError(
-					"* Password length must not longer than 20 characters"
-				);
+			if (!passwordRegex.test(newPwd)) {
+				setError("* Invalid password");
 			} else {
-				if (!passwordRegex.test(newPwd)) {
+				if (newPwd !== confirmPwd) {
 					setError("* Invalid password");
 				} else {
-					if (newPwd !== confirmPwd) {
-						setError("* Invalid password");
-					} else {
-						resetPasswordApi
-							.resetPassword(
-								newPwd,
-								JSON.parse(localStorage.getItem("resetToken")),
-								navigate
-							)
-							.then((res) => {
-								localStorage.setItem(
-									"message",
-									JSON.stringify(res.data.msg)
-								);
-								navigate("/reset-password/notification");
-							});
-					}
+					resetPasswordApi
+						.resetPassword(
+							newPwd,
+							JSON.parse(localStorage.getItem("resetToken")),
+							navigate
+						)
+						.then((res) => {
+							localStorage.setItem(
+								"message",
+								JSON.stringify(res.data.msg)
+						);
+							navigate("/reset-password/notification");
+					});
 				}
 			}
 		}
-	};
+	}
+	
 
 	useEffect(() => {
 		const saveToken = async () => {
@@ -80,7 +75,7 @@ export const ResetPassword = () => {
 			// className="mx-6 mt-7 sm:mx-[100px] md:mx-[200px] lg:mx-[350px]"
 			className="page-container"
 		>
-			<Header title={"Forgot Password"} />
+			<Header title={"Reset Password"} />
 			<DisplaySvg svg={resetPasswordFrame} />
 			<ResetPasswordForm
 				validatePassword={validatePassword}

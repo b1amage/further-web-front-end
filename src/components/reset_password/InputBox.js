@@ -9,14 +9,14 @@ export const InputBox = ({ id, name, title, value, handleOnChange }) => {
 
 	return (
 		<div className="my-6">
-			<label htmlFor={id} className="mx-6 opacity-80">
+			<label htmlFor={id} className="mx-6 opacity-80 dark:text-white">
 				{title}
 				<span className="text-required">*</span>
 			</label>
 			<div
 				className={`w-full h-12 flex rounded-[100px] ${
-					value.length > 0 ? "outline-primary-100" : "outline-gray"
-				} outline px-6 py-3 mt-2`}
+					value.length > 0 ? "outline-primary-100" : "dark:outline-dark-3"
+				} px-6 py-3 mt-2 dark:bg-dark-1`}
 			>
 				<input
 					type={isHidden ? "password" : "text"}
