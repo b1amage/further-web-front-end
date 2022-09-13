@@ -65,7 +65,7 @@ export const IdealMatch = () => {
 	};
 	return (
 		<>
-			<div className="flex flex-col justify-center w-full h-auto">
+			<div className="flex flex-col justify-center w-full h-auto page-container">
 				<IdealMatchHeader />
 				<IdealMatchForm
 					onChange={onChangeType}

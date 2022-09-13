@@ -7,13 +7,14 @@ export const SucessNotification = ({ display }) => {
 	const navigate = useNavigate();
 	return (
 		<div
-			className={`w-full h-screen flex-col justify-center items-center px-8 sm:px-[100px] md:px-[200px] bg-black/70 fixed top-0 z-50 ${
-				display ? "flex" : "hidden"
-			}`}
+			// className={`
+			// w-full h-screen flex-col justify-center items-center px-8 sm:px-[100px] md:px-[200px] bg-black/70 fixed top-0 z-50 
+			// ${display ? "flex" : "hidden"}`}
+			className={`page-container fixed left-0 right-0 ${display ? "inline-flex items-center" : "hidden"} bg-black/70 h-fit md:h-screen top-0 w-full`}
 		>
-			<div className="bg-gray w-full h-[460px] flex flex-col items-center px-10 rounded-[24px]">
-				<img src={createSucess} alt="notification" className="my-8" />
-				<div className="flex flex-col h-full leading-10 text-center">
+			<div className=" dark:bg-dark-1 dark:border-dark-3 w-full h-fit py-8 inline-flex flex-col items-center px-10 rounded-[24px]">
+				<img src={createSucess} alt="notification" className="" />
+				<div className="inline-flex flex-col h-full my-5 leading-10 text-center">
 					<SectionTitle
 						children={"Great!"}
 						className="inline-block font-semibold text-primary-100"
@@ -24,7 +25,7 @@ export const SucessNotification = ({ display }) => {
 					/>
 				</div>
 
-				<div className="flex items-center w-full h-full">
+				<div className="w-full h-full">
 					<Button
 						name={"Go to Home"}
 						className={"!mt-0 !mb-0"}

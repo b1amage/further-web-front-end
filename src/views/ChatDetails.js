@@ -14,7 +14,7 @@ export const ChatDetails = () => {
 		roomId: "",
 		message: "",
 	});
-	const [nextCursor, setNextCursor] = useState();
+	const [nextCursor, setNextCursor] = useState("");
 	const { roomId, token } = useParams();
 	const navigate = useNavigate();
 
@@ -77,13 +77,10 @@ export const ChatDetails = () => {
 	};
 
 	const handleShowMore = async () => {
-		const response = await roomChatApi.getRoomMessages(
-			nextCursor,
-			navigate
-		);
-		console.log(response);
-		setChatContent([...chatContent, ...response.data.results]);
-		setNextCursor(response.data.next_cursor);
+		roomChatApi.getRoomMessages(roomId, nextCursor, navigate)(res => {
+      setChatContent([...res.data.results, ...chatContent]);
+		  setNextCursor(res.data.next_cursor);
+    })
 	};
 
 	return (

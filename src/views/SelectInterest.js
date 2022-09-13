@@ -11,13 +11,13 @@ export const SelectInterest = () => {
 		hobbiesList.length < 1
 			? []
 			: hobbiesList.map((item) => {
-					return {
-						value: item,
-						title: interestsList.filter(
-							(obj) => obj.value === item
-						)[0].title,
-					};
-			  });
+				return {
+					value: item,
+					title: interestsList.filter(
+						(obj) => obj.value === item
+					)[0].title,
+				};
+			});
 
 	const newInterestsList = interestsList
 		.map((item) => {
@@ -102,16 +102,18 @@ export const SelectInterest = () => {
 	};
 
 	return (
-		<div className="inline-flex flex-col w-full h-auto pt-6 overflow-hidden md:items-center">
-			<SelectedInterestHeader onChange={onChangeSelect} />
-			<SelectedInterestForm
-				onSubmit={handleSubmit}
-				array={interests}
-				selectedList={selectedInterests}
-				onChangeRemoveSelect={onChangeRemoveSelect}
-				onChangeSelect={onChangeSelect}
-				error={error}
-			/>
+		<div className="inline-flex flex-col w-full overflow-hidden justify-center items-center">
+			<div className="page-container">
+				<SelectedInterestHeader onChange={onChangeSelect} />
+				<SelectedInterestForm
+					onSubmit={handleSubmit}
+					array={interests}
+					selectedList={selectedInterests}
+					onChangeRemoveSelect={onChangeRemoveSelect}
+					onChangeSelect={onChangeSelect}
+					error={error}
+				/>
+			</div>
 		</div>
 	);
 };

@@ -9,7 +9,7 @@ export const InterestList = ({ array, onChange }) => {
 					<Interest
 						title={interest.title}
 						value={interest.value}
-						className={`md:w-[200px] lg:w-[300px] w-fit rounded-[100px]`}
+						className={`md:w-[200px] lg:w-[250px] w-fit rounded-[100px]`}
 						key={index}
 						onChange={onChange}
 					/>

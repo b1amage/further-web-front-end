@@ -23,11 +23,11 @@ export const ChatDetailsContent = ({ loadMore, date, chatContent }) => {
 				<img src={arrowUp} alt="show-more" />
 			</div>
 			<div className="text-center">
-				<h1 className="inline-block px-3 py-2 my-5 bg-gray rounded-[8px]">
+				<h1 className="inline-block px-3 py-2 my-5 bg-dark-1 border border-dark-3 dark:text-white text-black rounded-[8px]">
 					{date}
 				</h1>
 			</div>
-
+			
 			{chatContent.map((chat, index) => {
 				if (
 					chat.user ===
