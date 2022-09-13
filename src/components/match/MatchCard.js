@@ -69,6 +69,7 @@ const MatchCard = ({ primary, secondary, user, isMatch }) => {
 			{!isMatch && (
 				<div className="absolute bottom-0 -translate-x-1/2 translate-y-1/2 left-1/2">
 					<OptionButtonFrame
+						isInMatch={true}
 						handleAccept={handleAccept}
 						handleRefuse={handleRefuse}
 					/>

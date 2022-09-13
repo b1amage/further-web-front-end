@@ -64,9 +64,10 @@ const AllMatchPage = () => {
 
 	return (
 		<div className="page-container">
-			<Header title={`All match (${people?.length || 0})`} />
+			<Header title={`All match (${matchPeople?.length || 0})`} />
 			<div>
 				<SectionTitle className="my-8">Who Like you</SectionTitle>
+
 				{!authenticationApi.isLogin() ? (
 					<NoMore />
 				) : loading ? (
