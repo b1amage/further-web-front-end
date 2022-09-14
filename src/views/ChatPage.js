@@ -12,7 +12,7 @@ import Loading from "../utilities/Loading";
 const ChatPage = () => {
 	const [matches, setMatches] = useState([]);
 	const [loading, setLoading] = useState(true)
-	// const [roomId, setRoomId] = useState("")
+	// const [latestTime, setLatestTime] = useState("")
 	// const [latestMessage, setLatestMessage] = useState("")
 	const navigate = useNavigate();
 
@@ -31,9 +31,29 @@ const ChatPage = () => {
 		}
 	}, [navigate]);
 
-	// useEffect(() => {
-	// 	roomChatApi.getRoomMessages()
-	// })
+	// const getLatestMessage = (roomId) => {
+	// 	roomChatApi.getRoomMessages(roomId, "", navigate).then(response => {
+	// 		setLatestMessage(response.data.results[0].content)
+	// 	})
+	// 	return latestMessage
+	// }
+
+	// const getLatestTimeMessage = (roomId) => {
+	// 	roomChatApi.getRoomMessages(roomId, "", navigate).then(response => {
+	// 		setLatestTime(response.data.results[0].createdAt)
+	// 	})
+	// 	return latestTime
+	// }
+
+	// const convertToTime = (strDate) => {
+    // 	return new Date(strDate).toLocaleTimeString('en-US');
+	// }
+
+	// const convertToDate = (strDate) => {
+	// 	var options = { year: 'numeric', month: 'numeric', day: 'numeric' };
+    // 	return new Date(strDate).toLocaleDateString([],options);
+	// }
+
 	const accessChat = (roomId, username) => {
 		roomChatApi.getMessageAccessToken(navigate).then((res) => {
 			navigate(`/chat-details/${roomId}/${res.data.token}`);
@@ -57,11 +77,12 @@ const ChatPage = () => {
 							img={match.participants[0].images[0]}
 							isActive
 							name={match.participants[0].username}
-							lastest={{
-								message: localStorage.getItem("latestMessage"),
-								time: "22:00",
-								messageCount: 2,
-							}}
+							// lastest={{
+							// 	message: getLatestMessage(match._id),
+							// 	date: convertToDate(getLatestTimeMessage(match._id)),
+							// 	time: convertToTime(getLatestTimeMessage(match._id)),
+							// 	// messageCount: 2,
+							// }}
 							onClick={() =>
 								accessChat(
 									match._id,

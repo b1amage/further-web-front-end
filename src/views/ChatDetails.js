@@ -19,11 +19,12 @@ export const ChatDetails = () => {
 	const [nextCursor, setNextCursor] = useState("");
 	const { roomId, token } = useParams();
 	const navigate = useNavigate();
+	const [displayLoadMoreButton, setDisplayLoadMoreButton] = useState(true)
 
 	useEffect(() => {
 		const getMessages = async () => {
 			setLoading(true)
-			const response = await roomChatApi.getRoomMessages(roomId, nextCursor,navigate)
+			const response = await roomChatApi.getRoomMessages(roomId, "",navigate)
 			setChatContent(response.data.results.reverse());
 			setNextCursor(response.data.next_cursor);
 			//   console.log(response);
@@ -54,7 +55,7 @@ export const ChatDetails = () => {
 			console.log(chat);
 			setChatContent((prev) => [
 				...prev,
-				{ user: chat.userId, name: chat.name, content: chat.message },
+				{ user: chat.userId, name: chat.name, content: chat.message, createdAt: Date.now()},
 			]);
 		});
 
@@ -73,6 +74,7 @@ export const ChatDetails = () => {
 				name: JSON.parse(localStorage.getItem("user")).name,
 				roomId: roomId,
 				content: currentMessage,
+				createdAt: Date.now()
 			},
 		]);
 
@@ -82,7 +84,7 @@ export const ChatDetails = () => {
 			message: currentMessage,
 		});
 
-		
+		roomChatApi.createMessage(roomId, currentMessage);
 		setCurrentMessage("");
 	};
 
@@ -91,9 +93,12 @@ export const ChatDetails = () => {
 			const response = await roomChatApi.getRoomMessages(roomId, nextCursor, navigate);
 			console.log(response);
 			setChatContent([...response.data.results, ...chatContent]);
-			setNextCursor(response.data.next_cursor);
+			if (response.data.next_cursor === null){
+				setDisplayLoadMoreButton(false)
+			} else{
+				setNextCursor(response.data.next_cursor);
+			}
 		};
-
 		getMore();
 	};
 
@@ -101,6 +106,7 @@ export const ChatDetails = () => {
 		<div className="flex flex-col w-full h-screen page-container">
 			<ChatHeader opponent={localStorage.getItem("opponent")} />
 			<ChatDetailsContent
+				displayLoadMoreButton={displayLoadMoreButton}
 				loading={loading}
 				loadMore={handleShowMore}
 				date={"Today"}
