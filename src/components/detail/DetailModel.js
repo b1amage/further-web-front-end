@@ -1,6 +1,5 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import inbox from "../../assets/svg/inbox.svg";
 import FavoriteCard from "./FavoriteCard";
 import profile from "../../assets/svg/profile.svg";
 import pin from "../../assets/svg/pin.svg";
@@ -26,12 +25,12 @@ const DetailModel = ({ user }) => {
 					</p>
 				</div>
 
-				<div className="w-[40px] h-[40px] bg-gradient-to-br from-primary-50 to-primary-100 flex justify-center items-center rounded-full">
+				{/* <div className="w-[40px] h-[40px] bg-gradient-to-br from-primary-50 to-primary-100 flex justify-center items-center rounded-full">
 					<img src={inbox} alt="" />
-				</div>
+				</div> */}
 			</div>
 
-			{user?.about && (
+			{user?.biography && (
 				<div className="flex flex-col px-3 my-3 space-y-3 lg:gap-5">
 					<h3 className="text-2xl font-semibold lg:text-4xl">
 						About

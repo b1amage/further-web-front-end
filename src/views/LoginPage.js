@@ -15,9 +15,12 @@ import * as Yup from "yup";
 import authenticationApi from "../api/authenticationApi";
 import { useNavigate } from "react-router-dom";
 import AlreadyLogin from "../components/login/AlreadyLogin";
+import Loading from "../utilities/Loading";
 
 const LoginPage = () => {
 	const [isShowPassword, setIsShowPassword] = useState(false);
+	const [loading, setLoading] = useState(false);
+
 	const navigate = useNavigate();
 
 	const formik = useFormik({
@@ -41,6 +44,7 @@ const LoginPage = () => {
 				),
 		}),
 		onSubmit: (values) => {
+			setLoading(true);
 			console.log(values);
 			authenticationApi.login(values, navigate);
 		},
@@ -50,10 +54,12 @@ const LoginPage = () => {
 		<div className="page-container">
 			<Header title="Sign in" />
 
-			<LogoLg />
+			{!loading && !authenticationApi.isLogin() && <LogoLg />}
 
 			{authenticationApi.isLogin() ? (
 				<AlreadyLogin />
+			) : loading ? (
+				<Loading />
 			) : (
 				<form
 					onSubmit={formik.handleSubmit}
@@ -99,7 +105,7 @@ const LoginPage = () => {
 						<p className="p-4 pt-0 text-center text-gray2 md:text-xl lg:text-2xl">
 							Forgot password?{" "}
 							<Link
-								to="/forgot_password"
+								to="/forgot-password"
 								className="text-primary-100"
 							>
 								Reset

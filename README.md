@@ -2,7 +2,7 @@
 
 ### Note
 
--   Demo: https://rmit-tinder.netlify.app/
+-   Demo: https://rmit-tinder.netlify.app
     <img
     src="./sc.png"
     alt="Alt text"
@@ -94,7 +94,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 ### Note
 
--   View demo available at: https://rmitinder.netlify.app/
+-   View demo available at: https://rmit-tinder.netlify.app/
 
 ### Supporting tools used
 

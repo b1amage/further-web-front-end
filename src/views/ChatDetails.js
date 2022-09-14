@@ -11,6 +11,7 @@ export const ChatDetails = () => {
 	const [currentMessage, setCurrentMessage] = useState("");
 	const [chatContent, setChatContent] = useState([]);
 	const [loading, setLoading] = useState(true);
+	const [loadPreviousData, setLoadPreviousData] = useState(false)
 	const [data, setData] = useState({
 		userId: "",
 		roomId: "",
@@ -90,14 +91,18 @@ export const ChatDetails = () => {
 
 	const handleShowMore = () => {
 		const getMore = async () => {
+			setLoadPreviousData(true)
 			const response = await roomChatApi.getRoomMessages(roomId, nextCursor, navigate);
 			console.log(response);
 			setChatContent([...response.data.results, ...chatContent]);
 			if (response.data.next_cursor === null){
 				setDisplayLoadMoreButton(false)
 			} else{
+				setDisplayLoadMoreButton(true)
+
 				setNextCursor(response.data.next_cursor);
 			}
+			setLoadPreviousData(false)
 		};
 		getMore();
 	};
@@ -108,6 +113,7 @@ export const ChatDetails = () => {
 			<ChatDetailsContent
 				displayLoadMoreButton={displayLoadMoreButton}
 				loading={loading}
+				loadPreviousData={loadPreviousData}
 				loadMore={handleShowMore}
 				date={"Today"}
 				chatContent={chatContent}

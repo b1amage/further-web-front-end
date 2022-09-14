@@ -4,7 +4,12 @@ import emptyHeart from "../../assets/svg/empty-heart.svg";
 import x from "../../assets/svg/x.svg";
 // import { useNavigate } from "react-router-dom";
 
-const OptionButtonFrame = ({ primary, handleAccept, handleRefuse }) => {
+const OptionButtonFrame = ({
+	primary,
+	handleAccept,
+	handleRefuse,
+	isInMatch,
+}) => {
 	// const navigate = useNavigate();
 
 	const buttons = [
@@ -23,6 +28,7 @@ const OptionButtonFrame = ({ primary, handleAccept, handleRefuse }) => {
 			{buttons.length > 0 &&
 				buttons.map((item, index) => (
 					<HeroButton
+						isInMatch={isInMatch}
 						onClick={item.onClick}
 						key={index}
 						className="w-[76px] h-[76px]"
