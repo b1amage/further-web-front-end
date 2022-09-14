@@ -12,8 +12,7 @@ import Loading from "../utilities/Loading";
 const ChatPage = () => {
 	const [matches, setMatches] = useState([]);
 	const [loading, setLoading] = useState(true)
-	// const [latestTime, setLatestTime] = useState("")
-	// const [latestMessage, setLatestMessage] = useState("")
+
 	const navigate = useNavigate();
 
 	useEffect(() => {
@@ -24,35 +23,35 @@ const ChatPage = () => {
 			setLoading(false)
 		}
 
-		if (authenticationApi.isLogin()){
+		if (authenticationApi.isLogin()) {
 			getMatches()
-		} else{
+		} else {
 			setMatches(null)
 		}
 	}, [navigate]);
 
-	// const getLatestMessage = (roomId) => {
-	// 	roomChatApi.getRoomMessages(roomId, "", navigate).then(response => {
-	// 		setLatestMessage(response.data.results[0].content)
+	// useEffect(() => {
+	// 	matches.forEach(match => setRoomIds(prev => [...prev, match._id]))	
+	// }, [matches])
+
+	// useEffect(() => {
+	// 	roomIds.forEach(id => {
+	// 		roomChatApi.getRoomMessages(id, "", navigate).then(response => {
+	// 			setLoadingData(true)
+	// 			if(response.data.results.length === 0){
+	// 				setLatestMessage(prev => [...prev, "Tap here to send chat"])
+	// 				setLatestTime(prev => [...prev, ""])
+
+	// 			} else{
+	// 				setLatestMessage(prev => [...prev, response.data.results[0].content])
+	// 				setLatestTime(prev => [...prev, response.data.results[0].createdAt])
+	// 			}
+	// 			setLoadingData(false)
+	// 		})
 	// 	})
-	// 	return latestMessage
-	// }
+	// }, [roomIds, navigate])
 
-	// const getLatestTimeMessage = (roomId) => {
-	// 	roomChatApi.getRoomMessages(roomId, "", navigate).then(response => {
-	// 		setLatestTime(response.data.results[0].createdAt)
-	// 	})
-	// 	return latestTime
-	// }
 
-	// const convertToTime = (strDate) => {
-    // 	return new Date(strDate).toLocaleTimeString('en-US');
-	// }
-
-	// const convertToDate = (strDate) => {
-	// 	var options = { year: 'numeric', month: 'numeric', day: 'numeric' };
-    // 	return new Date(strDate).toLocaleDateString([],options);
-	// }
 
 	const accessChat = (roomId, username) => {
 		roomChatApi.getMessageAccessToken(navigate).then((res) => {
@@ -69,7 +68,7 @@ const ChatPage = () => {
 				<NoMore />
 			) : loading ? (
 				<Loading />
-			) : matches ?(
+			) : matches ? (
 				<div className="flex flex-col gap-5 my-8 lg:my-12">
 					{matches.map((match, index) => (
 						<ChatCard
@@ -78,11 +77,13 @@ const ChatPage = () => {
 							isActive
 							name={match.participants[0].username}
 							// lastest={{
-							// 	message: getLatestMessage(match._id),
-							// 	date: convertToDate(getLatestTimeMessage(match._id)),
-							// 	time: convertToTime(getLatestTimeMessage(match._id)),
+							// 	message: loadingData? <p>Loading...</p> : latestMessage[index],
+							// 	date: loadingData? <p>Loading...</p> : convertToDate(latestTime[index]),
+							// 	time: loadingData? <p>Loading...</p> : convertToTime(latestTime[index]),
 							// 	// messageCount: 2,
 							// }}
+							room={match._id}
+							navigate={navigate}
 							onClick={() =>
 								accessChat(
 									match._id,
@@ -96,7 +97,7 @@ const ChatPage = () => {
 			) : (
 				<NoMore isInMatch />
 			)
-		}
+			}
 
 			<NavBar page="chat" />
 		</div>
