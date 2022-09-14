@@ -12,10 +12,11 @@ const ErrorPage = () => {
 				{err ||
 					"Unexpected error happened! We will try to fix this problem soon"}
 			</h3>
-
-			<Button className="mt-20 bg-white text-primary-100 lg:w-1/2 lg:mx-auto">
-				<Link to="/">Back to home</Link>
-			</Button>
+			<Link to="/" className="flex items-center justify-center w-full">
+				<Button className="mt-20 bg-white text-primary-100 lg:w-1/2 lg:mx-auto">
+					Back to home
+				</Button>
+			</Link>
 		</div>
 	);
 };
