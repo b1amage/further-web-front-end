@@ -39,7 +39,6 @@ export const ChatDetailsContent = ({
 
 	const handleScroll = (e) => {
 		const { clientHeight, scrollHeight, scrollTop } = e.target;
-    console.log(-scrollTop - clientHeight + scrollHeight)
 		setBottom(Math.round(scrollTop + clientHeight) <= scrollHeight);
 	};
 
@@ -51,7 +50,7 @@ export const ChatDetailsContent = ({
 	return (
 		<div className="px-[24px] h-full overflow-y-scroll" onScroll={handleScroll}>
 			<div
-				onClick={(e) => {
+				onClick={() => {
 					loadMore();
 					setBottom(false);
 				}}
