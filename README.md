@@ -2,7 +2,7 @@
 
 ### Note
 
--   Demo: https://rmit-tinder.netlify.app/
+-   Demo: https://rmit-tinder.netlify.app
     <img
     src="./sc.png"
     alt="Alt text"
