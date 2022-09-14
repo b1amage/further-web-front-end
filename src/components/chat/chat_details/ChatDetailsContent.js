@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { OpponentChatBox } from "./opponent/OpponentChatBox";
 import { UserChatBox } from "./user/UserChatBox";
 import arrowUp from "../../../assets/svg/arrow-up.svg";
-
+import heart from "../../../assets/svg/heart.svg"
 export const ChatDetailsContent = ({
   loading,
   loadMore,
@@ -44,17 +44,17 @@ export const ChatDetailsContent = ({
     <div className="px-[24px] h-full overflow-y-scroll">
       <div
         onClick={loadMore}
-        className={`w-fit p-2 mx-auto my-3 rounded-[100px] bg-gradient-to-r from-primary-100 to-primary-50 transiton-all duration-300 hover:shadow-lg hover:-translate-y-2 cursor-pointer ${
+        className={`w-fit p-2 my-2 mx-auto rounded-[100px] bg-gradient-to-r from-primary-100 to-primary-50 transiton-all duration-300 hover:shadow-lg hover:-translate-y-2 cursor-pointer ${
           displayLoadMoreButton ? "" : "hidden"
         }`}
       >
         <img src={arrowUp} alt="show-more" />
       </div>
 
-      <p>{loadPreviousData ? "Loading..." : ""}</p>
+      <p className={`h-full ${loadPreviousData ? "" : "hidden"} my-3 text-lg font-bold text-center`}>{loadPreviousData ? "Loading..." : ""}</p>
 
       {loading ? (
-        <p>Loading...</p>
+        <p className='font-semibold'>Loading...</p>
       ) : chatContent.length > 0 ? (
         <>
           {chatContent.map((chat, index) => {
@@ -84,7 +84,11 @@ export const ChatDetailsContent = ({
           })}
         </>
       ) : (
-        <p>Start to chat</p>
+        <div className="h-full w-full flex flex-col justify-center items-center">
+          <img src={heart} alt="heart" className='w-[100px]'/>
+          <p className='my-5 text-2xl font-bold text-center'>Send your first message to each other</p>
+        </div>
+        
       )}
       <div ref={messagesEndRef} />
     </div>
