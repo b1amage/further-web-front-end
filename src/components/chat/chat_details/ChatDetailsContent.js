@@ -2,15 +2,13 @@ import React, { useEffect, useRef, useState } from "react";
 import { OpponentChatBox } from "./opponent/OpponentChatBox";
 import { UserChatBox } from "./user/UserChatBox";
 import arrowUp from "../../../assets/svg/arrow-up.svg";
-import authenticationApi from "../../../api/authenticationApi";
-import NoMore from "../../main/NoMore";
-import Loading from "../../../utilities/Loading";
 
 export const ChatDetailsContent = ({
   loading,
   loadMore,
   displayLoadMoreButton,
   chatContent,
+  loadPreviousData
 }) => {
   const messagesEndRef = useRef(null);
 
@@ -40,7 +38,7 @@ export const ChatDetailsContent = ({
 
   useEffect(() => {
     scrollToBottom();
-  }, [chatContent]);
+  }, []);
 
   return (
     <div className="px-[24px] h-full overflow-y-scroll">
@@ -52,10 +50,11 @@ export const ChatDetailsContent = ({
       >
         <img src={arrowUp} alt="show-more" />
       </div>
-      {!authenticationApi.isLogin ? (
-        <NoMore />
-      ) : loading ? (
-        <Loading />
+
+      <p>{loadPreviousData ? "Loading..." : ""}</p>
+
+      {loading ? (
+        <p>Loading...</p>
       ) : chatContent.length > 0 ? (
         <>
           {chatContent.map((chat, index) => {
@@ -85,7 +84,7 @@ export const ChatDetailsContent = ({
           })}
         </>
       ) : (
-        <NoMore isInMatch />
+        <p>Start to chat</p>
       )}
       <div ref={messagesEndRef} />
     </div>
