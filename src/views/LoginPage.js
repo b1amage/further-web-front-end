@@ -105,7 +105,7 @@ const LoginPage = () => {
 						<p className="p-4 pt-0 text-center text-gray2 md:text-xl lg:text-2xl">
 							Forgot password?{" "}
 							<Link
-								to="/forgot_password"
+								to="/forgot-password"
 								className="text-primary-100"
 							>
 								Reset
