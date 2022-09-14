@@ -2,7 +2,6 @@ import React, { useEffect, useRef, useState } from "react";
 import { OpponentChatBox } from "./opponent/OpponentChatBox";
 import { UserChatBox } from "./user/UserChatBox";
 import arrowUp from "../../../assets/svg/arrow-up.svg";
-import authenticationApi from "../../../api/authenticationApi";
 import NoMore from "../../main/NoMore";
 import Loading from "../../../utilities/Loading";
 
@@ -52,9 +51,7 @@ export const ChatDetailsContent = ({
       >
         <img src={arrowUp} alt="show-more" />
       </div>
-      {!authenticationApi.isLogin ? (
-        <NoMore />
-      ) : loading ? (
+      {loading ? (
         <Loading />
       ) : chatContent.length > 0 ? (
         <>

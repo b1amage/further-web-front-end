@@ -21,19 +21,19 @@ const ChatCard = ({ img, isActive, lastest, name, onClick }) => {
 			<div className="flex flex-col flex-1 space-y-2">
 				<SectionTitle>{name}</SectionTitle>
 
-				{/* <p className="text-base text-dark-3 dark:text-white lg:text-lg">
+				<p className="h-[23px] overflow-y-hidden break-all text-base text-dark-3 dark:text-white lg:text-lg">
 					{lastest.message}
-				</p> */}
+				</p>
 			</div>
 
-			{/* <div className="flex flex-col items-end space-y-2.5">
-				<p className="">
+			<div className="flex flex-col items-end space-y-2">
+				<p className="lg:text-md">
 					{lastest.date}
 				</p>
-				<p className="text-dark-3 lg:text-lg dark:text-white">
+				<p className="text-dark-3 lg:text-md dark:text-white">
 					{lastest.time}
 				</p>
-			</div> */}
+			</div>
 		</div>
 	);
 };
