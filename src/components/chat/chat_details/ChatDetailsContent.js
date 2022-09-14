@@ -11,21 +11,11 @@ export const ChatDetailsContent = ({
 	loadPreviousData,
 }) => {
 	const messagesEndRef = useRef(null);
-
-	const [userBoxClicked, setUserBoxIsClicked] = useState(false);
-	const [opponentBoxClicked, setOpponentBoxIsClicked] = useState(false);
+  
 	const [bottom, setBottom] = useState(true);
 
 	const scrollToBottom = () => {
 		messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-	};
-
-	const displayUserBoxDate = () => {
-		setUserBoxIsClicked((state) => !state);
-	};
-
-	const displayOpponentBoxDate = () => {
-		setOpponentBoxIsClicked((state) => !state);
 	};
 
 	const convertToTime = (strDate) => {
@@ -76,8 +66,6 @@ export const ChatDetailsContent = ({
                   key={index}
                   time={convertToTime(chat.createdAt)}
                   date={convertToDate(chat.createdAt)}
-                  isClicked={userBoxClicked}
-                  onClick={displayUserBoxDate}
                 />
               );
             } else {
@@ -87,8 +75,6 @@ export const ChatDetailsContent = ({
                   key={index}
                   time={convertToTime(chat.createdAt)}
                   date={convertToDate(chat.createdAt)}
-                  isClicked={opponentBoxClicked}
-                  onClick={displayOpponentBoxDate}
                 />
               );
             }

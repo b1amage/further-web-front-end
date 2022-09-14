@@ -95,7 +95,7 @@ export const ChatDetails = () => {
 	};
 
 	const handleShowMore = (e) => {
-		e.preventDefault()
+		// e.preventDefault()
 		const getMore = async () => {
 			setLoadPreviousData(true)
 			const response = await roomChatApi.getRoomMessages(roomId, nextCursor, navigate);
@@ -121,8 +121,7 @@ export const ChatDetails = () => {
 				displayLoadMoreButton={displayLoadMoreButton}
 				loading={loading}
 				loadPreviousData={loadPreviousData}
-				loadMore={handleShowMore}
-				date={"Today"}
+				loadMore={(e) => handleShowMore(e)}
 				chatContent={chatContent}
 			/>
 			<ChatFooter
