@@ -4,52 +4,63 @@ import { UserChatBox } from "./user/UserChatBox";
 import arrowUp from "../../../assets/svg/arrow-up.svg";
 import heart from "../../../assets/svg/heart.svg"
 export const ChatDetailsContent = ({
-  loading,
-  loadMore,
-  displayLoadMoreButton,
-  chatContent,
-  loadPreviousData
+	loading,
+	loadMore,
+	displayLoadMoreButton,
+	chatContent,
+	loadPreviousData,
 }) => {
-  const messagesEndRef = useRef(null);
+	const messagesEndRef = useRef(null);
 
-  const [userBoxClicked, setUserBoxIsClicked] = useState(false);
-  const [opponentBoxClicked, setOpponentBoxIsClicked] = useState(false);
+	const [userBoxClicked, setUserBoxIsClicked] = useState(false);
+	const [opponentBoxClicked, setOpponentBoxIsClicked] = useState(false);
+	const [bottom, setBottom] = useState(true);
 
-  const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  };
+	const scrollToBottom = () => {
+		messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+	};
 
-  const displayUserBoxDate = () => {
-    setUserBoxIsClicked((state) => !state);
-  };
+	const displayUserBoxDate = () => {
+		setUserBoxIsClicked((state) => !state);
+	};
 
-  const displayOpponentBoxDate = () => {
-    setOpponentBoxIsClicked((state) => !state);
-  };
+	const displayOpponentBoxDate = () => {
+		setOpponentBoxIsClicked((state) => !state);
+	};
 
-  const convertToTime = (strDate) => {
-    return new Date(strDate).toLocaleTimeString("it-IT");
-  };
+	const convertToTime = (strDate) => {
+		return new Date(strDate).toLocaleTimeString("it-IT");
+	};
 
-  const convertToDate = (strDate) => {
-    var options = { year: "numeric", month: "numeric", day: "numeric" };
-    return new Date(strDate).toLocaleDateString([], options);
-  };
+	const convertToDate = (strDate) => {
+		var options = { year: "numeric", month: "numeric", day: "numeric" };
+		return new Date(strDate).toLocaleDateString([], options);
+	};
 
-  useEffect(() => {
-    scrollToBottom();
-  }, []);
+	const handleScroll = (e) => {
+		const { clientHeight, scrollHeight, scrollTop } = e.target;
+    console.log(-scrollTop - clientHeight + scrollHeight)
+		setBottom(Math.round(scrollTop + clientHeight) <= scrollHeight);
+	};
 
-  return (
-    <div className="px-[24px] h-full overflow-y-scroll">
-      <div
-        onClick={loadMore}
-        className={`w-fit p-2 my-2 mx-auto rounded-[100px] bg-gradient-to-r from-primary-100 to-primary-50 transiton-all duration-300 hover:shadow-lg hover:-translate-y-2 cursor-pointer ${
-          displayLoadMoreButton ? "" : "hidden"
-        }`}
-      >
-        <img src={arrowUp} alt="show-more" />
-      </div>
+	useEffect(() => {
+		if (!bottom) return;
+		scrollToBottom();
+	}, [chatContent, bottom]);
+
+	return (
+		<div className="px-[24px] h-full overflow-y-scroll" onScroll={handleScroll}>
+			<div
+				onClick={(e) => {
+					loadMore();
+					setBottom(false);
+				}}
+				className={`w-fit p-2 mx-auto my-3 rounded-[100px] bg-gradient-to-r from-primary-100 to-primary-50 transiton-all duration-300 hover:shadow-lg hover:-translate-y-2 cursor-pointer ${
+					displayLoadMoreButton ? "" : "hidden"
+				}`}
+			>
+				<img src={arrowUp} alt="show-more" />
+			</div>
 
       <p className={`h-full ${loadPreviousData ? "" : "hidden"} my-3 text-lg font-bold text-center`}>{loadPreviousData ? "Loading..." : ""}</p>
 

@@ -100,7 +100,8 @@ export const ChatDetails = () => {
 			setLoadPreviousData(true)
 			const response = await roomChatApi.getRoomMessages(roomId, nextCursor, navigate);
 			console.log(response);
-			setChatContent([...response.data.results, ...chatContent]);
+			const previousMessages = response.data.results.reverse()
+			setChatContent([...previousMessages, ...chatContent]);
 			if (response.data.next_cursor === null){
 				setDisplayLoadMoreButton(false)
 			} else{
