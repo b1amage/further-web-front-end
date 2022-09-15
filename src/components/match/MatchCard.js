@@ -16,13 +16,13 @@ const MatchCard = ({
 	const handleAccept = () => {
 		console.log("love");
 		userApi.swipe(user.from._id, true, navigate);
-		setNewPeopleMatch(user);
+		setNewPeopleMatch(user, true);
 	};
 
 	const handleRefuse = () => {
 		console.log("che");
 		userApi.swipe(user.from._id, false, navigate);
-		setNewPeopleMatch(user);
+		setNewPeopleMatch(user, false);
 	};
 
 	return (
