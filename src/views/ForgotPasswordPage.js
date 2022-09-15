@@ -11,6 +11,7 @@ import forgotPasswordApi from "../api/forgotPasswordApi";
 
 export const ForgotPasswordPage = () => {
 	const [selectedType, setSelectedType] = useState(null);
+	console.log(selectedType);
 
 	const [message, setMessage] = useState("");
 	const onChangeType = (e) => {
@@ -21,26 +22,33 @@ export const ForgotPasswordPage = () => {
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		forgotPasswordApi.forgotPassword(selectedType, navigate).then((res) => {
-			setMessage(res.data.msg);
-		});
+		forgotPasswordApi
+			.forgotPassword(localStorage.getItem("emailReset"), navigate)
+			.then((res) => {
+				setMessage(res.data.msg);
+			});
 	};
 
 	return (
 		<div className="h-screen">
 			<form
 				onSubmit={handleSubmit}
-				className="page-container w-full h-screen flex flex-col items-center justify-center"
+				className="flex flex-col items-center justify-center w-full h-screen page-container"
 				// className="px-6 py-7 w-full h-screen sm:px-[100px] md:px-[200px] lg:px-[350px]"
-			>	
+			>
 				<div className="w-full">
 					<Header title={"Forgot Password"} />
 				</div>
-				
 
-				<DisplaySvg svg={localStorage.getItem("theme") === "light" ? forgotPassword : forgotPasswordDarkMode} />
+				<DisplaySvg
+					svg={
+						localStorage.getItem("theme") === "light"
+							? forgotPassword
+							: forgotPasswordDarkMode
+					}
+				/>
 
-				<div className="my-6 w-full">
+				<div className="w-full my-6">
 					<span>
 						Select which contact details should we use to reset your
 						password
@@ -49,7 +57,7 @@ export const ForgotPasswordPage = () => {
 
 				<div className="w-full">
 					<Type
-						id={JSON.parse(localStorage.getItem("user")).email}
+						id={JSON.parse(localStorage.getItem("user"))?.email}
 						icon={email}
 						type={"Email"}
 						onChangeType={onChangeType}
