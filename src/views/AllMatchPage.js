@@ -15,6 +15,18 @@ const AllMatchPage = () => {
 	const [loading, setLoading] = useState(true);
 	const navigate = useNavigate();
 
+	const setNewPeopleMatch = (user, isLike) => {
+		if (isLike) {
+			setNewPeopleMatch([...matchPeople, user]);
+		} else {
+			const newPeople = people.filter(
+				(item) => item.from._id !== user.from._id
+			);
+
+			setPeople(newPeople);
+		}
+	};
+
 	useEffect(() => {
 		if (authenticationApi.isAdmin()) {
 			navigate("/dashboard");
@@ -81,6 +93,7 @@ const AllMatchPage = () => {
 									primary
 									key={index}
 									user={item}
+									setNewPeopleMatch={setNewPeopleMatch}
 								/>
 							))}
 					</div>

@@ -4,18 +4,25 @@ import { useNavigate } from "react-router-dom";
 import OptionButtonFrame from "../main/OptionButtonFrame";
 import userApi from "../../api/userApi";
 
-const MatchCard = ({ primary, secondary, user, isMatch }) => {
+const MatchCard = ({
+	primary,
+	secondary,
+	user,
+	isMatch,
+	setNewPeopleMatch,
+}) => {
 	const navigate = useNavigate();
 
 	const handleAccept = () => {
 		console.log("love");
-
 		userApi.swipe(user.from._id, true, navigate);
+		setNewPeopleMatch(user);
 	};
 
 	const handleRefuse = () => {
 		console.log("che");
 		userApi.swipe(user.from._id, false, navigate);
+		setNewPeopleMatch(user);
 	};
 
 	return (
