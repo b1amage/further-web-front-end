@@ -20,14 +20,19 @@ export const ChatDetails = () => {
 	const [nextCursor, setNextCursor] = useState("");
 	const { roomId, token } = useParams();
 	const navigate = useNavigate();
-	const [displayLoadMoreButton, setDisplayLoadMoreButton] = useState(true)
+	const [displayLoadMoreButton, setDisplayLoadMoreButton] = useState(false)
 
 	useEffect(() => {
 		const getMessages = async () => {
 			setLoading(true)
 			const response = await roomChatApi.getRoomMessages(roomId, "",navigate)
 			setChatContent(response.data.results.reverse());
-			setNextCursor(response.data.next_cursor);
+			if (response.data.next_cursor !== null){
+				setNextCursor(response.data.next_cursor);
+				setDisplayLoadMoreButton(true)
+			} else{
+				setDisplayLoadMoreButton(false)
+			}
 			//   console.log(response);
 			setLoading(false)
 		}
@@ -89,7 +94,8 @@ export const ChatDetails = () => {
 		setCurrentMessage("");
 	};
 
-	const handleShowMore = () => {
+	const handleShowMore = (e) => {
+		// e.preventDefault()
 		const getMore = async () => {
 			setLoadPreviousData(true)
 			const response = await roomChatApi.getRoomMessages(roomId, nextCursor, navigate);
@@ -115,8 +121,7 @@ export const ChatDetails = () => {
 				displayLoadMoreButton={displayLoadMoreButton}
 				loading={loading}
 				loadPreviousData={loadPreviousData}
-				loadMore={handleShowMore}
-				date={"Today"}
+				loadMore={(e) => handleShowMore(e)}
 				chatContent={chatContent}
 			/>
 			<ChatFooter

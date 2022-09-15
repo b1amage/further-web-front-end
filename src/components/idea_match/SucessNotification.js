@@ -10,7 +10,7 @@ export const SucessNotification = ({ display }) => {
 			// className={`
 			// w-full h-screen flex-col justify-center items-center px-8 sm:px-[100px] md:px-[200px] bg-black/70 fixed top-0 z-50 
 			// ${display ? "flex" : "hidden"}`}
-			className={`page-container fixed left-0 right-0 ${display ? "inline-flex items-center justify-center" : "hidden"} bg-black/70 h-fit md:h-screen top-0 w-full`}
+			className={`fixed left-0 right-0 ${display ? "inline-flex items-center justify-center" : "hidden"} bg-black/70 h-fit md:h-screen top-0 w-full`}
 		>
 			<div className=" dark:bg-dark-1 dark:border-dark-3 bg-white w-fit h-fit py-8 inline-flex flex-col items-center px-10 rounded-[24px]">
 				<img src={createSucess} alt="notification" className="" />
@@ -20,7 +20,7 @@ export const SucessNotification = ({ display }) => {
 						className="inline-block font-semibold text-primary-100"
 					/>
 					<SectionTitle
-						children={"Your account has been created successfully"}
+						children={"Your account has been saved successfully"}
 						className="inline-block font-semibold text-primary-100"
 					/>
 				</div>

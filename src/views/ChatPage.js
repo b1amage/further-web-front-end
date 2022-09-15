@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import Header from "../components/header/Header";
-
 import NavBar from "../components/navbar/NavBar";
 import ChatCard from "../components/chat/ ChatCard";
 import authenticationApi from "../api/authenticationApi";
@@ -30,29 +29,6 @@ const ChatPage = () => {
 		}
 	}, [navigate]);
 
-	// useEffect(() => {
-	// 	matches.forEach(match => setRoomIds(prev => [...prev, match._id]))	
-	// }, [matches])
-
-	// useEffect(() => {
-	// 	roomIds.forEach(id => {
-	// 		roomChatApi.getRoomMessages(id, "", navigate).then(response => {
-	// 			setLoadingData(true)
-	// 			if(response.data.results.length === 0){
-	// 				setLatestMessage(prev => [...prev, "Tap here to send chat"])
-	// 				setLatestTime(prev => [...prev, ""])
-
-	// 			} else{
-	// 				setLatestMessage(prev => [...prev, response.data.results[0].content])
-	// 				setLatestTime(prev => [...prev, response.data.results[0].createdAt])
-	// 			}
-	// 			setLoadingData(false)
-	// 		})
-	// 	})
-	// }, [roomIds, navigate])
-
-
-
 	const accessChat = (roomId, username) => {
 		roomChatApi.getMessageAccessToken(navigate).then((res) => {
 			navigate(`/chat-details/${roomId}/${res.data.token}`);
@@ -76,12 +52,6 @@ const ChatPage = () => {
 							img={match.participants[0].images[0]}
 							isActive
 							name={match.participants[0].username}
-							// lastest={{
-							// 	message: loadingData? <p>Loading...</p> : latestMessage[index],
-							// 	date: loadingData? <p>Loading...</p> : convertToDate(latestTime[index]),
-							// 	time: loadingData? <p>Loading...</p> : convertToTime(latestTime[index]),
-							// 	// messageCount: 2,
-							// }}
 							room={match._id}
 							navigate={navigate}
 							onClick={() =>

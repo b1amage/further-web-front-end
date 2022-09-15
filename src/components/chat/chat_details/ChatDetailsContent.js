@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { OpponentChatBox } from "./opponent/OpponentChatBox";
 import { UserChatBox } from "./user/UserChatBox";
 import arrowUp from "../../../assets/svg/arrow-up.svg";
-
+import heart from "../../../assets/svg/heart.svg"
 export const ChatDetailsContent = ({
 	loading,
 	loadMore,
@@ -11,21 +11,11 @@ export const ChatDetailsContent = ({
 	loadPreviousData,
 }) => {
 	const messagesEndRef = useRef(null);
-
-	const [userBoxClicked, setUserBoxIsClicked] = useState(false);
-	const [opponentBoxClicked, setOpponentBoxIsClicked] = useState(false);
+  
 	const [bottom, setBottom] = useState(true);
 
 	const scrollToBottom = () => {
 		messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-	};
-
-	const displayUserBoxDate = () => {
-		setUserBoxIsClicked((state) => !state);
-	};
-
-	const displayOpponentBoxDate = () => {
-		setOpponentBoxIsClicked((state) => !state);
 	};
 
 	const convertToTime = (strDate) => {
@@ -61,42 +51,42 @@ export const ChatDetailsContent = ({
 				<img src={arrowUp} alt="show-more" />
 			</div>
 
-			<p>{loadPreviousData ? "Loading..." : ""}</p>
+      <p className={`h-full ${loadPreviousData ? "" : "hidden"} my-3 text-lg font-bold text-center`}>{loadPreviousData ? "Loading..." : ""}</p>
 
-			{loading ? (
-				<p>Loading...</p>
-			) : chatContent.length > 0 ? (
-				<>
-					{chatContent.map((chat, index) => {
-						if (chat.user === JSON.parse(localStorage.getItem("user")).userId) {
-							return (
-								<UserChatBox
-									content={chat.content}
-									key={index}
-									time={convertToTime(chat.createdAt)}
-									date={convertToDate(chat.createdAt)}
-									isClicked={userBoxClicked}
-									onClick={displayUserBoxDate}
-								/>
-							);
-						} else {
-							return (
-								<OpponentChatBox
-									content={chat.content}
-									key={index}
-									time={convertToTime(chat.createdAt)}
-									date={convertToDate(chat.createdAt)}
-									isClicked={opponentBoxClicked}
-									onClick={displayOpponentBoxDate}
-								/>
-							);
-						}
-					})}
-				</>
-			) : (
-				<p>Start to chat</p>
-			)}
-			<div ref={messagesEndRef} />
-		</div>
-	);
+      {loading ? (
+        <p className='font-semibold'>Loading...</p>
+      ) : chatContent.length > 0 ? (
+        <>
+          {chatContent.map((chat, index) => {
+            if (chat.user === JSON.parse(localStorage.getItem("user")).userId) {
+              return (
+                <UserChatBox
+                  content={chat.content}
+                  key={index}
+                  time={convertToTime(chat.createdAt)}
+                  date={convertToDate(chat.createdAt)}
+                />
+              );
+            } else {
+              return (
+                <OpponentChatBox
+                  content={chat.content}
+                  key={index}
+                  time={convertToTime(chat.createdAt)}
+                  date={convertToDate(chat.createdAt)}
+                />
+              );
+            }
+          })}
+        </>
+      ) : (
+        <div className="h-full w-full flex flex-col justify-center items-center">
+          <img src={heart} alt="heart" className='w-[100px]'/>
+          <p className='my-5 text-2xl font-bold text-center'>Send your first message to each other</p>
+        </div>
+        
+      )}
+      <div ref={messagesEndRef} />
+    </div>
+  );
 };

@@ -20,7 +20,7 @@ const ChatCard = ({ img, isActive, name, onClick, room, navigate }) => {
 		roomChatApi.getRoomMessages(room, "", navigate).then((response) => {
 			setLoadingData(true);
 			if (response.data.results.length === 0) {
-				setLatestMessage("Tap here to send chat");
+				setLatestMessage("Send your first message to each other");
 				setLatestTime("");
 			} else {
 				setLatestMessage(response.data.results[0].content);
